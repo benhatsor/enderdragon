@@ -162,13 +162,17 @@ body {
 .options h2 {
   position: relative;
   font: inherit;
+  margin-top: 0;
+}
+
+.options img ~ h2 {
   margin-bottom: 25px;
-  margin-top: 15px;
 }
 
 .options img {
   position: relative;
   margin: auto;
+  height: 100px;
 }
 
 .button {
