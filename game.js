@@ -674,7 +674,7 @@ var sprintKeyUp = false;
 function checkSprint(e) {
  if (e.keyCode == keybinds.forward) {
     var thisKeypressTime = new Date();
-    if (thisKeypressTime - lastKeypressTime <= sprintKeyDelta && sprintKeyUp) {
+    if (thisKeypressTime - lastKeypressTime <= sprintKeyDelta && sprintKeyUp && !sneaking) {
       sprint();
       thisKeypressTime = 0;
       sprintKeyUp = false;
