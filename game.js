@@ -349,6 +349,8 @@ var keymovement = {
   z: 0
 };
 var moving = false;
+var spacebarPressed = false;
+
 var keydownF = e => {
 
   if (fpsenabled) {
@@ -376,6 +378,7 @@ var keydownF = e => {
     if (event.keyCode === keybinds.jump) {
       if (verticalSpeed == 0 || flying) {
         verticalSpeed = verticalVelocity;
+        spacebarPressed = true;
       }
     }
 
@@ -409,6 +412,7 @@ var keyupF = e => {
     if (event.keyCode === keybinds.jump) {
       if (flying) {
         verticalSpeed = 0;
+        spacebarPressed = false;
       }
     }
   }
@@ -500,8 +504,15 @@ function gameloop() {
       if (sneaking && !flying) {
         let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
         clipSneak = (blockBelow.id == 0);
-      } else if (sneaking && flying) {
+      }
+      else if (sneaking && flying) {
         verticalSpeed -= delta / 100;
+      }
+      if (!sneaking && flying && !spacebarPressed) {
+        verticalSpeed = 0;
+      }
+      if (flying && player.pos.y <= 0.5) {
+        flying = false;
       }
       
       if (verticalSpeed <= 0 && clipSneak) {
