@@ -665,8 +665,8 @@ function pause() {
           <h1>Game Menu</h1>
           <div class="button" role="button" onclick="document.querySelector('#camera').requestPointerLock()">Back to Game</div>
           <div class="buttons">
-            <div class="button" role="button" onclick="redirect('https://github.com/barhatsor/enderdragon/issues')">Give Feedback</div>
-            <div class="button" role="button" onclick="redirect('https://github.com/barhatsor/enderdragon/pulls')">Report Bugs</div>
+            <div class="button" role="button" onclick="redirect('https://github.com/barhatsor/enderdragon#README')">Give Feedback</div>
+            <div class="button" role="button" onclick="redirect('https://github.com/barhatsor/enderdragon/issues')">Report Bugs</div>
           </div>
           <div class="button" role="button" onclick="inspector = true;document.querySelector('#gui').style.display = 'none'">Inspector Mode</div>`;
   }
