@@ -408,7 +408,7 @@ var keyupF = e => {
     }
     if (event.keyCode === keybinds.jump) {
       if (flying) {
-        verticalSpeed -= 1;
+        verticalSpeed = 0;
       }
     }
   }
