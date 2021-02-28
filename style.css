@@ -259,6 +259,11 @@ body {
   perspective: var(--perspective);
   overflow: hidden;
   z-index: 500;
+  transition: .2s ease-in;
+}
+
+#camera.sprint {
+  perspective: calc(var(--perspective) / 1.5);
 }
 
 #scene {
