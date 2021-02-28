@@ -657,15 +657,7 @@ document.onkeydown = function(e) {
   }
   
   if (e.keyCode == 16) {
-    if (!flying) {
-      //player.height = 1.1; // shift
-      velocity = 700;
-      verticalVelocity = 2.5;
-
-      animateSneak('forward');
-    }
-    
-    sneaking = true;
+    sneak();
   }
   
   checkDblClick(e);
@@ -673,15 +665,7 @@ document.onkeydown = function(e) {
 
 document.onkeyup = function(e) {
   if (e.keyCode == 16) {
-    if (!flying) {
-      //player.height = 1.3; // shift
-      velocity = 400;
-      verticalVelocity = 3.7;
-
-      animateSneak('backward');
-    }
-    
-    sneaking = false;
+    disableSneaking();
   }
   
   if (e.keyCode == keybinds.forward && sprinting) {
@@ -760,8 +744,34 @@ function checkDblClick(e) {
  }
 }
 
+function sneak() {
+  if (!flying) {
+    //player.height = 1.1; // shift
+    velocity = 700;
+    verticalVelocity = 2.5;
+
+    animateSneak('forward');
+  }
+
+  sneaking = true;
+}
+
+function disableSneaking() {
+  if (!flying) {
+    //player.height = 1.3; // shift
+    velocity = 400;
+    verticalVelocity = 3.7;
+
+    animateSneak('backward');
+  }
+
+  sneaking = false;
+}
+
 function fly() {
   velocity = 300;
+  verticalVelocity = 3;
+  
   flying = true;
   
   document.querySelector('#camera').classList.add('fly');
@@ -769,6 +779,8 @@ function fly() {
 
 function disableFlying() {
   velocity = 400;
+  verticalVelocity = 3.5;
+  
   flying = false;
   
   document.querySelector('#camera').classList.remove('fly');
