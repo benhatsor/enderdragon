@@ -1,6 +1,6 @@
 # Enderdragon
 A CSS3D version of Minecraft.  
-https://enderdragon.netlify.app/
+https://enderdragon.berryscript.com/
 
 ## Todo 
 - Lighting
