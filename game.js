@@ -895,7 +895,7 @@ function debug() {
   
   document.querySelector('.debugscreen').innerHTML = `
   <p>Enderdragon `+version+` (`+version+`/`+exVersion+`)</p>
-  <p>Delta `+delta+` / Client @ `+1+` ms ticks (Netlify)</p>
+  <p>FPS: `+delta+` Client @ `+1+` ms ticks (Netlify)</p>
   <br>
   <p>XYZ: `+player.pos.x.toFixed(3)+` / `+player.pos.y.toFixed(5)+` / `+player.pos.z.toFixed(3)+`</p>
   <p>Block: `+Math.round(player.pos.x)+` `+Math.round(player.pos.y)+` `+Math.round(player.pos.z)+`</p>
