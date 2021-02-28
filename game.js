@@ -658,13 +658,15 @@ document.onkeyup = function(e) {
     velocity = 400;
     verticalVelocity = 3.7;
     
-    sprint = false;
+    sprinting = false;
+    
+    document.querySelector('#camera').classList.remove('sprint');
   }
 }
 
 var sprintKeyDelta = 500;
 var lastKeypressTime = 0;
-var sprint = false;
+var sprinting = false;
 function checkSprint(e) {
  if (e.keyCode == keybinds.forward) {
     var thisKeypressTime = new Date();
@@ -680,7 +682,7 @@ function sprint() {
   velocity = 600;
   verticalVelocity = 3.9;
   
-  sprint = true;
+  sprinting = true;
   
   document.querySelector('#camera').classList.add('sprint');
 }
