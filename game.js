@@ -776,7 +776,7 @@ function sprint() {
     velocity = 300;
   }
   else {
-    velocity = 0;
+    velocity = 100;
   }
   
   sprinting = true;
