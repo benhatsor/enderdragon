@@ -649,13 +649,13 @@ document.onkeydown = function(e) {
   
 function animateSneak(direction) {
   if (direction = 'forward') {
-    if (player.height >= 1.1) {
+    if (player.height <= 1.1) {
       player.height -= 0.05;
       requestAnimationFrame(() => { animateSneak('forward') });
     }
   }
   if (direction = 'backward') {
-    if (player.height <= 1.3) {
+    if (player.height >= 1.3) {
       player.height += 0.05;
       requestAnimationFrame(() => { animateSneak('backward') });
     }
