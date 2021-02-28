@@ -259,7 +259,7 @@ body {
   perspective: var(--perspective);
   overflow: hidden;
   z-index: 500;
-  transition: .2s ease-in;
+  transition: perspective .2s ease-in;
 }
 
 #camera.sprint {
