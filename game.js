@@ -719,8 +719,8 @@ function copyBlock(block) {
   buildInventory(inventory);
 }
 
-var version = '0.0.8';
-var exVersion = 'alpha';
+var version = '0.0.2';
+var exVersion = 'Indev';
 
 function debug() {
   var block = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
