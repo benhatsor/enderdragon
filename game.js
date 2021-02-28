@@ -112,8 +112,8 @@ function loadImages() {
   loadAnimation = window.setInterval(() => {
     var img = document.querySelector('.options img');
     
-    if (!img) {
-      clearInterval(this);
+    if (img == null) {
+      clearInterval(loadAnimation);
     }
     
     if (img.src == 'https://enderdragon.berryscript.com/textures/load-anim-1.gif') {
