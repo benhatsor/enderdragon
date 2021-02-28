@@ -746,7 +746,7 @@ function checkDblClick(e) {
 }
 
 function sneak() {
-  if (!flying) {
+  if (!flying && !sneaking) {
     //player.height = 1.1; // shift
     velocity = 700;
     verticalVelocity = 2.5;
