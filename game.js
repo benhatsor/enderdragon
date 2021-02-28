@@ -514,6 +514,7 @@ function gameloop() {
       if (flying && player.pos.y <= 9.6) {
         disableFlying();
         player.pos.y = 9.6;
+        sneaking = false;
       }
       
       if (verticalSpeed <= 0 && clipSneak) {
