@@ -511,10 +511,10 @@ function gameloop() {
       if (!sneaking && flying && !spacebarPressed) {
         verticalSpeed = 0;
       }
-      if (flying && player.pos.y <= 10) {
+      
+      let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
+      if (flying && blockBelow.id != 0) {
         disableFlying();
-        player.pos.y = 9.6;
-        sneaking = false;
       }
       
       if (verticalSpeed <= 0 && clipSneak) {
