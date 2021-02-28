@@ -506,7 +506,7 @@ function gameloop() {
         clipSneak = (blockBelow.id == 0);
       }
       else if (sneaking && flying) {
-        verticalSpeed -= delta / 100;
+        verticalSpeed -= 1;
       }
       if (!sneaking && flying && !spacebarPressed) {
         verticalSpeed = 0;
