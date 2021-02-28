@@ -109,7 +109,7 @@ function loadImages() {
           <div class="fill"></div>
         </div>`;
   
-  loadTimeout = window.setInterval(() => {
+  loadTimeout = window.setTimeout(() => {
     var img = document.querySelector('.options img');
     
     if (img.src == 'https://enderdragon.berryscript.com/textures/load-anim-1.gif') {
@@ -117,7 +117,9 @@ function loadImages() {
     } else {
       img.src = 'textures/load-anim-1.gif';
     }
-  }, 1050)
+    
+    loadTimeout = window.setTimeout(this, 1050);
+  }, 1050);
   
   blockList.forEach(block => {
     var img = document.createElement('img');
@@ -145,7 +147,7 @@ function incrementLoader() {
   document.querySelector('.progress .fill').style.width = width + percent + '%';
   
   if (Math.round(width + percent) == 100) {
-    clearInterval(loadTimeout);
+    clearTimeout(loadTimeout);
     console.log(loadTimeout);
     
     document.querySelector('.options').classList.add('hidden');
