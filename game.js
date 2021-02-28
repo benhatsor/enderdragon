@@ -170,6 +170,14 @@ function isFallingSand(x, z, y) {
   return false;
 }
 
+function isRedstone(x, z, y) {
+  if (blockData[x] == undefined || blockData[x][z] == undefined || blockData[x][z][y] == undefined) {
+    return false;
+  } else if (blockList[blockData[x][z][y]].redstone)
+    return true;
+  return false;
+}
+
 function blockUpdate(x, z, y) {
 
   if (blockData[x] != undefined && blockData[x][z] != undefined && blockData[x][z][y] != undefined) {
