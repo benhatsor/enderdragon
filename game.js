@@ -515,8 +515,8 @@ function gameloop() {
       let blockUnder = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
       if (flying && sneaking && blockUnder.id != 0) {
         verticalSpeed = 0;
-        sneaking = true;
         disableFlying();
+        sneak();
       }
       
       if (verticalSpeed <= 0 && clipSneak) {
