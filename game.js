@@ -667,7 +667,7 @@ document.onkeyup = function(e) {
   }
 }
 
-var sprintKeyDelta = 500;
+var sprintKeyDelta = 250;
 var lastKeypressTime = 0;
 var sprinting = false;
 var sprintKeyUp = false;
