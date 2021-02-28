@@ -102,7 +102,6 @@ loadImages();
 
 function loadImages() {
   document.querySelector('.options').innerHTML = `
-        <img src="textures/conduit-loader.gif">
         <h2>Loading textures</h2>
         <div class="progress">
           <div class="fill"></div>
