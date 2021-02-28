@@ -662,17 +662,23 @@ document.onkeyup = function(e) {
     
     document.querySelector('#camera').classList.remove('sprint');
   }
+  else if (e.keyCode == keybinds.forward) {
+    sprintKeyUp = true;
+  }
 }
 
 var sprintKeyDelta = 500;
 var lastKeypressTime = 0;
 var sprinting = false;
+var sprintKeyUp = false;
+
 function checkSprint(e) {
  if (e.keyCode == keybinds.forward) {
     var thisKeypressTime = new Date();
-    if (thisKeypressTime - lastKeypressTime <= sprintKeyDelta) {
+    if (thisKeypressTime - lastKeypressTime <= sprintKeyDelta && sprintKeyUp) {
       sprint();
       thisKeypressTime = 0;
+      sprintKeyUp = false;
     }
     lastKeypressTime = thisKeypressTime;
  }
