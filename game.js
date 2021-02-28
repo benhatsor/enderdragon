@@ -483,16 +483,20 @@ function gameloop() {
       }
     }
 
-
-    verticalSpeed -= delta / 100;
+    if (!flying) {
+      verticalSpeed -= delta / 100;
+    }
+      
     let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y + verticalSpeed * delta / 500)]];    
     let blockAbove = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y + verticalSpeed * delta / 500 - -1.8)]];
     
     if (blockBelow || blockAbove) {
       var clipSneak = false;
-      if (sneaking) {
+      if (sneaking && !flying) {
         let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
         clipSneak = (blockBelow.id == 0);
+      } else if (sneaking && flying) {
+        verticalSpeed -= delta / 100;
       }
       
       if (verticalSpeed <= 0 && clipSneak) {
@@ -644,23 +648,8 @@ document.onkeydown = function(e) {
     sneaking = true;
   }
   
-  checkSprint(e);
+  checkDblClick(e);
 };
-  
-function animateSneak(direction) {
-  if (direction == 'forward') {
-    if (player.height >= 1.1) {
-      player.height -= 0.05;
-      requestAnimationFrame(() => { animateSneak('forward') });
-    }
-  }
-  if (direction == 'backward') {
-    if (player.height <= 1.3) {
-      player.height += 0.05;
-      requestAnimationFrame(() => { animateSneak('backward') });
-    }
-  }
-}
 
 document.onkeyup = function(e) {
   if (e.keyCode == 16) {
@@ -682,17 +671,46 @@ document.onkeyup = function(e) {
   else if (e.keyCode == keybinds.forward) {
     sprintKeyUp = true;
   }
+  
+  if (e.keyCode == keybinds.jump) {
+    spacebarUp = true;
+  }
 }
 
-var sprintKeyDelta = 250;
-var lastKeypressTime = 0;
+function animateSneak(direction) {
+  if (direction == 'forward') {
+    if (player.height >= 1.1) {
+      player.height -= 0.05;
+      requestAnimationFrame(() => { animateSneak('forward') });
+    }
+    else {
+      player.height = 1.1;
+    }
+  }
+  if (direction == 'backward') {
+    if (player.height <= 1.3) {
+      player.height += 0.05;
+      requestAnimationFrame(() => { animateSneak('backward') });
+    }
+    else {
+      player.height = 1.3;
+    }
+  }
+}
+
+var keyDelta = 250;
+var lastKeypressTimeSprint = 0;
 var sprinting = false;
 var sprintKeyUp = false;
 
-function checkSprint(e) {
+var lastKeypressTimeFly = 0;
+var flying = false;
+var spacebarUp = false;
+
+function checkDblClick(e) {
  if (e.keyCode == keybinds.forward) {
     var thisKeypressTime = new Date();
-    if (thisKeypressTime - lastKeypressTime <= sprintKeyDelta && sprintKeyUp && !sneaking) {
+    if (thisKeypressTime - lastKeypressTimeSprint <= keyDelta && sprintKeyUp && !sneaking) {
       sprint();
       thisKeypressTime = 0;
       sprintKeyUp = false;
@@ -700,7 +718,26 @@ function checkSprint(e) {
     else if (sprintKeyUp) {
       sprintKeyUp = false;
     }
-    lastKeypressTime = thisKeypressTime;
+    lastKeypressTimeSprint = thisKeypressTime;
+ }
+  
+  if (e.keyCode == keybinds.jump) {
+    var thisKeypressTime = new Date();
+    if (thisKeypressTime - lastKeypressTimeFly <= keyDelta && spacebarUp && !sneaking) {
+      if (flying == false) {
+        flying = true;
+      }
+      else {
+        flying = false;
+      }
+      
+      thisKeypressTime = 0;
+      spacebarUp = false;
+    }
+    else if (spacebarUp) {
+      spacebarUp = false;
+    }
+    lastKeypressTimeFly = thisKeypressTime;
  }
 }
 
