@@ -655,9 +655,7 @@ document.onkeyup = function(e) {
   }
   
   if (e.keyCode == keybinds.forward && sprinting) {
-    velocity = 400;
-    verticalVelocity = 3.7;
-    
+    velocity = 400;    
     sprinting = false;
     
     document.querySelector('#camera').classList.remove('sprint');
@@ -688,9 +686,7 @@ function checkSprint(e) {
 }
 
 function sprint() {
-  velocity = 200;
-  verticalVelocity = 3.7;
-  
+  velocity = 200;  
   sprinting = true;
   
   document.querySelector('#camera').classList.add('sprint');
