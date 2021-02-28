@@ -3,11 +3,10 @@ A CSS3D version of Minecraft.
 https://enderdragon.berryscript.com/
 
 ## Todo 
-- Lighting, tint
+- Lighting, [tint](https://minecraft.gamepedia.com/Tint)
 - Redstone
 - Command Blocks, chat
 - Flying
-- Add. More. Blocks
 - Items
 - Title Screen
 - Sounds
