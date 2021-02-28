@@ -654,7 +654,7 @@ document.onkeydown = function(e) {
     changeBlock(key); // activeBlock
   }
   
-  if (e.keyCode == 16) {
+  if (e.keyCode == 16 && !flying) {
     //player.height = 1.1; // shift
     velocity = 700;
     verticalVelocity = 2.5;
@@ -668,7 +668,7 @@ document.onkeydown = function(e) {
 };
 
 document.onkeyup = function(e) {
-  if (e.keyCode == 16) {
+  if (e.keyCode == 16 && !flying) {
     //player.height = 1.3; // shift
     velocity = 400;
     verticalVelocity = 3.7;
