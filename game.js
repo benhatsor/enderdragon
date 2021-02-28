@@ -656,7 +656,7 @@ function animateSneak(direction) {
   }
   if (direction == 'backward') {
     if (player.height <= 1.3) {
-      player.height -= 0.05;
+      player.height += 0.05;
       requestAnimationFrame(() => { animateSneak('backward') });
     }
   }
