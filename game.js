@@ -102,7 +102,7 @@ loadImages();
 
 function loadImages() {
   document.querySelector('.options').innerHTML = `
-        <img src="/menu-buy.gif">
+        <img src="textures/menu-buy.gif">
         <h2>Loading textures</h2>
         <div class="progress">
           <div class="fill"></div>
@@ -111,10 +111,10 @@ function loadImages() {
   var loadAnimation = window.setInterval(() => {
     var img = document.querySelector('.options img');
     
-    if (img.src == '/load-anim-1.gif') {
-      img.src = '/load-anim-1--reversed.gif';
+    if (img.src == 'textures/load-anim-1.gif') {
+      img.src = 'textures/load-anim-1--reversed.gif';
     } else {
-      img.src = '/load-anim-1.gif';
+      img.src = 'textures/load-anim-1.gif';
     }
   }, 1050)
   
