@@ -100,34 +100,13 @@ function renderGame() {
 
 loadImages();
 
-var loadTimeout = null;
 function loadImages() {
   document.querySelector('.options').innerHTML = `
-        <img src="textures/load-anim-1.gif">
+        <img src="textures/conduit-loader.gif">
         <h2>Loading textures</h2>
         <div class="progress">
           <div class="fill"></div>
         </div>`;
-  
-  loadTimeout = window.setTimeout(() => {
-    var img = document.querySelector('.options img');
-    
-    if (img.src == 'https://enderdragon.berryscript.com/textures/load-anim-1.gif') {
-      img.src = 'textures/load-anim-1--reversed.gif';
-    } else {
-      img.src = 'textures/load-anim-1.gif';
-    }
-  }, 1050);
-    
-  loadTimeout = window.setTimeout(() => {
-    var img = document.querySelector('.options img');
-
-    if (img.src == 'https://enderdragon.berryscript.com/textures/load-anim-1.gif') {
-      img.src = 'textures/load-anim-1--reversed.gif';
-    } else {
-      img.src = 'textures/load-anim-1.gif';
-    }
-  }, 1050);
   
   blockList.forEach(block => {
     var img = document.createElement('img');
@@ -155,9 +134,6 @@ function incrementLoader() {
   document.querySelector('.progress .fill').style.width = width + percent + '%';
   
   if (Math.round(width + percent) == 100) {
-    clearTimeout(loadTimeout);
-    console.log(loadTimeout);
-    
     document.querySelector('.options').classList.add('hidden');
     pause();
   }
