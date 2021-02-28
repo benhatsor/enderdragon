@@ -263,7 +263,7 @@ body {
 }
 
 #camera.sprint {
-  perspective: calc(var(--perspective) / 1.2);
+  perspective: calc(var(--perspective) / 1.1);
 }
 
 #scene {
