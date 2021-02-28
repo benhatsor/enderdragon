@@ -512,8 +512,8 @@ function gameloop() {
         verticalSpeed = 0;
       }
       if (flying && player.pos.y <= 9.5) {
-        player.pos.y = 9.5;
         disableFlying();
+        player.pos.y = 9.5;
       }
       
       if (verticalSpeed <= 0 && clipSneak) {
@@ -684,10 +684,7 @@ document.onkeyup = function(e) {
   }
   
   if (e.keyCode == keybinds.forward && sprinting) {
-    velocity = 400;    
-    sprinting = false;
-    
-    document.querySelector('#camera').classList.remove('sprint');
+    disableSprinting();
   }
   else if (e.keyCode == keybinds.forward) {
     sprintKeyUp = true;
@@ -763,7 +760,7 @@ function checkDblClick(e) {
 }
 
 function fly() {
-  velocity = 300;
+  velocity = 200;
   
   flying = true;
 }
@@ -775,10 +772,29 @@ function disableFlying() {
 }
 
 function sprint() {
-  velocity = 300;  
+  if (!flying) {
+    velocity = 300;
+  }
+  else {
+    velocity = 0;
+  }
+  
   sprinting = true;
   
   document.querySelector('#camera').classList.add('sprint');
+}
+
+function disableSprinting() {
+  if (!flying) {
+    velocity = 400;
+  }
+  else {
+    velocity = 200;
+  }
+    
+  sprinting = false;
+
+  document.querySelector('#camera').classList.remove('sprint');
 }
 
 var paused = false;
