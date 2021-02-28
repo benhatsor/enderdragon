@@ -747,7 +747,6 @@ function checkDblClick(e) {
 }
 
 function sneak() {
-  let blockUnder = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
   if (!flying && !sneaking) {
     //player.height = 1.1; // shift
     velocity = 700;
@@ -756,9 +755,7 @@ function sneak() {
     animateSneak('forward');
   }
 
-  if (!flying && blockUnder.id != 0) {
-    sneaking = true;
-  }
+  sneaking = true;
 }
 
 function disableSneaking() {
