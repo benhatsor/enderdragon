@@ -686,7 +686,7 @@ function checkSprint(e) {
 }
 
 function sprint() {
-  velocity = 350;  
+  velocity = 300;  
   sprinting = true;
   
   document.querySelector('#camera').classList.add('sprint');
