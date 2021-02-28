@@ -111,10 +111,10 @@ function loadImages() {
   var loadAnimation = window.setInterval(() => {
     var img = document.querySelector('.options img');
     
-    if (img.src == '/menu-buy.gif') {
-      img.src = '/menu-buy--reversed.gif';
+    if (img.src == '/load-anim-1.gif') {
+      img.src = '/load-anim-1--reversed.gif';
     } else {
-      img.src = '/menu-buy.gif';
+      img.src = '/load-anim-1.gif';
     }
   }, 1050)
   
