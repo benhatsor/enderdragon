@@ -761,7 +761,7 @@ function checkDblClick(e) {
 }
 
 function fly() {
-  velocity = 200;
+  velocity = 300;
   flying = true;
   
   document.querySelector('#camera').classList.add('fly');
@@ -779,7 +779,7 @@ function sprint() {
     velocity = 300;
   }
   else {
-    velocity = 150;
+    velocity = 200;
   }
   
   sprinting = true;
@@ -792,7 +792,7 @@ function disableSprinting() {
     velocity = 400;
   }
   else {
-    velocity = 200;
+    velocity = 300;
   }
     
   sprinting = false;
