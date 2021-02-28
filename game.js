@@ -762,14 +762,16 @@ function checkDblClick(e) {
 
 function fly() {
   velocity = 200;
-  
   flying = true;
+  
+  document.querySelector('#camera').classList.add('fly');
 }
 
 function disableFlying() {
   velocity = 400;
-  
   flying = false;
+  
+  document.querySelector('#camera').classList.remove('fly');
 }
 
 function sprint() {
