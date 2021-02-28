@@ -513,7 +513,7 @@ function gameloop() {
       }
       
       let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
-      if (flying && blockBelow.id != 0) {
+      if (flying && sneaking && blockBelow.id != 0) {
         disableFlying();
       }
       
