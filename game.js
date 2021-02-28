@@ -651,13 +651,13 @@ function animateSneak(direction) {
   if (direction = 'forward') {
     if (player.height >= 1.1) {
       player.height -= 0.05;
-      requestAnimationFrame(() => { animateSneak('forwards') });
+      requestAnimationFrame(() => { animateSneak('forward') });
     }
   }
   else {
     if (player.height <= 1.3) {
       player.height += 0.05;
-      requestAnimationFrame(() => { animateSneak('backwards') });
+      requestAnimationFrame(() => { animateSneak('backward') });
     }
   }
 }
@@ -668,7 +668,7 @@ document.onkeyup = function(e) {
     velocity = 400;
     verticalVelocity = 3.7;
     
-    animateSneak('backwards');
+    animateSneak('backward');
     
     sneaking = false;
   }
