@@ -511,7 +511,7 @@ function gameloop() {
       if (!sneaking && flying && !spacebarPressed) {
         verticalSpeed = 0;
       }
-      if (flying && player.pos.y <= 9.6) {
+      if (flying && player.pos.y <= 10) {
         disableFlying();
         player.pos.y = 9.6;
         sneaking = false;
@@ -779,7 +779,7 @@ function sprint() {
     velocity = 300;
   }
   else {
-    velocity = 100;
+    velocity = 150;
   }
   
   sprinting = true;
