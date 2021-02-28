@@ -100,7 +100,7 @@ function renderGame() {
 
 loadImages();
 
-var loadAnimation = null;
+var loadTimeout = null;
 function loadImages() {
   document.querySelector('.options').innerHTML = `
         <img src="textures/load-anim-1.gif">
@@ -109,12 +109,8 @@ function loadImages() {
           <div class="fill"></div>
         </div>`;
   
-  loadAnimation = window.setInterval(() => {
+  loadTimeout = window.setInterval(() => {
     var img = document.querySelector('.options img');
-    
-    if (img == null) {
-      clearInterval(loadAnimation);
-    }
     
     if (img.src == 'https://enderdragon.berryscript.com/textures/load-anim-1.gif') {
       img.src = 'textures/load-anim-1--reversed.gif';
@@ -149,7 +145,8 @@ function incrementLoader() {
   document.querySelector('.progress .fill').style.width = width + percent + '%';
   
   if (Math.round(width + percent) == 100) {
-    clearInterval(loadAnimation);
+    clearInterval(loadTimeout);
+    console.log(loadTimeout);
     
     document.querySelector('.options').classList.add('hidden');
     pause();
