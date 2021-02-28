@@ -1,0 +1,417 @@
+* {
+  user-select: none;
+  image-rendering: optimizeSpeed;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+@font-face {
+  font-family: 'Minecraft Regular';
+  src: url('Minecraft-Regular.woff') format('woff'), url('Minecraft-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  background: #9bd7ff;
+  font-family: 'Minecraft Regular', sans-serif;
+  color: #ffffff;
+  text-shadow: 1.5px 1.5px #3f3f3f;
+  font-size: 16px;
+  word-spacing: 4px;
+  line-height: 1.25em;
+  margin: 0;
+  height: 100vh;
+}
+
+#gui {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#crosshair {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20viewBox%3D%220%200%2021%2021%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20stroke-linejoin%3D%22round%22%20stroke-miterlimit%3D%221.414%22%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M8.625%200h3v21h-3z%22%2F%3E%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M0%209h20.25v3H0z%22%2F%3E%3C%2Fsvg%3E');
+  background-size: 100%;
+  left: calc(50% - 8px);
+  top: calc(50% - 8px);
+}
+
+#gui.pause #crosshair {
+  display: none;
+}
+
+.hotbar {
+  position: absolute;
+  bottom: 0;
+  width: 368px;
+  height: 48px;
+  background: url('textures/widgets.png') no-repeat;
+  background-size: 518px;
+  background-position: 0 3px;
+  display: flex;
+}
+
+.hotbar::after {
+  content: attr(tooltip);
+  position: absolute;
+  top: -42px;
+  width: 100%;
+  text-align: center;
+}
+
+.hotbar.tooltip::after {
+  animation: tooltip-fade 2s linear forwards;
+}
+
+@keyframes tooltip-fade {
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.hotbar .slot {
+  height: 30px;
+  width: 30px;
+  margin-top: 10px;
+  margin-left: 7px;
+  margin-right: 3.5px;
+  display: grid;
+  place-content: center;
+  position: relative;
+  background: url('textures/invSprite.webp') no-repeat;
+}
+
+.slot.selected::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: -9px;
+  width: 49px;
+  height: 47px;
+  background: url(textures/widgets.png) no-repeat;
+  background-size: 518px;
+  background-position: 0 -45px;
+}
+
+#gui.pause .hotbar {
+  display: none;
+}
+
+.options {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url(textures/options_background.png);
+  background-size: 100px;
+  font-size: 16px;
+  word-spacing: 4px;
+  line-height: 1.25em;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  z-index: 1;
+}
+
+.options.hidden {
+  display: none;
+}
+
+#gui.pause .options {
+  background: transparent;
+  display: grid;
+}
+
+.options::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 80%);
+}
+
+.options h1 {
+  position: relative;
+  font: inherit;
+  margin-top: -70px;
+}
+
+.options h2 {
+  position: relative;
+  font: inherit;
+}
+
+.button {
+  background: url(/textures/widgets.png);
+  background-size: 436px;
+  background-position: 0 -112px;
+  z-index: 1;
+  width: 340px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  margin-bottom: 5px;
+}
+
+.button::before {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 3px;
+  z-index: -1;
+  background: inherit;
+  background-position-x: 98.5px;
+  content: '';
+}
+
+.button:hover {
+  background-position: 0 -146px;
+}
+
+.options .button:last-of-type {
+  margin-bottom: 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons .button {
+  width: 162px;
+}
+
+.progress {
+  height: 4px;
+  width: 200px;
+  position: relative;
+  background: #808080;
+}
+
+.progress .fill {
+  background: #80FF80;
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.debugscreen {
+  position: fixed;
+  left: 1px;
+  top: 1px;
+  display: none;
+}
+
+.debugscreen.visible {
+  display: block;
+}
+
+.debugscreen p {
+  margin: 0;
+  background: #5a5a5a6e;
+  color: white;
+  text-shadow: none;
+  width: max-content;
+  word-spacing: 0;
+  line-height: normal;
+}
+
+#camera {
+  --x: 0;
+  --y: 0;
+  --z: 0;
+  --rotX: 0;
+  --rotY: 0;
+  --perspective: 700px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  perspective: var(--perspective);
+  overflow: hidden;
+  z-index: 500;
+}
+
+#scene {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rotX)) rotateY(var(--rotY)) translateX(var(--x)) translateY(var(--y)) translateZ(var(--z)) translateZ(var(--perspective));
+  transform-origin: 50% 50% var(--perspective);
+}
+
+.imgloader {
+  display: none;
+}
+
+.block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  transform-style: preserve-3d;
+}
+
+.face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: calc(50% - 50px);
+  background-size: 100px;
+}
+
+.block[focus='true'] .face {
+  box-shadow: inset 0 0 0 0.5px black;
+}
+
+.face2 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: calc(50% - 50px);
+  background-size: 100px;
+}
+
+.block.torch .face {
+  width: 20px;
+  height: 60px;
+  left: calc(50% - 10px);
+  top: 40px;
+}
+
+.block.torch .face:last-of-type {
+  height: 20px;
+}
+
+.block.torch .face2 {
+  width: 30px;
+  left: calc(50% - 15px);
+  background-position: center;
+}
+
+.block.redstone .face {
+  transform: rotateX(810deg) translateZ(-50px);
+  width: 55px;
+  height: 55px;
+  background-position: center;
+  left: calc(50% - 27.5px);
+}
+
+.block.animate .face {
+  animation: animate1 10s infinite linear;
+}
+
+.block.animate .face::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  animation: animate2 10s infinite linear;
+  content: '';
+}
+
+.block[focus='true'].animate .face::after {
+  box-shadow: inset 0 0 0 0.5px black;
+}
+
+@keyframes animate1 {
+  0%, 12.5% {
+    background-position: 0 0;
+  }
+  12.6%, 37.5% {
+    background-position: 0 -100px;
+  }
+  37.6%, 49.9% {
+    background-position: 0 -200px;
+  }
+  50%, 74.9% {
+    background-position: 0 -300px;
+  }
+  75%, 100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes animate2 {
+  0% {
+    background-position: 0 -100px;
+    opacity: 0;
+  }
+  12.5% {
+    background-position: 0 -100px;
+    opacity: 1;
+  }
+  24.9% {
+    background-position: 0 -100px;
+    opacity: 0;
+  }
+  25% {
+    background-position: 0 -200px;
+    opacity: 0;
+  }
+  37.5% {
+    background-position: 0 -200px;
+    opacity: 1;
+  }
+  49.9% {
+    background-position: 0 -200px;
+    opacity: 0;
+  }
+  50% {
+    background-position: 0 -300px;
+    opacity: 0;
+  }
+  62.5% {
+    background-position: 0 -300px;
+    opacity: 1;
+  }
+  74.9% {
+    background-position: 0 -300px;
+    opacity: 0;
+  }
+  75% {
+    background-position: 0 0;
+    opacity: 0;
+  }
+  87.5% {
+    background-position: 0 0;
+    opacity: 1;
+  }
+  100% {
+    background-position: 0 0;
+    opacity: 0;
+  }
+}
