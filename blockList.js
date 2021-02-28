@@ -195,4 +195,41 @@ const blockList = [
         invPic: '-224px -3520px',
         redstone: true
     },
+    {
+        id: 19,
+        pic: 'gravel.png',
+        name: 'Gravel',
+        multiside: false,
+        xshape: false,
+        transparent: false,
+        invPic: '-128px -3360px',
+        fallingSand: true
+    },
+    {
+        id: 20,
+        pic: 'coal_ore.png',
+        name: 'Coal Ore',
+        multiside: false,
+        xshape: false,
+        transparent: false,
+        invPic: '-960px -3360px'
+    },
+    {
+        id: 21,
+        pic: 'iron_ore.png',
+        name: 'Iron Ore',
+        multiside: false,
+        xshape: false,
+        transparent: false,
+        invPic: '-64px -3392px'
+    },
+    {
+        id: 22,
+        pic: 'gold_ore.png',
+        name: 'Gold Ore',
+        multiside: false,
+        xshape: false,
+        transparent: false,
+        invPic: '-32px -3392px'
+    },
 ];
