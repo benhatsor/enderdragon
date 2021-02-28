@@ -680,6 +680,9 @@ function checkSprint(e) {
       thisKeypressTime = 0;
       sprintKeyUp = false;
     }
+    else if (sprintKeyUp) {
+      sprintKeyUp = false;
+    }
     lastKeypressTime = thisKeypressTime;
  }
 }
