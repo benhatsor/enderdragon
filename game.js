@@ -654,7 +654,7 @@ document.onkeyup = function(e) {
     sneaking = false;
   }
   
-  if (e.keyCode == keybinds.forward && sprint) {
+  if (e.keyCode == keybinds.forward && sprinting) {
     velocity = 400;
     verticalVelocity = 3.7;
     
