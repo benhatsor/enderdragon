@@ -100,6 +100,7 @@ function renderGame() {
 
 loadImages();
 
+var loadAnimation = null;
 function loadImages() {
   document.querySelector('.options').innerHTML = `
         <img src="textures/menu-buy.gif">
@@ -108,10 +109,10 @@ function loadImages() {
           <div class="fill"></div>
         </div>`;
   
-  var loadAnimation = window.setInterval(() => {
+  loadAnimation = window.setInterval(() => {
     var img = document.querySelector('.options img');
     
-    if (img.src == 'textures/load-anim-1.gif') {
+    if (img.src == 'https://enderdragon.berryscript.com/textures/load-anim-1.gif') {
       img.src = 'textures/load-anim-1--reversed.gif';
     } else {
       img.src = 'textures/load-anim-1.gif';
