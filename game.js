@@ -635,21 +635,40 @@ document.onkeydown = function(e) {
   }
   
   if (e.keyCode == 16) {
-    player.height = 1.1; // shift
+    //player.height = 1.1; // shift
     velocity = 700;
     verticalVelocity = 2.5;
+    
+    animateSneak('forwards');
     
     sneaking = true;
   }
   
   checkSprint(e);
 };
+  
+function animateSneak(direction) {
+  if (direction = 'forward') {
+    if (player.height != 1.1) {
+      player.height -= 0.01;
+      requestAnimationFrame(() => { animateSneak('forwards') });
+    }
+  }
+  else {
+    if (player.height != 1.3) {
+      player.height += 0.01;
+      requestAnimationFrame(() => { animateSneak('backwards') });
+    }
+  }
+}
 
 document.onkeyup = function(e) {
   if (e.keyCode == 16) {
-    player.height = 1.3; // shift
+    //player.height = 1.3; // shift
     velocity = 400;
     verticalVelocity = 3.7;
+    
+    animateSneak('backwards');
     
     sneaking = false;
   }
