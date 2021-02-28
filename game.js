@@ -103,7 +103,7 @@ loadImages();
 var loadAnimation = null;
 function loadImages() {
   document.querySelector('.options').innerHTML = `
-        <img src="textures/menu-buy.gif">
+        <img src="textures/load-anim-1.gif">
         <h2>Loading textures</h2>
         <div class="progress">
           <div class="fill"></div>
@@ -111,6 +111,10 @@ function loadImages() {
   
   loadAnimation = window.setInterval(() => {
     var img = document.querySelector('.options img');
+    
+    if (!img) {
+      clearInterval(this);
+    }
     
     if (img.src == 'https://enderdragon.berryscript.com/textures/load-anim-1.gif') {
       img.src = 'textures/load-anim-1--reversed.gif';
