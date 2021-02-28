@@ -102,10 +102,21 @@ loadImages();
 
 function loadImages() {
   document.querySelector('.options').innerHTML = `
-        <h2>Generating level</h2>
+        <img src="/menu-buy.gif">
+        <h2>Loading textures</h2>
         <div class="progress">
           <div class="fill"></div>
         </div>`;
+  
+  var loadAnimation = window.setInterval(() => {
+    var img = document.querySelector('.options img');
+    
+    if (img.src == '/menu-buy.gif') {
+      img.src = '/menu-buy--reversed.gif';
+    } else {
+      img.src = '/menu-buy.gif';
+    }
+  }, 1050)
   
   blockList.forEach(block => {
     var img = document.createElement('img');
@@ -133,6 +144,8 @@ function incrementLoader() {
   document.querySelector('.progress .fill').style.width = width + percent + '%';
   
   if (Math.round(width + percent) == 100) {
+    clearInterval(loadAnimation);
+    
     document.querySelector('.options').classList.add('hidden');
     pause();
   }
