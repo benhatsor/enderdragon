@@ -278,7 +278,7 @@ body {
 }
 
 #camera.fly.sprint {
-  perspective: calc(var(--perspective) / 1.05);
+  perspective: calc(var(--perspective) / 1.1);
 }
 
 #scene {
