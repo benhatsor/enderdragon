@@ -688,8 +688,8 @@ function checkSprint(e) {
 }
 
 function sprint() {
-  velocity = 600;
-  verticalVelocity = 3.9;
+  velocity = 300;
+  verticalVelocity = 3.8;
   
   sprinting = true;
   
