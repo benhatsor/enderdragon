@@ -270,11 +270,15 @@ body {
   perspective: var(--perspective);
   overflow: hidden;
   z-index: 500;
-  transition: perspective .15s ease;
+  transition: perspective 0.5s cubic-bezier(0.07, 0.95, 0, 1);
 }
 
-#camera.sprint {
-  perspective: calc(var(--perspective) / 1.1);
+#camera.sprint, #camera.fly {
+  perspective: calc(var(--perspective) / 1.05);
+}
+
+#camera.fly.sprint {
+  perspective: calc(var(--perspective) / 1.05);
 }
 
 #scene {
