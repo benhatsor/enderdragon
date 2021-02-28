@@ -774,6 +774,8 @@ function fly() {
   velocity = 300;
   verticalVelocity = 3;
   
+  verticalSpeed = 0;
+  
   flying = true;
   
   document.querySelector('#camera').classList.add('fly');
