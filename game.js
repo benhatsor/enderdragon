@@ -9,7 +9,7 @@ var velocity = 400;
 var verticalVelocity = 3.5;
 var gravity = 30;
 
-var inventory = ['Redstone Dust', 'Redstone Block', 'Redstone Torch', 'Glass', 'Sand', 'Air', 'Air', 'Air', 'Command Block'];
+var inventory = ['Dirt', 'Stone', 'Sand', 'Gravel', 'Glass', 'Gold Ore', 'Coal Ore', 'Torch', 'Oak Log'];
 
 function constructWorld() {
   for (let x = -mapRadius; x <= mapRadius; ++x) {
