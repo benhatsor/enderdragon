@@ -117,6 +117,7 @@ function loadImages() {
     } else {
       img.src = 'textures/load-anim-1.gif';
     }
+  }, 1050);
     
   loadTimeout = window.setTimeout(() => {
     var img = document.querySelector('.options img');
