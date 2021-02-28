@@ -774,7 +774,7 @@ function fly() {
   velocity = 300;
   verticalVelocity = 3;
   
-  verticalSpeed = 0;
+  verticalSpeed = verticalVelocity;
   
   flying = true;
   
