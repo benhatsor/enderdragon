@@ -3,10 +3,7 @@ A CSS3D version of Minecraft.
 https://enderdragon.berryscript.com/
 
 ## Todo 
-- Lighting
-- Switch to coco
-- ~Natural controls~
-- ~CSS `image-rendering: pixelated`~
+- Lighting, tint
 - Redstone
 - Command Blocks, chat
 - Flying
@@ -14,7 +11,7 @@ https://enderdragon.berryscript.com/
 - Items
 - Title Screen
 - Sounds
-- Hand, inventory, ~hotbar~
+- Hand, inventory
 - Settings
 
 Still a lot to do.
