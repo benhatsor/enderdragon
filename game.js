@@ -374,7 +374,7 @@ var keydownF = e => {
       }
     }
     if (event.keyCode === keybinds.jump) {
-      if (verticalSpeed == 0) {
+      if (verticalSpeed == 0 || flying) {
         verticalSpeed = verticalVelocity;
       }
     }
@@ -405,6 +405,11 @@ var keyupF = e => {
     } else if (event.keyCode === keybinds.forward) {
       keymovement.z -= 1;
       keypressed.forward = false;
+    }
+    if (event.keyCode === keybinds.jump) {
+      if (flying) {
+        verticalSpeed -= 1;
+      }
     }
   }
 };
