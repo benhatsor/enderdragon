@@ -641,6 +641,8 @@ document.onkeydown = function(e) {
     
     sneaking = true;
   }
+  
+  checkSprint(e);
 };
 
 document.onkeyup = function(e) {
@@ -651,6 +653,36 @@ document.onkeyup = function(e) {
     
     sneaking = false;
   }
+  
+  if (e.keyCode == keybinds.forward && sprint) {
+    velocity = 400;
+    verticalVelocity = 3.7;
+    
+    sprint = false;
+  }
+}
+
+var sprintKeyDelta = 500;
+var lastKeypressTime = 0;
+var sprint = false;
+function checkSprint(event) {
+ if (e.keyCode == keybinds.forward) {
+    var thisKeypressTime = new Date();
+    if (thisKeypressTime - lastKeypressTime <= sprintKeyDelta) {
+      sprint();
+      thisKeypressTime = 0;
+    }
+    lastKeypressTime = thisKeypressTime;
+ }
+}
+
+function sprint() {
+  velocity = 600;
+  verticalVelocity = 3.9;
+  
+  sprint = true;
+  
+  document.querySelector('#camera').classList.add('sprint');
 }
 
 var paused = false;
