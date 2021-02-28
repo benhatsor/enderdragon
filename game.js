@@ -665,7 +665,7 @@ document.onkeyup = function(e) {
 var sprintKeyDelta = 500;
 var lastKeypressTime = 0;
 var sprint = false;
-function checkSprint(event) {
+function checkSprint(e) {
  if (e.keyCode == keybinds.forward) {
     var thisKeypressTime = new Date();
     if (thisKeypressTime - lastKeypressTime <= sprintKeyDelta) {
