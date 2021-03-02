@@ -51,4 +51,4 @@ Ideas turn into todos when someone sends a pull request.
 
 The inventory spritesheet is Minecraft Gamepedia.
 Textures are modified from Minecraft.  
-Inspired by Calada2's prototype.
+Inspired by Calada2.
