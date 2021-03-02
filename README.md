@@ -13,8 +13,6 @@ https://enderdragon.berryscript.com/
 - Hand, inventory
 - Settings
 
-Still a lot to do.
-
 ## Contributing :blush:
 
 ### Adding blocks
