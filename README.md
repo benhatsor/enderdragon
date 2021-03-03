@@ -1,6 +1,19 @@
-# Enderdragon
-A CSS3D version of Minecraft.  
-https://enderdragon.berryscript.com/
+<h1 align="center">
+  <a href="https://enderdragon.berryscript.com">
+    <img src="/textures/title/background/title-upscale.png" alt="Enderdragon">
+  </a>
+</h1>
+<p align="center">
+  <h3 align="center">
+A CSS3D version of Minecraft
+  </h3>
+</p>
+<p align="center">
+  <a href="https://enderdragon.berryscript.com"><img width="170" src="textures/title/background/gray-button.png"></a>
+</p>
+<p align="center">
+  <a target='_blank' href='https://github.com/barhatsor/enderdragon/releases'><img src='https://img.shields.io/github/v/release/barhatsor/enderdragon?color=lightgray&include_prereleases&label=%20'/></a>
+</p>
 
 ## Todo 
 - Lighting, [tint](https://minecraft.gamepedia.com/Tint)
