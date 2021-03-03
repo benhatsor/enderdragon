@@ -1,0 +1,14 @@
+<svg>
+  <style>
+  @font-face {
+    font-family: 'Minecraft Regular';
+    src: url('https://enderdragon.berryscript.com/Minecraft-Regular.woff') format('woff'), url('https://enderdragon.berryscript.com/Minecraft-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .text {
+    font-family: 'Minecraft Regular', sans-serif;
+  }
+  </style>
+  <text class="text">0.0.2a Indev</text>
+</svg>
