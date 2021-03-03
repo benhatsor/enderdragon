@@ -178,14 +178,13 @@ body {
 .button {
   background: url(/textures/widgets.png);
   background-size: 436px;
-  background-position: 0 -112px;
+  background-position: 0 -111.7px;
   z-index: 1;
   width: 340px;
   height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   position: relative;
   white-space: nowrap;
   margin-bottom: 5px;
@@ -198,12 +197,19 @@ body {
   width: 3px;
   z-index: -1;
   background: inherit;
-  background-position-x: 98.5px;
+  background-position-x: 98.2px;
   content: '';
 }
 
 .button:hover {
-  background-position: 0 -146px;
+  background-position: 0 -145.75px;
+}
+
+.button.disabled {
+  background-position: 0 -78.1px;
+  color: gray;
+  text-shadow: none;
+  pointer-events: none;
 }
 
 .options .button:last-of-type {
