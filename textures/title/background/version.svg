@@ -1,8 +1,14 @@
 
 <svg viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .small { font: italic 13px sans-serif; }
-    .heavy { font: bold 30px sans-serif; }
+    @font-face {
+      font-family: 'Minecraft Regular';
+      src: url('https://enderdragon.berryscript.com/Minecraft-Regular.woff') format('woff'), url('https://enderdragon.berryscript.com/Minecraft-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    .small { font: 13px 'Minecraft Regular'; }
 
     /* Note that the color of the text is set with the    *
      * fill property, the color property is for HTML only */
@@ -14,3 +20,5 @@
   <text x="55" y="55" class="small">is</text>
   <text x="65" y="55" class="Rrrrr">Grumpy!</text>
 </svg>
+
+
