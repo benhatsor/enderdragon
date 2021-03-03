@@ -225,6 +225,12 @@ body {
   width: 162px;
 }
 
+.options.titlescreen .button {
+  margin-bottom: 7px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .progress {
   height: 4px;
   width: 200px;
