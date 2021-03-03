@@ -240,6 +240,68 @@ body {
   left: 0;
 }
 
+.title {
+  margin: auto;
+  height: 80px;
+  width: 496px;
+  position: relative;
+  margin-bottom: 70px;
+}
+
+.title::before {
+  background-image: url(/textures/title/minecraft.png);
+  content: '';
+  width: 281px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background-size: 464px;
+  top: 0;
+}
+
+.title::after {
+  background-image: url(/textures/title/minecraft.png);
+  content: '';
+  width: 215px;
+  height: 100%;
+  position: absolute;
+  left: 281px;
+  background-size: 464px;
+  background-position: 0 -81.5px;
+  top: 0;
+}
+
+.title .edition {
+  position: relative;
+  margin: auto;
+  top: 70px;
+  width: 190px;
+  height: 26px;
+  background: url(/textures/title/edition.png);
+  z-index: 1;
+  background-size: 243px;
+}
+
+.title .splash {
+  position: absolute;
+  right: -20px;
+  top: 50px;
+  z-index: 1;
+  transform: rotate(-20deg);
+  font-size: 20px;
+  font-size: 25px;
+  color: yellow;
+  text-shadow: 0.1em 0.1em hsl(60deg 100% 15%);
+  word-spacing: normal;
+  animation: splash-pulse .25s infinite alternate ease-in;
+}
+
+@keyframes splash-pulse {
+  to {
+    transform: rotate(-20deg) scale(1.1);
+  }
+}
+
 .debugscreen {
   position: fixed;
   left: 1px;
