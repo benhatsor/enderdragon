@@ -252,6 +252,7 @@ body {
   width: 496px;
   position: relative;
   margin-bottom: 70px;
+  margin-bottom: 60px;
 }
 
 .title::before {
@@ -286,6 +287,7 @@ body {
   background: url(/textures/title/edition.png);
   z-index: 1;
   background-size: 243px;
+  display: none;
 }
 
 .title .splash {
