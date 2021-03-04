@@ -136,6 +136,8 @@ function incrementLoader() {
     loadedTextures = true;
     
     document.querySelector('.options').classList.add('hidden');
+    
+    pause();
   }
 }
 
@@ -1017,12 +1019,6 @@ let gameInterval = null;
 let tickInterval = null;
 
 function initSingleplayer() {
-  
-  document.querySelector('.options').innerHTML = `
-      <h2>Loading textures</h2>
-      <div class="progress">
-        <div class="fill"></div>
-      </div>`;
   
   if (!loadedTextures) {
     loadTextures();
