@@ -807,6 +807,8 @@ function disableFlying() {
   velocity = 400;
   verticalVelocity = 3.5;
   
+  verticalSpeed = 0;
+  
   flying = false;
   
   document.querySelector('#camera').classList.remove('fly');
