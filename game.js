@@ -1062,7 +1062,10 @@ randomSplash();
 function randomSplash() {
   var splash = splashes[getRandomInt(splashes.length-1)];
   
-  if (splash.length > 19) {
+  if (splash.length > 23) {
+    document.querySelector('.title .splash').classList = 'splash supersmall';
+  }
+  else if (splash.length > 19) {
     document.querySelector('.title .splash').classList = 'splash small';
   }
   else {
