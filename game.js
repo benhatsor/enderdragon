@@ -1046,21 +1046,32 @@ function returnToTitle() {
   document.querySelector('.options').innerHTML = `
         <div class="title">
           <div class="edition"></div>
-          <div class="splash">`+randomSplash()+`</div>
+          <div class="splash"></div>
         </div>
         <div class="button" role="button" onclick="initSingleplayer()">Singleplayer</div>
         <div class="button disabled" role="button">Multiplayer</div></div>`;
+  
+  randomSplash();
 }
 
-var splashes = "Bigfoot saw Chuck Norris! Il n'y a pas de game! Missing ) after argument list! Also try Chrome! Also try Firefox! Also try Safari! Don't try IE! 99.9% Meme-Free! Call Now! Toll-Free! Call your mom! Ask your doctor! Stay safe! Now in CSS3D! Impressive! Star-struck! Child's play! Classy! Open source! Contribute! Inspector Gadget! Complex cellular automata! Wireworld! Jon Arbuckle likes this! Garfield used to be good! Come to the duck side! Repeating recursive functions! Do you want to build a snowman? Don't bother with the clones! Double-Trouble! Double clone! Any laptop is a computer if you're brave enough! Programmer subreddit! Any Mac is a Windows if you're brave enough! Don't look directly at the bugs! Don’t worry, be happy! Shinobi Jutsu! Double contractions aren't no bad practice! Fat free! Feature packed! Finally complete! Free range developers! Funk soul brother! Eggs and Spam! Gargamel plays it! Google anlyticsed! Han shot first! OMGLOL! #ashtag! Nizzotch is back! Internet enabled! It's a game! Coming soon! When it's finished! It's groundbreaking! Javascript edition! Created in Inspector! Classes are overrated! CSS! Limited edition! Lives in a pineapple under the sea! Look mum, I’m in a splash! Notch was here! Menger sponge! Minecraft! Enderdragon soon! Sexy! More polygons! No sue just moo! Nice to meet you! Not linear! Cooler than Spock! Now in CSS3! Pixels! pls rt! Also try threejs! Does mrdoob approve? Now with zazz! Also try Netlify! DM me! -webkit-! Now in 3 languages! Inspired by Calada2! Also try Github! React is overrated! @​scroll-timeline is cool! Custom splashes! Now with more faces! Also try Super Mario Odyssey! Responsive! Pure CSS! Contenteditable! Also try Among Us! Also try Figma! Big Sur! Sugar-free!";
+var splashes = "Bigfoot saw Chuck Norris! Il n'y a pas de game! Missing ) after argument list! Also try Chrome! Also try Firefox! Also try Safari! Don't try IE! 99.9% Meme-Free! Call Now! Toll-Free! Call your mom! Ask your doctor! Stay safe! Now in CSS3D! Impressive! Star-struck! Child's play! Classy! Open source! Contribute! Inspector Gadget! Complex cellular automata! Wireworld! Jon Arbuckle likes this! Garfield used to be good! Come to the duck side! Repeating recursive functions! Do you want to build a snowman? Don't bother with the clones! Double-Trouble! Double clone! Programmer subreddit! Don't look directly at the bugs! Don’t worry, be happy! Shinobi Jutsu! Fat free! Feature packed! Finally complete! Free range developers! Funk soul brother! Eggs and Spam! Gargamel plays it! Google anlyticsed! Han shot first! OMGLOL! #ashtag! Nizzotch is back! Internet enabled! It's a game! Coming soon! When it's finished! It's groundbreaking! Javascript edition! Created in Inspector! Classes are overrated! CSS! Limited edition! Look mum, I’m in a splash! Notch was here! Menger sponge! Minecraft! Enderdragon soon! Sexy! More polygons! No sue just moo! Nice to meet you! Not linear! Cooler than Spock! Now in CSS3! Pixels! pls rt! Also try threejs! Does mrdoob approve? Now with zazz! Also try Netlify! DM me! -webkit-! Now in 3 languages! Inspired by Calada2! Also try Github! React is overrated! @scroll-timeline is cool! Custom splashes! Now with more faces! Also try Super Mario Odyssey! Responsive! Pure CSS! Contenteditable! Also try Among Us! Also try Figma! Big Sur! Sugar-free! 1% Chance!";
 splashes = splashes.replaceAll('! ','!`').replaceAll('? ','?`').split('`');
 
+randomSplash();
+
 function randomSplash() {
-  return splashes[getRandomInt(splashes.length-1)];
+  var splash = splashes[getRandomInt(splashes.length-1)];
+  
+  if (splash.length > 20) {
+    document.querySelector('.title .splash').classList = 'splash small';
+  }
+  else {
+    document.querySelector('.title .splash').classList = 'splash';
+  }
+  
+  document.querySelector('.title .splash').innerText = splash;
 }
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
-
-document.querySelector('.title .splash').innerHTML = randomSplash();
