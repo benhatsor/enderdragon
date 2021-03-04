@@ -1021,13 +1021,6 @@ let gameInterval = null;
 let tickInterval = null;
 
 function initSingleplayer() {
-  
-  document.querySelector('.options').innerHTML = `
-      <h2>Loading textures</h2>
-      <div class="progress">
-        <div class="fill"></div>
-      </div>`;
-  
   document.querySelector('.options').classList.remove('titlescreen');
 
   loadTextures();
