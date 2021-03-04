@@ -98,9 +98,9 @@ function renderGame() {
   }
 }
 
-loadImages();
+let texturesLoaded = false;
 
-function loadImages() {
+function loadTextures() {
   document.querySelector('.options').innerHTML = `
         <h2>Loading textures</h2>
         <div class="progress">
@@ -133,8 +133,9 @@ function incrementLoader() {
   document.querySelector('.progress .fill').style.width = width + percent + '%';
   
   if (Math.round(width + percent) == 100) {
+    loadedTextures = true;
+    
     document.querySelector('.options').classList.add('hidden');
-    pause();
   }
 }
 
@@ -548,8 +549,6 @@ function rotate2dVector(vec, by) {
   let ang = Math.atan2(vec.y, vec.x) + by;
   return (new Vector(Math.cos(ang), Math.sin(ang))).unit().multiply(length);
 }
-constructWorld();
-renderGame();
 
 let focusBlock = null;
 let focusSide = null;
@@ -633,7 +632,6 @@ document.querySelector('#camera').onmousedown = function(e) {
 };
 
 var activeBlock = blockId(inventory[0]).id;
-buildInventory(inventory);
 
 function buildInventory(inventory) {
   for (var i = 0;i < inventory.length;i++) {
@@ -652,6 +650,26 @@ function blockId(name) {
 }
 
 var sneaking = false;
+
+window.addEventListener('wheel', e => {
+  let delta;
+  e => e.preventDefault();
+
+  if (e.wheelDelta) {
+    delta = e.wheelDelta;
+  }
+  else {
+    delta = -1 * e.deltaY;
+  }
+
+  if (delta > 0) {
+    changeBlock(activeBlock == inventory.length - 1 ? 0 : activeBlock + 1);
+  }
+
+  else if (delta < 0) {
+    changeBlock(activeBlock == 0 ? inventory.length - 1 : activeBlock - 1);
+  }
+});
 
 document.onkeydown = function(e) {
   var key = e.keyCode - 49;
@@ -995,7 +1013,54 @@ function buildStructure(xp, zp, yp, structureName, replace) {
   }
 }
 
-buildStructure(-5, -5, 10, 'tree', false);
+let gameInterval = null;
+let tickInterval = null;
 
-setInterval(gameloop, 1000 / 60);
-setInterval(tick, 1000);
+function initSingleplayer() {
+  
+  if (!loadedTextures) {
+    loadTextures();
+  }
+  
+  constructWorld();
+  renderGame();
+  
+  gameInterval = setInterval(gameloop, 1000 / 60);
+  tickInterval = setInterval(tick, 1000);
+  
+  buildInventory(inventory);
+  
+  buildStructure(-5, -5, 10, 'tree', false);
+
+  pause();
+  
+}
+
+function returnToTitle() {
+  
+  clearInterval(gameInterval);
+  clearInterval(tickInterval);
+
+  pause();
+  
+  document.querySelector('.options').innerHTML = `
+        <div class="title">
+          <div class="edition"></div>
+          <div class="splash">`+randomSplash()+`</div>
+        </div>
+        <div class="button" role="button" onclick="initSingleplayer()">Singleplayer</div>
+        <div class="button disabled" role="button">Multiplayer</div></div>`;
+}
+
+document.querySelector('.title .splash').innerHTML = randomSplash();
+
+var splash = "Bigfoot saw Chuck Norris! Il n'y a pas de game! Missing ) after argument list! Also try Chrome! Also try Firefox! Also try Safari! Don't try IE! 99.9% Meme-Free! Call Now! Toll-Free! Call your mom! Ask your doctor! Stay safe! Now in CSS3D! Impressive! Star-struck! Child's play! Classy! Open source! Contribute! Inspector Gadget! Complex cellular automata! Wireworld! Jon Arbuckle likes this! Garfield used to be good! Come to the duck side! Repeating recursive functions! Do you want to build a snowman? Don't bother with the clones! Double-Trouble! Double clone! Any laptop is a computer if you're brave enough! Programmer subreddit! Any Mac is a Windows if you're brave enough! Don't look directly at the bugs! Don’t worry, be happy! Shinobi Jutsu! Double contractions aren't no bad practice! Fat free! Feature packed! Finally complete! Free range developers! Funk soul brother! Eggs and Spam! Gargamel plays it! Google anlyticsed! Han shot first! OMGLOL! #ashtag! Nizzotch is back! Internet enabled! It's a game! Coming soon! When it's finished! It's groundbreaking! Javascript edition! Created in Inspector! Classes are overrated! CSS! Limited edition! Lives in a pineapple under the sea! Look mum, I’m in a splash! Notch was here! Menger sponge! Minecraft! Enderdragon soon! Sexy! More polygons! No sue just moo! Nice to meet you! Not linear! Cooler than Spock! Now in CSS3! Pixels! pls rt! Also try threejs! Does mrdoob approve? Now with zazz! Also try Netlify! DM me! -webkit-! Now in 3 languages! Inspired by Calada2! Also try Github! React is overrated! @​scroll-timeline is cool! Custom splashes! Now with more faces! Also try Super Mario Odyssey! Responsive! Pure CSS! Contenteditable! Also try Among Us! Also try Figma! Big Sur! Sugar-free!";
+splash = splash.replaceAll('! ','!`').replaceAll('? ','?`').split('`');
+    
+function randomSplash() {
+  return splash[getRandomInt(splashes.length-1)];
+}
+  
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
