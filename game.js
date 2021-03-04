@@ -1020,6 +1020,8 @@ let tickInterval = null;
 
 function initSingleplayer() {
   
+  document.querySelector('.options').classList.remove('titlescreen');
+  
   if (!loadedTextures) {
     loadTextures();
   }
@@ -1043,6 +1045,7 @@ function returnToTitle() {
 
   pause();
   
+  document.querySelector('.options').classList.add('titlescreen');
   document.querySelector('.options').innerHTML = `
         <div class="title">
           <div class="edition"></div>
