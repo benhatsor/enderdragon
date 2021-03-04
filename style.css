@@ -311,6 +311,13 @@ body {
   font-size: 16px;
 }
 
+.options .version {
+  position: absolute;
+  bottom: 0;
+  left: 3px;
+  word-spacing: normal;
+}
+
 @keyframes splash-pulse {
   to {
     transform: rotate(-20deg) scale(1.1);
