@@ -1028,10 +1028,8 @@ function initSingleplayer() {
         <div class="progress">
           <div class="fill"></div>
         </div>`;
-  
-  if (!loadedTextures) {
-    loadTextures();
-  }
+
+  loadTextures();
   
   constructWorld();
   renderGame();
@@ -1070,7 +1068,7 @@ function returnToTitle() {
 var splashes = "Bigfoot saw Chuck Norris! Il n'y a pas de game! Missing ) after argument list! Also try Chrome! Also try Firefox! Also try Safari! Don't try IE! 99.9% Meme-Free! Call Now! Toll-Free! Call your mom! Ask your doctor! Stay safe! Now in CSS3D! Impressive! Star-struck! Child's play! Classy! Open source! Contribute! Inspector Gadget! Complex cellular automata! Wireworld! Jon Arbuckle likes this! Come to the duck side! Do you want a snowman? Don't bother with the clones! Double-Trouble! Double clone! Programmer subreddit! Don’t worry, be happy! Shinobi Jutsu! Fat free! Feature packed! Free range developers! Funk soul brother! Eggs and Spam! Gargamel plays it! Google anlyticsed! Han shot first! OMGLOL! #ashtag! Nizzotch is back! Internet enabled! It's a game! Coming soon! When it's finished! It's groundbreaking! Javascript edition! Created in Inspector! Classes are overrated! CSS! Limited edition! Look mum, I’m in a splash! Notch was here! Menger sponge! Minecraft! Enderdragon soon! Sexy! More polygons! No sue just moo! Nice to meet you! Not linear! Cooler than Spock! Now in CSS3! Pixels! pls rt! Also try threejs! Does mrdoob approve? Now with zazz! Also try Netlify! DM me! -webkit-! Now in 3 languages! Inspired by Calada2! Also try Github! React is overrated! @scroll-timeline is cool! Custom splashes! Now with more faces! Also try Super Mario Odyssey! Responsive! Pure CSS! Contenteditable! Also try Among Us! Also try Figma! Big Sur! Sugar-free! 1% Chance! 404'd! Runs on Netlify!";
 splashes = splashes.replaceAll('! ','!`').replaceAll('? ','?`').split('`');
 
-returnToTitle();
+//returnToTitle();
 
 function randomSplash() {
   var splash = splashes[getRandomInt(splashes.length-1)];
