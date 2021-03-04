@@ -1033,8 +1033,6 @@ function initSingleplayer() {
   buildInventory(inventory);
   
   buildStructure(-5, -5, 10, 'tree', false);
-
-  pause();
   
 }
 
