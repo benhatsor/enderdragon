@@ -1052,7 +1052,7 @@ function returnToTitle() {
           <div class="edition"></div>
           <div class="splash"></div>
         </div>
-        <div class="button" role="button" onclick="document.querySelector('.options').innerHTML = '<h2>Loading textures</h2><div class="progress"><div class="fill"></div></div>';initSingleplayer()">Singleplayer</div>
+        <div class="button" role="button" onclick="document.querySelector('.options').innerHTML='<h2>Loading textures</h2><div class=\'progress\'><div class=\'fill\'></div></div>';initSingleplayer()">Singleplayer</div>
         <div class="button disabled" role="button">Multiplayer</div>
         <div class="version">Enderdragon `+version+` (`+exVersion+`)`;
   
