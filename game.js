@@ -796,7 +796,7 @@ function fly() {
   velocity = 300;
   verticalVelocity = 3;
   
-  verticalSpeed = verticalVelocity;
+  verticalSpeed = verticalVelocity / 2;
   
   flying = true;
   
@@ -807,7 +807,7 @@ function disableFlying() {
   velocity = 400;
   verticalVelocity = 3.5;
   
-  verticalSpeed = 0;
+  verticalSpeed = verticalVelocity / 2;
   
   flying = false;
   
