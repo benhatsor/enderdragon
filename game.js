@@ -98,7 +98,7 @@ function renderGame() {
   }
 }
 
-let texturesLoaded = false;
+let loadedTextures = false;
 
 function loadTextures() {
   document.querySelector('.options').innerHTML = `
