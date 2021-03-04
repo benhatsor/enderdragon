@@ -108,20 +108,22 @@ function loadTextures() {
         </div>`;
   
   blockList.forEach(block => {
-    var img = document.createElement('img');
-    img.src = 'textures/' + block.pic;
-    img.onload = incrementLoader;
-    img.onerror = incrementLoader;
-    
-    document.querySelector('.imgloader').appendChild(img);
-    
-    for (var prop in block.sides) {
+    if (block.id != 0) {
       var img = document.createElement('img');
-      img.src = 'textures/' + block.sides[prop];
+      img.src = 'textures/' + block.pic;
       img.onload = incrementLoader;
       img.onerror = incrementLoader;
-      
+
       document.querySelector('.imgloader').appendChild(img);
+
+      for (var prop in block.sides) {
+        var img = document.createElement('img');
+        img.src = 'textures/' + block.sides[prop];
+        img.onload = incrementLoader;
+        img.onerror = incrementLoader;
+
+        document.querySelector('.imgloader').appendChild(img);
+      }
     }
   })
 }
