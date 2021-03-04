@@ -1058,7 +1058,7 @@ var splash = "Bigfoot saw Chuck Norris! Il n'y a pas de game! Missing ) after ar
 splash = splash.replaceAll('! ','!`').replaceAll('? ','?`').split('`');
     
 function randomSplash() {
-  return splash[getRandomInt(splashes.length-1)];
+  return splash[getRandomInt(splash.length-1)];
 }
   
 function getRandomInt(max) {
