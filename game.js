@@ -470,7 +470,7 @@ function gameloop() {
       
       var clipSneak = false;
       if (sneaking) {
-        let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];    
+        let blockBelow = blockList[blockData[-Math.floor(player.pos.x)][-Math.floor(player.pos.z)][Math.floor(player.pos.y)-1]];    
         clipSneak = (blockBelow.id == 0);
       }
       
@@ -488,7 +488,7 @@ function gameloop() {
       
       var clipSneak = false;
       if (sneaking) {
-        let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
+        let blockBelow = blockList[blockData[-Math.floor(player.pos.x)][-Math.floor(player.pos.z)][Math.floor(player.pos.y)-1]];
         clipSneak = (blockBelow.id == 0);
       }
       
