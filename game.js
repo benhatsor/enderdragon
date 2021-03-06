@@ -572,9 +572,9 @@ function checkFocus() {
     if (focusBlock != null) focusBlock.setAttribute('focus', 'false');
 
     var radius = 5,
-        playerX = player.pos.x,
+        playerX = -player.pos.x,
         playerY = (player.pos.y + player.height),
-        playerZ = player.pos.z,
+        playerZ = -player.pos.z,
         blockX = newFocusBlock.x,
         blockY = newFocusBlock.y,
         blockZ = newFocusBlock.z,
