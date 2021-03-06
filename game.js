@@ -561,8 +561,6 @@ function rotate2dVector(vec, by) {
 let focusBlock = null;
 let focusSide = null;
 
-let blockDistance = 0;
-
 function checkFocus() {
   document.querySelector('#gui').style.visibility = 'hidden';
   let newFocusSide = document.elementFromPoint(innerWidth / 2, innerHeight / 2);
@@ -578,10 +576,9 @@ function checkFocus() {
         blockX = newFocusBlock.x,
         blockY = newFocusBlock.y,
         blockZ = newFocusBlock.z,
-        blockInRadius = true;
-    
-    blockDistance = Math.sqrt(Math.pow(playerX - blockX, 2) + Math.pow(playerY - blockY, 2) + Math.pow(playerZ - blockZ, 2));
-        
+        blockDistance = Math.sqrt(Math.pow(playerX - blockX, 2) + Math.pow(playerY - blockY, 2) + Math.pow(playerZ - blockZ, 2)),
+        blockInRadius = blockDistance <= 5;
+            
     if (newFocusBlock == document.body || !blockInRadius) focusBlock = null;
     else {
       focusSide = newFocusSide.side;
@@ -930,7 +927,7 @@ function debug() {
   <br>
   <p>XYZ: `+player.pos.x.toFixed(3)+` / `+player.pos.y.toFixed(5)+` / `+player.pos.z.toFixed(3)+`</p>
   <p>Block: `+Math.round(player.pos.x)+` `+Math.round(player.pos.y)+` `+Math.round(player.pos.z)+`</p>
-  <p>Facing: `+player.rot.x.toFixed(1)+` / `+ player.rot.y.toFixed(1) +` Block Distance: `+blockDistance+`</p>
+  <p>Facing: `+player.rot.x.toFixed(1)+` / `+ player.rot.y.toFixed(1) +`</p>
   <p>Move Vector: `+moveVector.x.toFixed(3)+` / `+moveVector.y.toFixed(3)+` / `+moveVector.z.toFixed(3)+`</p>
   <p>BT: `+blockList.length+`</p>
   <br>
