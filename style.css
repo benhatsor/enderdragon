@@ -255,6 +255,10 @@ body {
   margin-bottom: 60px;
 }
 
+.title.minceraft::before {
+  background-image: url(/textures/title/minceraft.png);
+}
+
 .title::before {
   background-image: url(/textures/title/minecraft.png);
   content: '';
