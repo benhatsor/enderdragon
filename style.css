@@ -301,8 +301,8 @@ body {
   z-index: 1;
   transform: rotate(-20deg);
   font-size: 25px;
-  color: yellow;
-  text-shadow: 0.1em 0.1em hsl(60deg 100% 15%);
+  color: #FFFF55;
+  text-shadow: 0.1em 0.1em #3F3F15;
   word-spacing: normal;
   animation: splash-pulse .25s infinite alternate ease-in;
 }
