@@ -471,7 +471,7 @@ function gameloop() {
       var clipSneak = false;
       if (sneaking) {
         
-        let sneakPos = moveVector.x * delta / velocity;
+        let sneakPos = player.pos.x + moveVector.x * delta / velocity;
         let blockBelow = blockList[blockData[-Math.round(sneakPos)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
         
         clipSneak = (blockBelow.id == 0);
@@ -492,7 +492,7 @@ function gameloop() {
       var clipSneak = false;
       if (sneaking) {
         
-        let sneakPos = moveVector.y * delta / velocity;
+        let sneakPos = player.pos.z + moveVector.y * delta / velocity;
         let blockBelow = blockList[blockData[-Math.round(sneakPos)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
         
         clipSneak = (blockBelow.id == 0);
@@ -580,6 +580,8 @@ function checkFocus() {
         blockInRadiusY = (playerY + radius) >= blockY,
         blockInRadiusZ = (playerZ + radius) >= blockZ,
         blockInRadius = blockInRadiusX && blockInRadiusY && blockInRadiusZ;
+    
+    console.log(playerY, blockY, blockInRadiusY);
     
     if (newFocusBlock == document.body || !blockInRadius) focusBlock = null;
     else {
