@@ -769,7 +769,9 @@ function checkDblClick(e) {
 }
 
 function sneak() {
-  if (!flying && !sneaking) {
+  let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
+  
+  if (!flying && !sneaking && blockBelow.id != 0) {
     //player.height = 1.1; // shift
     velocity = 700;
     verticalVelocity = 2.5;
@@ -777,9 +779,7 @@ function sneak() {
     animateSneak('forward');
   }
 
-  if (!flying) {
-    sneaking = true;
-  }
+  sneaking = true;
 }
 
 function disableSneaking() {
