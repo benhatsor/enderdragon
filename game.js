@@ -1059,7 +1059,7 @@ function returnToTitle() {
   randomSplash();
   
   var d = Math.random();
-  if (d < 0.9) {
+  if (d < 0.1) {
     document.querySelector('.title').classList.add('minceraft');
   }
 }
