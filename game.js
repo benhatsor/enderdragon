@@ -664,12 +664,14 @@ window.addEventListener('wheel', e => {
     delta = -1 * e.deltaY;
   }
 
+  var activeIndex = Array.from(document.querySelectorAll('.slot')).indexOf(document.querySelector('.slot.selected')); 
+  
   if (delta > 0) {
-    changeBlock(activeBlock == inventory.length - 1 ? 0 : activeBlock + 1);
+    changeBlock(activeIndex == inventory.length - 1 ? 0 : activeIndex + 1);
   }
 
   else if (delta < 0) {
-    changeBlock(activeBlock == 0 ? inventory.length - 1 : activeBlock - 1);
+    changeBlock(activeIndex == 0 ? inventory.length - 1 : activeIndex - 1);
   }
 });
 
