@@ -16,9 +16,7 @@ A CSS3D version of Minecraft
 - Lighting, [tint](https://minecraft.gamepedia.com/Tint)
 - Redstone
 - Command Blocks, chat
-- Flying
 - Items
-- Title Screen
 - Sounds
 - Hand, inventory
 - Settings
