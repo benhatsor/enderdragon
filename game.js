@@ -777,7 +777,9 @@ function sneak() {
     animateSneak('forward');
   }
 
-  sneaking = true;
+  if (!flying) {
+    sneaking = true;
+  }
 }
 
 function disableSneaking() {
