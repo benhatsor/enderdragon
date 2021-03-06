@@ -578,9 +578,7 @@ function checkFocus() {
         blockZ = newFocusBlock.z,
         blockDistance = Math.sqrt(Math.pow(playerX - blockX, 2) + Math.pow(playerY - blockY, 2) + Math.pow(playerZ - blockZ, 2)),
         blockInRadius = blockDistance > radius;
-    
-    console.log(blockDistance);
-    
+        
     if (newFocusBlock == document.body || !blockInRadius) focusBlock = null;
     else {
       focusSide = newFocusSide.side;
