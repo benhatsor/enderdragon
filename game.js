@@ -510,7 +510,7 @@ function gameloop() {
     let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y + verticalSpeed * delta / 500)]];    
     let blockAbove = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y + verticalSpeed * delta / 500 - -1.8)]];
     
-    if (blockBelow || blockAbove) {
+    if (blockBelow && blockAbove) {
       var clipSneak = false;
       if (sneaking && !flying) {
         let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
