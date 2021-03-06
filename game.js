@@ -571,13 +571,13 @@ function checkFocus() {
 
     var radius = 5,
         playerX = player.pos.x,
-        playerY = player.pos.y,
+        playerY = (player.pos.y + player.height),
         playerZ = player.pos.z,
         blockX = newFocusBlock.x,
         blockY = newFocusBlock.y,
         blockZ = newFocusBlock.z,
         blockDistance = Math.sqrt(Math.pow(playerX - blockX, 2) + Math.pow(playerY - blockY, 2) + Math.pow(playerZ - blockZ, 2)),
-        blockInRadius = true;
+        blockInRadius = blockDistance >= 5;
         
     if (newFocusBlock == document.body || !blockInRadius) focusBlock = null;
     else {
