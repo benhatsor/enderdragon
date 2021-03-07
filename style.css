@@ -11,15 +11,15 @@
 }
 
 @font-face {
-  font-family: 'Minecraft Regular';
-  src: url('Minecraft-Regular.woff') format('woff'), url('Minecraft-Regular.ttf') format('truetype');
+  font-family: 'Minecraft';
+  src: url('/textures/font/font.woff') format('woff'), url('/textures/font/font.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 body {
   background: #9bd7ff;
-  font-family: 'Minecraft Regular', sans-serif;
+  font-family: 'Minecraft', sans-serif;
   color: #ffffff;
   text-shadow: 1.5px 1.5px #3f3f3f;
   font-size: 16px;
