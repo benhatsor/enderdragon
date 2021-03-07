@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: 'Minecraft';
-  src: url('/textures/font/font.woff') format('woff'), url('/textures/font/font.ttf') format('truetype');
+  src: url('/textures/font/font.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
