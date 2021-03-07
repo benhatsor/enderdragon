@@ -949,9 +949,9 @@ function debug() {
   <p>Block: `+Math.round(player.pos.x)+` `+Math.round(player.pos.y)+` `+Math.round(player.pos.z)+`</p>
   <p>Facing: `+player.rot.x.toFixed(1)+` / `+ player.rot.y.toFixed(1) +`</p>
   <p>BT: `+blockList.length+`</p>
-  <p>Sneak / Radius: `+radius+` X: `+playerX+` Y: `+playerY+` Z: `+playerZ+`</p>
+  <p>Sneak / Radius: `+radius+` X: `+playerX.toFixed(3)+` Y: `+playerY.toFixed(5)+` Z: `+playerZ.toFixed(3)+`</p>
   <p>Sneak / blockX: `+blockX+` blockY: `+blockY+` blockZ: `+blockZ+`</p>
-  <p>Sneak / blockDistance: `+blockDistance+` blockBelow: `+blockBelow.id+` clipSneak: `+clipSneak+`</p>
+  <p>Sneak / blockDistance: `+blockDistance.toFixed(3)+` blockBelow: `+blockBelow.id+` clipSneak: `+clipSneak+`</p>
   <br>
   <p>Debug: Inspector [esc]: pause gameloop [alt]: exit</p>
   <p>For help: press F3 + Q</p>`;
