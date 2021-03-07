@@ -470,8 +470,17 @@ function gameloop() {
       
       var clipSneak = false;
       if (sneaking) {
-        let blockBelow = blockList[blockData[-Math.floor(player.pos.x)][-Math.floor(player.pos.z)][Math.floor(player.pos.y)-1]];    
-        clipSneak = (blockBelow.id == 0);
+        let radius = 0.7,
+            playerX = -player.pos.x,
+            playerY = player.pos.y,
+            playerZ = -player.pos.z,
+            blockX = Math.floor(playerX),
+            blockY = Math.floor(playerY) - 1,
+            blockZ = Math.floor(playerZ),
+            blockDistance = Math.sqrt(Math.pow(playerX - blockX, 2) + Math.pow(playerY - blockY, 2) + Math.pow(playerZ - blockZ, 2)),
+            blockBelow = blockList[blockData[Math.round(playerX)][Math.round(playerZ)][Math.round(playerY)-1]];
+
+        clipSneak = (blockBelow.id == 0 && blockDistance <= radius);
       }
       
       if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 || clipSneak) {
@@ -488,8 +497,17 @@ function gameloop() {
       
       var clipSneak = false;
       if (sneaking) {
-        let blockBelow = blockList[blockData[-Math.floor(player.pos.x)][-Math.floor(player.pos.z)][Math.floor(player.pos.y)-1]];
-        clipSneak = (blockBelow.id == 0);
+        let radius = 0.7,
+            playerX = -player.pos.x,
+            playerY = player.pos.y,
+            playerZ = -player.pos.z,
+            blockX = Math.floor(playerX),
+            blockY = Math.floor(playerY) - 1,
+            blockZ = Math.floor(playerZ),
+            blockDistance = Math.sqrt(Math.pow(playerX - blockX, 2) + Math.pow(playerY - blockY, 2) + Math.pow(playerZ - blockZ, 2)),
+            blockBelow = blockList[blockData[Math.round(playerX)][Math.round(playerZ)][Math.round(playerY)-1]];
+
+        clipSneak = (blockBelow.id == 0 && blockDistance <= radius);
       }
       
       if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 || clipSneak) {
@@ -571,7 +589,7 @@ function checkFocus() {
         blockY = newFocusBlock.y,
         blockZ = newFocusBlock.z,
         blockDistance = Math.sqrt(Math.pow(playerX - blockX, 2) + Math.pow(playerY - blockY, 2) + Math.pow(playerZ - blockZ, 2)),
-        blockInRadius = blockDistance <= 5;
+        blockInRadius = blockDistance <= radius;
             
     if (newFocusBlock == document.body || !blockInRadius) focusBlock = null;
     else {
