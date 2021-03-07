@@ -930,8 +930,16 @@ var exVersion = 'Indev';
 function debug() {
   var block = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
   
-  let moveVector = new Vector(keymovement.x, keymovement.z).unit();
-  moveVector = rotate2dVector(moveVector, player.rot.x);
+  let radius = 0.7,
+      playerX = -player.pos.x,
+      playerY = player.pos.y,
+      playerZ = -player.pos.z,
+      blockX = Math.floor(playerX),
+      blockY = Math.floor(playerY) - 1,
+      blockZ = Math.floor(playerZ),
+      blockDistance = Math.sqrt(Math.pow(playerX - blockX, 2) + Math.pow(playerY - blockY, 2) + Math.pow(playerZ - blockZ, 2)),
+      blockBelow = blockList[blockData[Math.round(playerX)][Math.round(playerZ)][Math.round(playerY)-1]],
+      clipSneak = (blockBelow.id == 0 && blockDistance <= radius);
   
   document.querySelector('.debugscreen').innerHTML = `
   <p>Enderdragon `+version+` (`+version+`/`+exVersion+`)</p>
@@ -940,8 +948,10 @@ function debug() {
   <p>XYZ: `+player.pos.x.toFixed(3)+` / `+player.pos.y.toFixed(5)+` / `+player.pos.z.toFixed(3)+`</p>
   <p>Block: `+Math.round(player.pos.x)+` `+Math.round(player.pos.y)+` `+Math.round(player.pos.z)+`</p>
   <p>Facing: `+player.rot.x.toFixed(1)+` / `+ player.rot.y.toFixed(1) +`</p>
-  <p>Move Vector: `+moveVector.x.toFixed(3)+` / `+moveVector.y.toFixed(3)+` / `+moveVector.z.toFixed(3)+`</p>
   <p>BT: `+blockList.length+`</p>
+  <p>Sneak / Radius: `+radius+` X: `+playerX+` Y: `+playerY+` Z: `+playerZ+`</p>
+  <p>Sneak / blockX: `+blockX+` blockY: `+blockY+` blockZ: `+blockZ+`</p>
+  <p>Sneak / blockDistance: `+blockDistance+` blockBelow: `+blockBelow.id+` clipSneak: `+clipSneak+`</p>
   <br>
   <p>Debug: Inspector [esc]: pause gameloop [alt]: exit</p>
   <p>For help: press F3 + Q</p>`;
