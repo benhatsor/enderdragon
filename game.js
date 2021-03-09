@@ -1,4 +1,4 @@
-const mapRadius = 13; //8
+const mapRadius = 16; //8
 const heightLimit = 29;
 
 const blocks = [];
@@ -1057,7 +1057,7 @@ function initSingleplayer() {
   
   buildInventory(inventory);
   
-  buildStructure(-5, -5, 3, 'tree', false);
+  //buildStructure(-5, -5, 3, 'tree', false);
   
 }
 
