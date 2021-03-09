@@ -246,7 +246,7 @@ body {
   font-size: 20px;
   word-spacing: normal;
   white-space: nowrap;
-  margin: 0.125em 0.25em;
+  margin: -1.875em 1em;
   pointer-events: none;
   display: none;
   z-index: 9999;
