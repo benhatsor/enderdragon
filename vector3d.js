@@ -126,3 +126,4 @@ Vector.fromArray = function(a) {
 Vector.angleBetween = function(a, b) {
     return a.angleTo(b);
 };
+
