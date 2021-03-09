@@ -124,7 +124,7 @@ body {
   z-index: 1;
 }
 
-#gui.inventory .inventory {
+#gui.takingInv .inventory {
   display: block;
 }
 
