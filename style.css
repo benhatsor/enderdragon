@@ -120,7 +120,12 @@ body {
 }
 
 .inventory {
+  display: none;
   z-index: 1;
+}
+
+.inventory.visible {
+  display: block;
 }
 
 #gui.pause .inventory {
