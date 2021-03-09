@@ -750,7 +750,8 @@ function toggleInventory() {
     inventoryOpen = true;
     document.exitPointerLock();
     
-    document.querySelector('#gui').classList = 'takingInv';
+    pause();
+    document.querySelector('#gui').classList.add('takingInv');
   }
   else {
     inventoryOpen = false;
