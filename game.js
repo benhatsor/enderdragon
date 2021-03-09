@@ -1,5 +1,5 @@
-const mapRadius = 8; //8
-const heightLimit = 18;
+const mapRadius = 8;
+const heightLimit = 26;
 
 const blocks = [];
 let blockData = [];
@@ -1141,6 +1141,7 @@ function returnToTitle() {
         </div>
         <div class="button" role="button" onclick="document.querySelector('.options').innerHTML='<h2>Loading</h2>';initSingleplayer()">Singleplayer</div>
         <div class="button disabled" role="button">Multiplayer</div>
+        <div class="button disabled" role="button">Realms</div>
         <div class="version">Enderdragon `+version+` (`+exVersion+`)`;
   
   randomSplash();
