@@ -754,9 +754,7 @@ function toggleInventory() {
   }
   else {
     inventoryOpen = false;
-    document.querySelector('#gui').classList.remove('inventory');
-    
-    inventory.classList.remove('visible');
+    document.querySelector('#gui').classList.remove('inventory');    
     document.querySelector('#camera').requestPointerLock();
   }
 }
