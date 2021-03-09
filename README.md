@@ -12,14 +12,10 @@ A CSS3D version of Minecraft
   <a target='_blank' href='https://github.com/barhatsor/enderdragon/releases'><img src='https://img.shields.io/github/v/release/barhatsor/enderdragon?color=lightgray&include_prereleases&label=%20'/></a>
 </p>
 
-## Todo 
-- Lighting, [tint](https://minecraft.gamepedia.com/Tint)
-- Redstone
-- Command Blocks, chat
-- Items
-- Sounds
-- Hand, inventory
-- Settings
+## Todo
+- Inventory
+- More blocks
+- Command Blocks
 
 ## Contributing :blush:
 
@@ -53,7 +49,7 @@ Ideas turn into todos when someone sends a pull request.
 
 - Multiplayer (webRTC)
 - Particles (walking, breaking)
-- Biomes (mesa, plains)
+- Lighting, [tint](https://minecraft.gamepedia.com/Tint)
 
 ## Credit
 
