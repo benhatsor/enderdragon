@@ -252,6 +252,10 @@ body {
   z-index: 9999;
 }
 
+.minetip.visible {
+  display: block;
+}
+
 .minetip::before {
   content: "";
   position: absolute;
