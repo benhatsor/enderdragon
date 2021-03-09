@@ -741,7 +741,7 @@ function toggleInventory() {
 
     for (var i = 0;i < blockList.length;i++) {
       if (blockList[i].id != 0) {
-        domInventory += `<div class="slot" onmouseenter="showMinetip('`+ blockList[i].name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" style="background-position:`+ blockList[i].invPic +`">
+        domInventory += `<div class="slot" onmouseenter="showMinetip('`+ blockList[i].name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" name="`+ blockList[i].name +`" style="background-position:`+ blockList[i].invPic +`">
                          <div class="item"></div></div>`;
       }
     }
@@ -757,6 +757,8 @@ function toggleInventory() {
   else {
     inventoryOpen = false;
     document.querySelector('#gui').classList.remove('takingInv');    
+    
+    document.querySelector('.inventory .search .input').innerHTML = '';
     
     document.querySelector('#camera').requestPointerLock();
     pause();
@@ -776,6 +778,18 @@ function moveMinetip(e) {
 function hideMinetip() {
   document.querySelector('.inventory .minetip').classList.remove('visible');
 }
+
+document.querySelector('.inventory .search .input').addEventListener('input', e => {
+  var query = document.querySelector('.inventory .search .input').innerText;
+  
+  document.querySelectorAll('.inventory .slot').forEach(item => {
+    if (query.includes(item.getAttribute('name'))) {
+      item.style.display = '';
+    }
+    else {
+      item.style.display = 'none';
+    }
+})
 
 function animateSneak(direction) {
   if (direction == 'forward') {
