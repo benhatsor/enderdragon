@@ -741,7 +741,8 @@ function toggleInventory() {
 
     for (var i = 0;i < blockList.length;i++) {
       if (blockList[i].id != 0) {
-        domInventory += '<div class="slot" style="background-position: '+ blockList[i].invPic +'"><div class="item"></div></div>';
+        domInventory += `<div class="slot" onmouseenter="showMinetip('`+ blockList[i].name +`')" onmouseleave="hideMinetip()" style="background-position:`+ blockList[i].invPic +`">
+                         <div class="item"></div></div>`;
       }
     }
 
@@ -760,6 +761,15 @@ function toggleInventory() {
     document.querySelector('#camera').requestPointerLock();
     pause();
   }
+}
+
+function showMinetip(data) {
+  document.querySelector('.inventory .minetip').innerHTML = data;
+  document.querySelector('.inventory .minetip').classList.add('visible');
+}
+
+function hideMinetip() {
+  document.querySelector('.inventory .minetip').classList.remove('visible');
 }
 
 function animateSneak(direction) {
