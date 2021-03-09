@@ -780,8 +780,9 @@ function hideMinetip() {
 }
 
 document.querySelector('.inventory .search .input').addEventListener('input', e => {
-  var query = document.querySelector('.inventory .search .input').innerText.toUpperCase();
+  e.preventDefault();
   
+  var query = document.querySelector('.inventory .search .input').innerText.toUpperCase();
   document.querySelectorAll('.inventory .slot').forEach(item => {
     if (item.getAttribute('name').toUpperCase().includes(query)) {
       item.style.display = '';
