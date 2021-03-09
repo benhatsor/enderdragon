@@ -233,6 +233,7 @@ body {
   height: 32px;
   vertical-align: middle;
   background: url(textures/invSprite.webp) no-repeat;
+  background-position: inherit;
 }
 
 .minetip {
