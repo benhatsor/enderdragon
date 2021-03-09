@@ -789,6 +789,7 @@ document.querySelector('.inventory .search .input').addEventListener('input', e 
     else {
       item.style.display = 'none';
     }
+  })
 })
 
 function animateSneak(direction) {
