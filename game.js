@@ -26,11 +26,10 @@ function constructWorld() {
         blocks[x][z][y].z = z;
 
         let type;
-        if (y > 9) type = 0;
-        else if (y > 8) type = 2;
-        else if (y > 6) type = 1;
-        else if (y > 0) type = 3;
-        else type = 6;
+        if (y > 2) type = 0;
+        else if (y > 0) type = 2;
+        else if (y == 0) type = 6;
+        
         //blockData[x][z][y] = (y >= 10 ? 0 : (y >= 9 ? 2 : (y == 0 ? 6 : 3)));
         blockData[x][z][y] = type;
 
@@ -928,18 +927,7 @@ var version = '0.0.3';
 var exVersion = 'Indev';
 
 function debug() {
-  var block = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
-  
-  let radius = 0.7,
-      playerX = -player.pos.x,
-      playerY = player.pos.y,
-      playerZ = -player.pos.z,
-      blockX = Math.floor(playerX),
-      blockY = Math.floor(playerY) - 1,
-      blockZ = Math.floor(playerZ),
-      blockDistance = Math.sqrt(Math.pow(playerX - blockX, 2) + Math.pow(playerY - blockY, 2) + Math.pow(playerZ - blockZ, 2)),
-      blockBelow = blockList[blockData[Math.round(playerX)][Math.round(playerZ)][Math.round(playerY)-1]],
-      clipSneak = (blockBelow.id == 0 && blockDistance <= radius);
+  var faceBlock = blockList[blockData[focusBlock.x][focusBlock.z][focusBlock.y]].id;
   
   document.querySelector('.debugscreen').innerHTML = `
   <p>Enderdragon `+version+` (`+version+`/`+exVersion+`)</p>
@@ -947,11 +935,8 @@ function debug() {
   <br>
   <p>XYZ: `+player.pos.x.toFixed(3)+` / `+player.pos.y.toFixed(5)+` / `+player.pos.z.toFixed(3)+`</p>
   <p>Block: `+Math.round(player.pos.x)+` `+Math.round(player.pos.y)+` `+Math.round(player.pos.z)+`</p>
-  <p>Facing: `+player.rot.x.toFixed(1)+` / `+ player.rot.y.toFixed(1) +`</p>
+  <p>Facing: `+player.rot.x.toFixed(1)+` / `+ player.rot.y.toFixed(1) +` Block: `+ faceBlock +`</p>
   <p>BT: `+blockList.length+`</p>
-  <p>Sneak / Radius: `+radius+` X: `+playerX.toFixed(3)+` Y: `+playerY.toFixed(5)+` Z: `+playerZ.toFixed(3)+`</p>
-  <p>Sneak / blockX: `+blockX+` blockY: `+blockY+` blockZ: `+blockZ+`</p>
-  <p>Sneak / blockDistance: `+blockDistance.toFixed(3)+` blockBelow: `+blockBelow.id+` clipSneak: `+clipSneak+`</p>
   <br>
   <p>Debug: Inspector [esc]: pause gameloop [alt]: exit</p>
   <p>For help: press F3 + Q</p>`;
