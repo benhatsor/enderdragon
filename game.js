@@ -927,7 +927,10 @@ var version = '0.0.3';
 var exVersion = 'Indev';
 
 function debug() {
-  var faceBlock = blockList[blockData[focusBlock.x][focusBlock.z][focusBlock.y]].id;
+  var faceBlock = 0;
+  if (focusBlock != null) {
+    faceBlock = blockList[blockData[focusBlock.x][focusBlock.z][focusBlock.y]].id;
+  }
   
   document.querySelector('.debugscreen').innerHTML = `
   <p>Enderdragon `+version+` (`+version+`/`+exVersion+`)</p>
