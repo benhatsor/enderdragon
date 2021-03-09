@@ -924,7 +924,7 @@ function copyBlock(block) {
   buildInventory(inventory);
 }
 
-var version = '0.0.2';
+var version = '0.0.3';
 var exVersion = 'Indev';
 
 function debug() {
