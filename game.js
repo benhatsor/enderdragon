@@ -9,6 +9,8 @@ var velocity = 400;
 var verticalVelocity = 3.5;
 var gravity = 30;
 
+var blocksInWorld = 0;
+
 var inventory = ['Grass', 'Stone', 'Sand', 'Gravel', 'Poppy', 'Gold Ore', 'Iron Ore', 'Torch', 'Oak Log'];
 
 function constructWorld() {
@@ -33,10 +35,15 @@ function constructWorld() {
         
         //blockData[x][z][y] = (y >= 10 ? 0 : (y >= 9 ? 2 : (y == 0 ? 6 : 3)));
         blockData[x][z][y] = type;
+        
+        if (type != 0) {
+          blocksInWorld++;
+        }
 
       }
     }
   }
+  console.log(blocksInWorld);
 }
 
 function constructCubeDom(id) {
