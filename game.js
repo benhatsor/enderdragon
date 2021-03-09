@@ -11,7 +11,7 @@ var gravity = 30;
 
 var blocksInWorld = 0;
 
-var inventory = ['Grass', 'Stone', 'Sand', 'Gravel', 'Poppy', 'Gold Ore', 'Iron Ore', 'Torch', 'Oak Log'];
+var hotbar = ['Grass', 'Stone', 'Sand', 'Gravel', 'Poppy', 'Gold Ore', 'Iron Ore', 'Torch', 'Oak Log'];
 
 function constructWorld() {
   for (let x = -mapRadius; x <= mapRadius; ++x) {
@@ -656,11 +656,11 @@ document.querySelector('#camera').onmousedown = function(e) {
   }
 };
 
-var activeBlock = blockId(inventory[0]).id;
+var activeBlock = blockId(hotbar[0]).id;
 
-function buildInventory(inventory) {
-  for (var i = 0;i < inventory.length;i++) {
-    var block = blockId(inventory[i]);
+function buildHotbar(hotbar) {
+  for (var i = 0;i < hotbar.length;i++) {
+    var block = blockId(hotbar[i]);
     
     document.querySelectorAll('.slot')[i].style.backgroundPosition = block.invPic;
     
@@ -690,11 +690,11 @@ window.addEventListener('wheel', e => {
   var activeIndex = Array.from(document.querySelectorAll('.slot')).indexOf(document.querySelector('.slot.selected')); 
   
   if (delta < 0) {
-    changeBlock(activeIndex == inventory.length - 1 ? 0 : activeIndex + 1);
+    changeBlock(activeIndex == hotbar.length - 1 ? 0 : activeIndex + 1);
   }
 
   else if (delta > 0) {
-    changeBlock(activeIndex == 0 ? inventory.length - 1 : activeIndex - 1);
+    changeBlock(activeIndex == 0 ? hotbar.length - 1 : activeIndex - 1);
   }
 });
 
@@ -707,6 +707,10 @@ document.onkeydown = function(e) {
   
   if (e.keyCode == 16) {
     sneak();
+  }
+  
+  if (e.keyCode == 69) {
+    toggleInventory();
   }
   
   checkDblClick(e);
@@ -726,6 +730,29 @@ document.onkeyup = function(e) {
   
   if (e.keyCode == keybinds.jump) {
     spacebarUp = true;
+  }
+}
+
+var inventoryOpen = false;
+function toggleInventory() {
+  if (!inventoryOpen) {
+    var inventory = document.querySelector('.inventory .items .tab'),
+        domInventory = '';
+
+    for (var i = 0;i < blockList.length;i++) {
+      if (blockList[i].id != 0) {
+        domInventory += '<div class="slot" style="background-position: '+ blockList[i].invPic +'"><div class="item"></div></div>';
+      }
+    }
+
+    inventory.innerHTML = domInventory;
+    inventory.classList.add('visible');
+    
+    document.exitPointerLock();
+  }
+  else {
+    inventory.classList.remove('visible');
+    document.querySelector('#camera').requestPointerLock();
   }
 }
 
@@ -898,7 +925,7 @@ function changeBlock(id) {
   var index = Array.from(document.querySelectorAll('.slot')).indexOf(document.querySelector('.slot.selected'));
   
   if (index != id) {
-    activeBlock = blockId(inventory[id]).id;
+    activeBlock = blockId(hotbar[id]).id;
 
     document.querySelector('.slot.selected').classList.remove('selected');
     document.querySelectorAll('.slot')[id].classList.add('selected');
@@ -908,7 +935,7 @@ function changeBlock(id) {
     if (activeBlock != 0) {
       document.querySelector('.hotbar').classList.remove('tooltip');
       
-      document.querySelector('.hotbar').setAttribute('tooltip', inventory[id]);
+      document.querySelector('.hotbar').setAttribute('tooltip', hotbar[id]);
       window.setTimeout(() => { document.querySelector('.hotbar').classList.add('tooltip') }, 0);
 
       tooltipTimeout = window.setTimeout(() => {
@@ -926,9 +953,9 @@ function changeBlock(id) {
 function copyBlock(block) {
   var index = Array.from(document.querySelectorAll('.slot')).indexOf(document.querySelector('.slot.selected'));
   
-  inventory[index] = blockList[block].name;
+  hotbar[index] = blockList[block].name;
   
-  buildInventory(inventory);
+  buildHotbar(hotbar);
 }
 
 var version = '0.0.3';
@@ -1055,7 +1082,7 @@ function initSingleplayer() {
   gameInterval = setInterval(gameloop, 1000 / 60);
   tickInterval = setInterval(tick, 1000);
   
-  buildInventory(inventory);
+  buildHotbar(hotbar);
   
   //buildStructure(-5, -5, 3, 'tree', false);
   
