@@ -756,6 +756,8 @@ function toggleInventory() {
   else {
     inventoryOpen = false;
     document.querySelector('#gui').classList.remove('takingInv');    
+    
+    pause();
     document.querySelector('#camera').requestPointerLock();
   }
 }
