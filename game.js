@@ -783,7 +783,7 @@ document.querySelector('.inventory .search .input').addEventListener('input', e 
   var query = document.querySelector('.inventory .search .input').innerText.toUpperCase();
   
   document.querySelectorAll('.inventory .slot').forEach(item => {
-    if (query.includes(item.getAttribute('name').toUpperCase())) {
+    if (item.getAttribute('name').toUpperCase().includes(query)) {
       item.style.display = '';
     }
     else {
