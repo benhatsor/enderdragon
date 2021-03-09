@@ -123,6 +123,10 @@ body {
   z-index: 1;
 }
 
+#gui.pause .inventory {
+  display: none;
+}
+
 .items {
   background: url(/textures/tab_item_search.png) no-repeat;
   width: 394px;
