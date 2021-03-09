@@ -8,6 +8,8 @@
   image-rendering: crisp-edges;
   image-rendering: pixelated;
   -ms-interpolation-mode: nearest-neighbor;
+  
+  backface-visibility: hidden;
 }
 
 @font-face {
@@ -133,7 +135,7 @@ body {
   text-shadow: none;
   color: #3f3f3f;
   font-size: 20px;
-  padding-top: 11px;
+  padding-top: 10px;
   padding-left: 16px;
   display: flex;
   word-spacing: initial;
@@ -145,11 +147,11 @@ body {
   height: 21px;
   padding-left: 3px;
   margin-left: 15px;
-  margin-top: -1px;
   box-sizing: border-box;
   color: #FCFCFC;
   text-shadow: 1.5px 1.5px #3f3f3f;
   caret-color: transparent;
+  cursor: default;
 }
 
 .search .input:focus::after {
