@@ -1,5 +1,5 @@
-const mapRadius = 20; //8
-const heightLimit = 17;
+const mapRadius = 18; //8
+const heightLimit = 20;
 
 const blocks = [];
 let blockData = [];
