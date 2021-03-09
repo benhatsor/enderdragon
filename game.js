@@ -746,11 +746,15 @@ function toggleInventory() {
     }
 
     inventory.innerHTML = domInventory;
-    inventory.classList.add('visible');
+    document.querySelector('.inventory').classList.add('visible');
+    
+    inventoryOpen = true;
     
     document.exitPointerLock();
   }
   else {
+    inventoryOpen = false;
+    
     inventory.classList.remove('visible');
     document.querySelector('#camera').requestPointerLock();
   }
