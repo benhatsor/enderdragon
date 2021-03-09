@@ -133,6 +133,8 @@ body {
   height: 275px;
   z-index: 1;
   background-size: 518px;
+  padding-left: 16px;
+  box-sizing: border-box;
 }
 
 .inventory .search {
@@ -140,7 +142,6 @@ body {
   color: #3f3f3f;
   font-size: 20px;
   padding-top: 10px;
-  padding-left: 16px;
   display: flex;
   word-spacing: initial;
 }
@@ -156,6 +157,11 @@ body {
   text-shadow: 1.5px 1.5px #3f3f3f;
   caret-color: transparent;
   cursor: default;
+}
+
+.inventory .search .input::selection {
+  color: #3f3f3f;
+  background: #FCFCFC;
 }
 
 .search .input:focus::after {
@@ -174,6 +180,94 @@ body {
   50% {
     opacity: 0;
   }
+}
+
+.inventory .tab {
+  width: 328px;
+  margin-top: 4px;
+  height: 182px;
+  overflow-y: auto;
+}
+
+.inventory .slot {
+  position: relative;
+  display: inline-block;
+  background: #8B8B8B no-repeat center center / 32px 32px;
+  border: 2.23px solid;
+  border-color: #373737 #FFF #FFF #373737;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  line-height: 1;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.inventory .slot::before, .inventory .slot::after {
+  content: "";
+  position: absolute;
+  background-color: #8B8B8B;
+  height: 2px;
+  width: 2px;
+  pointer-events: none;
+}
+
+.inventory .slot::before {
+  bottom: -2px;
+  left: -2px;
+}
+
+.inventory .slot::after {
+  top: -2px;
+  right: -2px;
+}
+
+.inventory .slot .item {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  background: url(textures/invSprite.webp) no-repeat;
+}
+
+.minetip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #100010;
+  background-color: rgba(16,0,16,0.94);
+  padding: 0.375em;
+  font-family: Minecraft,sans-serif;
+  font-size: 20px;
+  word-spacing: normal;
+  white-space: nowrap;
+  margin: 0.125em 0.25em;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.minetip::before {
+  content: "";
+  position: absolute;
+  top: 0.125em;
+  right: -0.125em;
+  bottom: 0.125em;
+  left: -0.125em;
+  border: 0.125em solid #100010;
+  border-style: none solid;
+  border-color: rgba(16,0,16,0.94);
+}
+
+.minetip::after {
+  content: "";
+  position: absolute;
+  top: 0.125em;
+  right: 0;
+  bottom: 0.125em;
+  left: 0;
+  border: 0.125em solid #2D0A63;
+  border-image: -webkit-linear-gradient(rgba(80,0,255,0.31),rgba(40,0,127,0.31)) 1;
+  border-image: linear-gradient(rgba(80,0,255,0.31),rgba(40,0,127,0.31)) 1;
 }
 
 .options {
