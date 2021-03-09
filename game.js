@@ -1,4 +1,4 @@
-const mapRadius = 8;
+const mapRadius = 20; //8
 const heightLimit = 29;
 
 const blocks = [];
@@ -27,7 +27,8 @@ function constructWorld() {
 
         let type;
         if (y > 2) type = 0;
-        else if (y > 0) type = 2;
+        else if (y > 1) type = 2;
+        else if (y > 0) type = 1;
         else if (y == 0) type = 6;
         
         //blockData[x][z][y] = (y >= 10 ? 0 : (y >= 9 ? 2 : (y == 0 ? 6 : 3)));
@@ -287,7 +288,7 @@ const player = {
   height: 1.3,
   pos: {
     x: 0,
-    y: 9.5,
+    y: 2.5,
     z: 0
   },
   rot: {
@@ -1049,7 +1050,7 @@ function initSingleplayer() {
   
   buildInventory(inventory);
   
-  buildStructure(-5, -5, 10, 'tree', false);
+  buildStructure(-5, -5, 3, 'tree', false);
   
 }
 
