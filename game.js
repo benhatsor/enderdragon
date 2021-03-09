@@ -735,7 +735,7 @@ document.onkeyup = function(e) {
 
 var inventoryOpen = false;
 function toggleInventory() {
-  if (!inventoryOpen) {
+  if (!inventoryOpen) {    
     var inventory = document.querySelector('.inventory .items .tab'),
         domInventory = '';
 
@@ -746,14 +746,15 @@ function toggleInventory() {
     }
 
     inventory.innerHTML = domInventory;
-    document.querySelector('.inventory').classList.add('visible');
     
     inventoryOpen = true;
-    
     document.exitPointerLock();
+    
+    document.querySelector('#gui').classList = 'inventory';
   }
   else {
     inventoryOpen = false;
+    document.querySelector('#gui').classList.remove('inventory');
     
     inventory.classList.remove('visible');
     document.querySelector('#camera').requestPointerLock();
