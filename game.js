@@ -741,7 +741,7 @@ function toggleInventory() {
 
     for (var i = 0;i < blockList.length;i++) {
       if (blockList[i].id != 0) {
-        domInventory += `<div class="slot" onmouseenter="showMinetip('`+ blockList[i].name +`')" onmouseleave="hideMinetip()" style="background-position:`+ blockList[i].invPic +`">
+        domInventory += `<div class="slot" onmouseenter="showMinetip('`+ blockList[i].name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" style="background-position:`+ blockList[i].invPic +`">
                          <div class="item"></div></div>`;
       }
     }
@@ -766,6 +766,11 @@ function toggleInventory() {
 function showMinetip(data) {
   document.querySelector('.inventory .minetip').innerHTML = data;
   document.querySelector('.inventory .minetip').classList.add('visible');
+}
+
+function moveMinetip(e) {
+  document.querySelector('.inventory .minetip').style.left = e.clientX + 'px';
+  document.querySelector('.inventory .minetip').style.top = e.clientY + 'px';
 }
 
 function hideMinetip() {
