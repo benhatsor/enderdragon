@@ -13,8 +13,8 @@ A CSS3D version of Minecraft
 </p>
 
 ## Todo
+- Larger world
 - Inventory
-- More blocks
 - Command Blocks
 
 ## Contributing :blush:
