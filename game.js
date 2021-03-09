@@ -750,15 +750,15 @@ function toggleInventory() {
     inventoryOpen = true;
     document.exitPointerLock();
     
-    pause();
     document.querySelector('#gui').classList.add('takingInv');
+    pause();
   }
   else {
     inventoryOpen = false;
     document.querySelector('#gui').classList.remove('takingInv');    
     
-    pause();
     document.querySelector('#camera').requestPointerLock();
+    pause();
   }
 }
 
