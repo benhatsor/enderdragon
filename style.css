@@ -395,6 +395,10 @@ body {
   margin-right: auto;
 }
 
+.options.titlescreen .button:last-of-type {
+  margin-bottom: 0;
+}
+
 .progress {
   height: 4px;
   width: 200px;
