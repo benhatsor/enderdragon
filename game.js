@@ -1,4 +1,4 @@
-const mapRadius = 16; //8
+const mapRadius = 8; //8
 const heightLimit = 18;
 
 const blocks = [];
