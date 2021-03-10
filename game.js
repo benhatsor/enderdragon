@@ -847,7 +847,7 @@ document.querySelector('.inventory .search .input').addEventListener('input', e 
   var query = document.querySelector('.inventory .search .input').innerText.toUpperCase();
   
   // search blocks
-  document.querySelectorAll('.inventory .slot').forEach(item => {
+  document.querySelectorAll('.inventory .tab .slot').forEach(item => {
     if (item.getAttribute('name').toUpperCase().includes(query)) {
       item.style.display = '';
     }
