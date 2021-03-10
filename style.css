@@ -227,13 +227,20 @@ body {
   right: -2px;
 }
 
-.inventory .slot .item {
+.inventory .slot .item, .inventory .item.drag {
   display: inline-block;
   width: 32px;
   height: 32px;
   vertical-align: middle;
   background: url(textures/invSprite.webp) no-repeat;
   background-position: inherit;
+}
+
+.inventory .item.drag {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: -16px;
 }
 
 .inventory .slot:hover .item::before {
