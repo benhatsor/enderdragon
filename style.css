@@ -206,6 +206,7 @@ body {
   line-height: 1;
   text-align: left;
   vertical-align: bottom;
+  margin: 0;
 }
 
 .inventory .slot::before, .inventory .slot::after {
@@ -234,6 +235,14 @@ body {
   vertical-align: middle;
   background: url(textures/invSprite.webp) no-repeat;
   background-position: inherit;
+}
+
+.inventory .hotbar {
+  position: relative;
+  margin-top: 8px;
+  background: transparent;
+  width: 328px;
+  height: 37px;
 }
 
 .minetip {
