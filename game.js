@@ -742,8 +742,11 @@ document.onkeydown = function(e) {
     sneak();
   }
   
+  // make sure when searching typing E dosen't close inventory
+  var searching = document.querySelector('.inventory .search .input') === document.activeElement;
+  
   // 69 is E
-  if (e.keyCode == 69) {
+  if (e.keyCode == 69 && !searching) {
     toggleInventory();
   }
   
@@ -841,9 +844,6 @@ function hideMinetip() {
 
 // when typing in inventory search input
 document.querySelector('.inventory .search .input').addEventListener('input', e => {
-  // prevent event propagation to make sure typing E dosen't close inventory
-  e.preventDefault();
-  
   var query = document.querySelector('.inventory .search .input').innerText.toUpperCase();
   
   // search blocks
