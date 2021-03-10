@@ -659,6 +659,9 @@ document.querySelector('#camera').onmousedown = function(e) {
 var activeBlock = blockId(hotbar[0]).id;
 
 function buildHotbar(hotbar) {
+  var invHotbar = document.querySelector('.inventory .hotbar'),
+      domHotbar = '';
+  
   for (var i = 0;i < hotbar.length;i++) {
     // get block data by index
     var block = blockId(hotbar[i]);
@@ -672,9 +675,7 @@ function buildHotbar(hotbar) {
     }
     
     //* render inventory hotbar *//
-    var invHotbar = document.querySelector('.inventory .hotbar'),
-        domHotbar = '';
-
+    
     // blockId "0" is air
     if (block.id != 0) {
       
