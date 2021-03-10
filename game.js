@@ -683,10 +683,10 @@ function buildHotbar(hotbar) {
                     <div class="item"></div></div>`;
       
     }
-    
-    // insert HTML into DOM
-    invHotbar.innerHTML = domHotbar;
   }
+  
+  // insert HTML into DOM
+  invHotbar.innerHTML = domHotbar;
 }
 
 function blockId(name) {
