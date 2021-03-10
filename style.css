@@ -235,6 +235,16 @@ body {
   background-position: inherit;
 }
 
+.inventory .slot:hover .item::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #ffffff80;
+  top: 0;
+  left: 0;
+}
+
 .inventory .hotbar {
   position: relative;
   margin-top: 8px;
