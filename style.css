@@ -163,8 +163,9 @@ body {
 }
 
 .inventory .search .input::selection {
-  color: #3f3f3f;
-  background: #FCFCFC;
+  color: black;
+  background: white;
+  text-shadow: none;
 }
 
 .search .input:focus::after {
