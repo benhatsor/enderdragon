@@ -659,15 +659,35 @@ document.querySelector('#camera').onmousedown = function(e) {
 var activeBlock = blockId(hotbar[0]).id;
 
 function buildHotbar(hotbar) {
+  var invHotbar = document.querySelector('.inventory .hotbar'),
+      domHotbar = '';
+  
   for (var i = 0;i < hotbar.length;i++) {
+    // get block data by index
     var block = blockId(hotbar[i]);
     
+    //* render main hotbar *//
     document.querySelectorAll('.slot')[i].style.backgroundPosition = block.invPic;
     
+    // fix air showing up as undefined
     if (block.name == 'Air') {
       document.querySelectorAll('.slot')[i].style.background = 'none';
     }
+    
+    //* render inventory hotbar *//
+    
+    // blockId "0" is air
+    if (block.id != 0) {
+      
+      // generate HTML
+      domHotbar += `<div class="slot" onmouseenter="showMinetip('`+ block.name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" name="`+ block.name +`" style="background-position:`+ block.invPic +`">
+                    <div class="item"></div></div>`;
+      
+    }
   }
+  
+  // insert HTML into DOM
+  invHotbar.innerHTML = domHotbar;
 }
 
 function blockId(name) {
@@ -701,33 +721,43 @@ window.addEventListener('wheel', e => {
 document.onkeydown = function(e) {
   var key = e.keyCode - 49;
   
+  // if keys are within range 1-9
   if (key >= 0 && key <= 8 && paused == false) {
-    changeBlock(key); // activeBlock
+    // change active block
+    changeBlock(key);
   }
   
+  // 16 is SHIFT
   if (e.keyCode == 16) {
     sneak();
   }
   
+  // 69 is E
   if (e.keyCode == 69) {
     toggleInventory();
   }
   
+  // check for sprint or fly
   checkDblClick(e);
 };
 
 document.onkeyup = function(e) {
+  
+  // 16 is SHIFT
   if (e.keyCode == 16) {
     disableSneaking();
   }
   
+  // if sprinting (W is keybinds.forward)
   if (e.keyCode == keybinds.forward && sprinting) {
     disableSprinting();
   }
+  // if not sprinting, set flag to detect double click
   else if (e.keyCode == keybinds.forward) {
     sprintKeyUp = true;
   }
   
+  // if not flying, set flag to detect double click
   if (e.keyCode == keybinds.jump) {
     spacebarUp = true;
   }
@@ -739,38 +769,58 @@ function toggleInventory() {
     var inventory = document.querySelector('.inventory .items .tab'),
         domInventory = '';
 
+    // run on all blocks that exist
     for (var i = 0;i < blockList.length;i++) {
+      
+      // if block is not air
       if (blockList[i].id != 0) {
+        // add slot
         domInventory += `<div class="slot" onmouseenter="showMinetip('`+ blockList[i].name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" name="`+ blockList[i].name +`" style="background-position:`+ blockList[i].invPic +`">
                          <div class="item"></div></div>`;
       }
+      
     }
 
+    // place HTML into DOM
     inventory.innerHTML = domInventory;
     
     inventoryOpen = true;
+    
+    // exit pointerlock to browse inventory
     document.exitPointerLock();
     
-    document.querySelector('#gui').classList.add('takingInv');
+    // this is important, resumes the game to make up for pausing it
+    // the game toggles pause state whenever the pointerlock state changes
     pause();
+    
+    // equally important as it makes CSS show the inventory
+    document.querySelector('#gui').classList.add('takingInv');
   }
   else {
     inventoryOpen = false;
+    
+    // hides inventory
     document.querySelector('#gui').classList.remove('takingInv');    
     
+    // clears search input
     document.querySelector('.inventory .search .input').innerHTML = '';
     
     document.querySelector('#camera').requestPointerLock();
+    
+    // this is important, pauses the game to make up for resuming it earlier
+    // the game toggles pause state whenever the pointerlock state changes
     pause();
   }
 }
 
 function showMinetip(data) {
+  // shows tooltip with block name
   document.querySelector('.inventory .minetip').innerHTML = data;
   document.querySelector('.inventory .minetip').classList.add('visible');
 }
 
 function moveMinetip(e) {
+  // moves tooltip to mouse pos
   document.querySelector('.inventory .minetip').style.left = e.clientX + 'px';
   document.querySelector('.inventory .minetip').style.top = e.clientY + 'px';
 }
@@ -779,10 +829,14 @@ function hideMinetip() {
   document.querySelector('.inventory .minetip').classList.remove('visible');
 }
 
+// when typing in inventory search input
 document.querySelector('.inventory .search .input').addEventListener('input', e => {
+  // prevent event propagation to make sure typing E dosen't close inventory
   e.preventDefault();
   
   var query = document.querySelector('.inventory .search .input').innerText.toUpperCase();
+  
+  // search blocks
   document.querySelectorAll('.inventory .slot').forEach(item => {
     if (item.getAttribute('name').toUpperCase().includes(query)) {
       item.style.display = '';
@@ -793,53 +847,82 @@ document.querySelector('.inventory .search .input').addEventListener('input', e 
   })
 })
 
+// smooth sneak animation
 function animateSneak(direction) {
   if (direction == 'forward') {
     if (player.height >= 1.1) {
+      // animation
       player.height -= 0.05;
+      
+      // calling this as an inline anonymous function to pass animation direction
       requestAnimationFrame(() => { animateSneak('forward') });
     }
     else {
+      // snap to desired value at end of animation
       player.height = 1.1;
     }
   }
   if (direction == 'backward') {
     if (player.height <= 1.3) {
+      // animation
       player.height += 0.05;
+      
+      // calling this as an inline anonymous function to pass animation direction
       requestAnimationFrame(() => { animateSneak('backward') });
     }
     else {
+      // snap to desired value at end of animation
       player.height = 1.3;
     }
   }
 }
 
+// determines how much time (ms), between keypresses
+// is considered a double click
 var keyDelta = 250;
-var lastKeypressTimeSprint = 0;
-var sprinting = false;
-var sprintKeyUp = false;
+    
+// these are flags to determine sprint
+var lastKeypressTimeSprint = 0,
+    sprinting = false,
+    sprintKeyUp = false;
 
-var lastKeypressTimeFly = 0;
-var flying = false;
-var spacebarUp = false;
+// these are flags to determine flying
+var lastKeypressTimeFly = 0,
+    flying = false,
+    spacebarUp = false;
 
+// check sprint and fly
 function checkDblClick(e) {
- if (e.keyCode == keybinds.forward) {
+  
+  // check sprint (keybinds.forward is W)
+  if (e.keyCode == keybinds.forward) {
     var thisKeypressTime = new Date();
+    
+    // check delta between keypresses, was there another keypress, and if sneaking
+    // can't run while sneaking
     if (thisKeypressTime - lastKeypressTimeSprint <= keyDelta && sprintKeyUp && !sneaking) {
       sprint();
+      
+      // reset
       thisKeypressTime = 0;
       sprintKeyUp = false;
     }
     else if (sprintKeyUp) {
+      // if delta has passed, reset
       sprintKeyUp = false;
     }
     lastKeypressTimeSprint = thisKeypressTime;
- }
+  }
   
+  // check fly (keybinds.jump is SPACE)
   if (e.keyCode == keybinds.jump) {
     var thisKeypressTime = new Date();
+    
+    // check delta between keypresses, was there another keypress, and if sneaking
+    // can't fly while sneaking
     if (thisKeypressTime - lastKeypressTimeFly <= keyDelta && spacebarUp && !sneaking) {
+      
+      // toggle flying
       if (flying == false) {
         fly();
       }
@@ -847,19 +930,23 @@ function checkDblClick(e) {
         disableFlying();
       }
       
+      // reset
       thisKeypressTime = 0;
       spacebarUp = false;
     }
     else if (spacebarUp) {
+      // if delta has passed, reset
       spacebarUp = false;
     }
     lastKeypressTimeFly = thisKeypressTime;
  }
 }
 
-function sneak() {  
+function sneak() {
+  
+  // only animate sneak, change height and velocity
+  // if not flying, jumping, or already sneaking
   if (!flying && !sneaking && verticalSpeed >= 0) {
-    //player.height = 1.1; // shift
     velocity = 700;
     verticalVelocity = 2.5;
 
@@ -870,8 +957,9 @@ function sneak() {
 }
 
 function disableSneaking() {
+  
+  // if not flying, animate sneak
   if (!flying) {
-    //player.height = 1.3; // shift
     velocity = 400;
     verticalVelocity = 3.7;
 
@@ -889,6 +977,9 @@ function fly() {
   
   flying = true;
   
+  // change camera perspective
+  // worth mentioning: when sprinting and flying,
+  // camera perspective is even more skewed. this happens in the CSS
   document.querySelector('#camera').classList.add('fly');
 }
 
@@ -900,6 +991,7 @@ function disableFlying() {
   
   flying = false;
   
+  // change camera perspective back to normal
   document.querySelector('#camera').classList.remove('fly');
 }
 
@@ -913,6 +1005,9 @@ function sprint() {
   
   sprinting = true;
   
+  // change camera perspective
+  // worth mentioning: when sprinting and flying,
+  // camera perspective is even more skewed. this happens in the CSS
   document.querySelector('#camera').classList.add('sprint');
 }
 
@@ -926,6 +1021,7 @@ function disableSprinting() {
     
   sprinting = false;
 
+  // change camera perspective back to normal
   document.querySelector('#camera').classList.remove('sprint');
 }
 
@@ -934,6 +1030,7 @@ var inspector = false;
 
 function pause() {
   if (!paused) {
+    // show pause screen
     document.querySelector('#gui').classList.add('pause');
     paused = true;
 
@@ -947,6 +1044,7 @@ function pause() {
           <div class="button" role="button" onclick="inspector = true;document.querySelector('#gui').style.display = 'none'">Inspector Mode</div>`;
   }
   else {
+    // hide pause screen
     document.querySelector('#gui').classList.remove('pause');
     paused = false;
   }
@@ -958,9 +1056,12 @@ function redirect(url) {
 
 var tooltipTimeout = null;
 
+// change active block
 function changeBlock(id) {
+  // index of current active block
   var index = Array.from(document.querySelectorAll('.slot')).indexOf(document.querySelector('.slot.selected'));
   
+  // if current != new
   if (index != id) {
     activeBlock = blockId(hotbar[id]).id;
 
@@ -969,7 +1070,11 @@ function changeBlock(id) {
 
     clearTimeout(tooltipTimeout);
 
+    // don't show tooltip for air
     if (activeBlock != 0) {
+      
+      // show tooltip
+      
       document.querySelector('.hotbar').classList.remove('tooltip');
       
       document.querySelector('.hotbar').setAttribute('tooltip', hotbar[id]);
@@ -979,6 +1084,7 @@ function changeBlock(id) {
         document.querySelector('.hotbar').setAttribute('tooltip', '');
         document.querySelector('.hotbar').classList.remove('tooltip');
       }, 2000);
+      
     }
     else {
       document.querySelector('.hotbar').setAttribute('tooltip', '');
@@ -987,11 +1093,13 @@ function changeBlock(id) {
   }
 }
 
+// copy block to hotbar on middle mouse button press
 function copyBlock(block) {
   var index = Array.from(document.querySelectorAll('.slot')).indexOf(document.querySelector('.slot.selected'));
   
   hotbar[index] = blockList[block].name;
   
+  // rebuild hotbar
   buildHotbar(hotbar);
 }
 
@@ -1004,6 +1112,7 @@ function debug() {
     faceBlock = blockList[blockData[focusBlock.x][focusBlock.z][focusBlock.y]].id;
   }
   
+  // show debug screen
   document.querySelector('.debugscreen').innerHTML = `
   <p>Enderdragon `+version+` (`+version+`/`+exVersion+`)</p>
   <p>Client @ `+1+` ms ticks (Netlify)</p>
@@ -1024,6 +1133,7 @@ var f3q = false;
 document.addEventListener('keydown', shortcutDown);
 document.addEventListener('keyup', shortcutUp);
 
+// check for F3 and F3Q
 function shortcutDown(zEvent) {
   if (zEvent.key === 'F3') {
     f3 = true;
@@ -1037,9 +1147,11 @@ function shortcutDown(zEvent) {
     zEvent.stopPropagation();
     zEvent.preventDefault();
     
+    // if F3Q, go to help page
     redirect('https://github.com/barhatsor/enderdragon#README');
   }
   
+  // if alt key press, disable inspector mode
   if (zEvent.altKey && inspector) {
     inspector = false;
     document.querySelector('#gui').style.display = 'flex';
@@ -1055,6 +1167,8 @@ function shortcutUp(zEvent) {
 }
 
 function tick() {
+  
+  // tick is https://minecraft.gamepedia.com/Tick
   for (let x in blockData) {
     for (let z in blockData[x]) {
       for (let y in blockData[x][z]) {
@@ -1091,6 +1205,7 @@ function tick() {
   }
 }
 
+// structure API
 function buildStructure(xp, zp, yp, structureName, replace) {
   let structure = structures[structureName];
 
@@ -1149,11 +1264,12 @@ function returnToTitle() {
   
   var d = Math.random();
   if (d < 0.1) {
+    // minceraft easter egg
     //document.querySelector('.title').classList.add('minceraft');
   }
 }
 
-var splashes = "Bigfoot saw Chuck Norris! Il n'y a pas de game! Missing ) after argument list! 99.9% Meme-Free! Call Now! Toll-Free! Ask your doctor! Stay safe! Now in CSS3D! Impressive! Star-struck! Child's play! Classy! Open source! Contribute! Inspector Gadget! Complex cellular automata! Wireworld! Jon Arbuckle likes this! Come to the duck side! Do you want a snowman? Don't bother with the clones! Double-Trouble! Double clone! Programmer subreddit! Don’t worry, be happy! Shinobi Jutsu! Fat free! Feature packed! Free range developers! Funk soul brother! Eggs and Spam! Gargamel plays it! Google anlyticsed! Han shot first! OMGLOL! #ashtag! Nizzotch is back! Internet enabled! It's a game! Coming soon! When it's finished! It's groundbreaking! Javascript edition! Created in Inspector! Classes are overrated! CSS! Limited edition! Look mum, I’m in a splash! Notch was here! Menger sponge! Minecraft! Enderdragon soon! Sexy! More polygons! No sue just moo! Nice to meet you! Not linear! Cooler than Spock! Now in CSS3! Pixels! pls rt! Also try threejs! Does mrdoob approve? Now with zazz! Also try Netlify! DM me! -webkit-! Now in 3 languages! Inspired by Calada2! Also try Github! React is overrated! @scroll-timeline is awesome! Custom splashes! Now with more faces! Also try Super Mario Odyssey! Responsive! Pure CSS! Contenteditable! Also try Among Us! Also try Figma! Big Sur! Sugar-free! 1% Chance! 404'd! Runs on Netlify! Idnex! Complex Quaternions! Everything is awesome! Awesome! Javascript not JavaScript! Does anybody actually read these? Obscure references!";
+var splashes = "Missing ) after argument list! Call Now! Toll-Free! Ask your doctor! Now in CSS3D! Impressive! Star-struck! Child's play! Classy! Open source! Inspector Gadget! Complex cellular automata! Come to the duck side! Don't bother with the clones! Don’t worry, be happy! Fat free! Feature packed! Free range developers! Funk soul brother! Eggs and Spam! Gargamel plays it! Google anlyticsed! Han shot first! OMGLOL! #ashtag! Internet enabled! It's a game! Coming soon! When it's finished! Groundbreaking! Javascript edition! CSS! Limited edition! Look mum, I’m in a splash! Notch was here! Menger sponge! Minecraft! Enderdragon! More polygons! Not linear! Cooler than Spock! Now in CSS3! Pixels! pls rt! Does mrdoob approve? Now with zazz! Also try Netlify! Now in 3 languages! Also try Github! Now with more faces! Responsive! Pure CSS! Contenteditable! Also try Among Us! Also try Figma! Big Sur! Sugar-free! 1% Chance! 404'd! Runs on Netlify! Idnex! Complex Quaternions! Everything is awesome!";
 splashes = splashes.replaceAll('! ','!`').replaceAll('? ','?`').split('`');
 
 returnToTitle();
