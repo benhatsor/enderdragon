@@ -682,7 +682,6 @@ function buildHotbar(hotbar) {
       // generate HTML
       domHotbar += `<div class="slot" onmouseenter="showMinetip('`+ block.name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" name="`+ block.name +`" style="background-position:`+ block.invPic +`">
                     <div class="item"></div></div>`;
-      console.log(domHotbar);
       
     }
   }
