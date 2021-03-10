@@ -234,6 +234,7 @@ body {
   vertical-align: middle;
   background: url(textures/invSprite.webp) no-repeat;
   background-position: inherit;
+  pointer-events: none;
 }
 
 .inventory .item.drag {
@@ -241,7 +242,6 @@ body {
   top: 0;
   left: 0;
   margin: -16px;
-  pointer-events: none;
   display: none;
 }
 
