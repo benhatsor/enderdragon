@@ -106,6 +106,7 @@ function renderGame() {
 }
 
 let loadedTextures = false;
+let imagesToLoad = ['widgets.png', 'invSprite.webp', 'tab_item_search.png'];
 
 function loadTextures() {
   document.querySelector('.options').innerHTML = `
@@ -133,6 +134,15 @@ function loadTextures() {
       }
     }
   })
+  
+  for (var i = 0;i < imagesToLoad.length;i++) {
+    var img = document.createElement('img');
+        img.src = 'textures/' + imagesToLoad[i];
+        img.onload = incrementLoader;
+        img.onerror = incrementLoader;
+
+        document.querySelector('.imgloader').appendChild(img);
+  }
 }
 
 function incrementLoader() {
