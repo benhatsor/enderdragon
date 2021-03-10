@@ -742,7 +742,7 @@ document.onkeydown = function(e) {
     sneak();
   }
   
-  // make sure when searching typing E dosen't close inventory
+  // when searching, make sure E dosen't close inventory
   var searching = document.querySelector('.inventory .search .input') === document.activeElement;
   
   // 69 is E
