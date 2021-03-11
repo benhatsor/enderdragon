@@ -686,15 +686,9 @@ function buildHotbar(hotbar) {
     
     //* render inventory hotbar *//
     
-    // fix air showing up as undefined
-    var itemImage = '';
-    if (block.name == 'Air') {
-      itemImage = 'background: none';
-    }
-    
     // generate HTML
     domHotbar += `<div class="slot" onmouseenter="showMinetip('`+ block.name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ block.name +`" style="background-position:`+ block.invPic +`">
-                  <div class="item" style="`+ itemImage +`"></div></div>`;
+                  <div class="item"></div></div>`;
   }
   
   // insert HTML into DOM
