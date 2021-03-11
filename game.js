@@ -870,10 +870,10 @@ document.addEventListener('click', e => {
 
         // rebuild hotbar
         buildHotbar(hotbar);
-        
-        // show minetip
-        showMinetip(hotbar[index]);
       }
+      
+      // show tooltip
+      showMinetip(hotbar[index]);
     }
   }
   
