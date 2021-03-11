@@ -873,11 +873,10 @@ document.addEventListener('click', e => {
         // rebuild hotbar
         buildHotbar(hotbar);
       }
-
-      // reset
-      draggingItem = false;
-      invDragItem.classList.remove('visible');
     }
+    // reset
+    draggingItem = false;
+    invDragItem.classList.remove('visible');
   }
 })
 
