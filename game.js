@@ -828,18 +828,17 @@ function toggleInventory() {
 }
 
 var draggingItem = false;
-var dragMoveListener;
 var dragClickListener;
 
+// item for dragging
+var invDragItem = document.querySelector('.inventory .item.drag');
+
 function dragItem(item) {
-  // item for dragging
-  var invDragItem = document.querySelector('.inventory .item.drag');
-  
   // get item index in hotbar
-  var itemIndex = item.parentElement.classList.contains('hotbar') ? Array.from(document.querySelectorAll('.inventory .hotbar .slot')).indexOf(item) : 1;
+  var itemIndex = item.parentElement.classList.contains('hotbar') ? Array.from(document.querySelectorAll('.inventory .hotbar .slot')).indexOf(item) : -1;
   
   // if not already dragging and item not air
-  if (!draggingItem && hotbar[itemIndex] != 0) {
+  if (!draggingItem && hotbar[itemIndex] != 'Air') {
     draggingItem = true;
     
     // hide inventory item tooltip
@@ -858,37 +857,33 @@ function dragItem(item) {
       // rebuild hotbar
       buildHotbar(hotbar);
     }
-    
-    dragMoveListener = (e) => {
-      invDragItem.style.left = e.clientX + 'px';
-      invDragItem.style.top = e.clientY + 'px';
-    }
-    
-    dragClickListener = (e) => {
-      // if clicked on item from hotbar
-      if (e.target.classList.contains('slot') && e.target.parentElement.classList.contains('hotbar')) {
-        // get item index
-        var index = Array.from(document.querySelectorAll('.inventory .hotbar .slot')).indexOf(item);
-        
-        // set hotbar slot to item
-        hotbar[index] = invDragItem.getAttribute('name');
-
-        // rebuild hotbar
-        buildHotbar(hotbar);
-      }
-      
-      // reset
-      draggingItem = false;
-      invDragItem.classList.remove('visible');
-
-      document.removeEventListener('mousemove', dragMoveListener);
-      document.removeEventListener('click', dragClickListener);
-    }
-    
-    document.addEventListener('mousemove', dragMoveListener);
-    document.addEventListener('click', dragClickListener);
   }
 }
+
+document.addEventListener('click', e => {
+  if (draggingItem) {
+    // if clicked on item from hotbar
+    if (e.target.classList.contains('slot') && e.target.parentElement.classList.contains('hotbar')) {
+      // get item index
+      var index = Array.from(document.querySelectorAll('.inventory .hotbar .slot')).indexOf(item);
+
+      // set hotbar slot to item
+      hotbar[index] = invDragItem.getAttribute('name');
+
+      // rebuild hotbar
+      buildHotbar(hotbar);
+    }
+
+    // reset
+    draggingItem = false;
+    invDragItem.classList.remove('visible');
+  }
+})
+
+document.addEventListener('mousemove', e => {
+  invDragItem.style.left = e.clientX + 'px';
+  invDragItem.style.top = e.clientY + 'px';
+})
 
 function showMinetip(data) {
   // shows tooltip with block name
