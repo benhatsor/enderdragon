@@ -686,16 +686,15 @@ function buildHotbar(hotbar) {
     
     //* render inventory hotbar *//
     
-    var itemImage = 'background-position:'+ block.invPic;
-    
     // fix air showing up as undefined
+    var itemImage = '';
     if (block.name == 'Air') {
       itemImage = 'background: none';
     }
     
     // generate HTML
-    domHotbar += `<div class="slot" onmouseenter="showMinetip('`+ block.name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ block.name +`" style="`+ itemImage + `">
-                  <div class="item"></div></div>`;
+    domHotbar += `<div class="slot" onmouseenter="showMinetip('`+ block.name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ block.name +`" style="background-position:`+ block.invPic +`">
+                  <div class="item" style="`+ itemImage +`"></div></div>`;
   }
   
   // insert HTML into DOM
