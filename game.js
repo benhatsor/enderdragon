@@ -849,7 +849,7 @@ function dragItem(item) {
     // show item for dragging
     invDragItem.setAttribute('name', item.getAttribute('name'));
     invDragItem.style.backgroundPosition = item.style.backgroundPosition;
-    invDragItem.classList.add('visible')@@;
+    invDragItem.classList.add('visible');
     
     // if item from hotbar
     if (item.parentElement.classList.contains('hotbar')) {
