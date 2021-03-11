@@ -690,7 +690,7 @@ function buildHotbar(hotbar) {
     if (block.id != 0) {
       
       // generate HTML
-      domHotbar += `<div class="slot" onmouseenter="showMinetip('`+ block.name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" name="`+ block.name +`" style="background-position:`+ block.invPic +`">
+      domHotbar += `<div class="slot" onmouseenter="showMinetip('`+ block.name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ block.name +`" style="background-position:`+ block.invPic +`">
                     <div class="item"></div></div>`;
       
     }
@@ -788,7 +788,7 @@ function toggleInventory() {
       // if block is not air
       if (blockList[i].id != 0) {
         // add slot
-        domInventory += `<div class="slot" onmouseenter="showMinetip('`+ blockList[i].name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" name="`+ blockList[i].name +`" style="background-position:`+ blockList[i].invPic +`">
+        domInventory += `<div class="slot" onmouseenter="showMinetip('`+ blockList[i].name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ blockList[i].name +`" style="background-position:`+ blockList[i].invPic +`">
                          <div class="item"></div></div>`;
       }
       
@@ -826,10 +826,72 @@ function toggleInventory() {
   }
 }
 
+var draggingItem = false;
+var dragMoveListener;
+var dragClickListener;
+
+function dragItem(item) {
+  // item for dragging
+  var invDragItem = document.querySelector('.inventory .item.drag');
+  
+  // get item index in hotbar
+  var itemIndex = item.parentElement.classList.contains('hotbar') ? Array.from(document.querySelectorAll('.inventory .hotbar .slot')).indexOf(item) : 1;
+  
+  // if not already dragging and item not air
+  if (!draggingItem && hotbar[itemIndex] != 0) {
+    draggingItem = true;
+    
+    // hide inventory item tooltip
+    document.querySelector('.inventory .minetip').classList.remove('visible');
+
+    // show item for dragging
+    invDragItem.setAttribute('name', item.getAttribute('name'));
+    invDragItem.style.backgroundPosition = item.style.backgroundPosition;
+    invDragItem.classList.add('visible');
+    
+    // if item from hotbar
+    if (item.parentElement.classList.contains('hotbar')) {
+      // set item slot to air
+      hotbar[itemIndex] = 'Air';
+      
+      // rebuild hotbar
+      buildHotbar(hotbar);
+    }
+    
+    dragMoveListener = document.addEventListener('mousemove', e => {
+      invDragItem.style.left = e.clientX + 'px';
+      invDragItem.style.top = e.clientY + 'px';
+    })
+    
+    dragClickListener = document.addEventListener('click', e => {
+      // if clicked on item from hotbar
+      if (e.target.classList.contains('slot') && e.target.parentElement.classList.contains('hotbar')) {
+        // get item index
+        var index = Array.from(document.querySelectorAll('.inventory .hotbar .slot')).indexOf(item);
+        
+        // set hotbar slot to item
+        hotbar[index] = invDragItem.getAttribute('name');
+
+        // rebuild hotbar
+        buildHotbar(hotbar);
+      }
+      
+      // reset
+      draggingItem = false;
+      invDragItem.classList.remove('visible');
+
+      removeEventListener(dragMoveListener);
+      removeEventListener(dragClickListener);
+    })
+  }
+}
+
 function showMinetip(data) {
   // shows tooltip with block name
-  document.querySelector('.inventory .minetip').innerHTML = data;
-  document.querySelector('.inventory .minetip').classList.add('visible');
+  if (!draggingItem) {
+    document.querySelector('.inventory .minetip').innerHTML = data;
+    document.querySelector('.inventory .minetip').classList.add('visible');
+  }
 }
 
 function moveMinetip(e) {
