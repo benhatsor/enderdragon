@@ -860,21 +860,24 @@ function dragItem(item) {
 
 document.addEventListener('click', e => {
   if (draggingItem) {
+    console.log('called');
     // if clicked on item from hotbar
-    if (e.target.classList.contains('slot') && e.target.parentElement.classList.contains('hotbar')) {
-      // get item index
-      var index = Array.from(document.querySelectorAll('.inventory .hotbar .slot')).indexOf(item);
+    if (e.target.classList.contains('slot')) {
+      if (e.target.parentElement.classList.contains('hotbar')) {
+        // get item index
+        var index = Array.from(document.querySelectorAll('.inventory .hotbar .slot')).indexOf(e.target);
 
-      // set hotbar slot to item
-      hotbar[index] = invDragItem.getAttribute('name');
+        // set hotbar slot to item
+        hotbar[index] = invDragItem.getAttribute('name');
 
-      // rebuild hotbar
-      buildHotbar(hotbar);
+        // rebuild hotbar
+        buildHotbar(hotbar);
+      }
+
+      // reset
+      draggingItem = false;
+      invDragItem.classList.remove('visible');
     }
-
-    // reset
-    draggingItem = false;
-    invDragItem.classList.remove('visible');
   }
 })
 
