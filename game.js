@@ -817,6 +817,8 @@ function toggleInventory() {
 }
 
 var draggingItem = false;
+var startedDragging = false;
+
 // item for dragging
 var invDragItem = document.querySelector('.inventory .item.drag');
 
@@ -827,8 +829,8 @@ function dragItem(item) {
   // if not already dragging and item not air
   if (!draggingItem && hotbar[itemIndex] != 'Air') {
     draggingItem = true;
-    console.log('called');
-    
+    startedDragging = true;
+        
     // hide inventory item tooltip
     document.querySelector('.inventory .minetip').classList.remove('visible');
 
@@ -846,11 +848,13 @@ function dragItem(item) {
       buildHotbar(hotbar);
     }
   }
+  else {
+    startedDragging = false;
+  }
 }
 
 document.addEventListener('click', e => {
-  if (draggingItem) {
-    console.log('called');
+  if (draggingItem && !startedDragging) {
     // if clicked on item from hotbar
     if (e.target.classList.contains('slot')) {
       if (e.target.parentElement.classList.contains('hotbar')) {
@@ -866,6 +870,13 @@ document.addEventListener('click', e => {
     }
     // reset
     draggingItem = false;
+    invDragItem.classList.remove('visible');
+  }
+  
+  if (!e.target.classList.contains('slot')) {
+    // reset
+    draggingItem = false;
+    startedDragging = false;
     invDragItem.classList.remove('visible');
   }
 })
