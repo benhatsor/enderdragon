@@ -686,14 +686,16 @@ function buildHotbar(hotbar) {
     
     //* render inventory hotbar *//
     
-    // blockId "0" is air
-    if (block.id != 0) {
-      
-      // generate HTML
-      domHotbar += `<div class="slot" onmouseenter="showMinetip('`+ block.name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ block.name +`" style="background-position:`+ block.invPic +`">
-                    <div class="item"></div></div>`;
-      
+    var itemImage = 'background-position:'+ block.invPic;
+    
+    // fix air showing up as undefined
+    if (block.name == 'Air') {
+      itemImage = 'background: none';
     }
+    
+    // generate HTML
+    domHotbar += `<div class="slot" onmouseenter="showMinetip('`+ block.name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ block.name +`" style="`+ itemImage + `">
+                  <div class="item"></div></div>`;
   }
   
   // insert HTML into DOM
@@ -847,7 +849,7 @@ function dragItem(item) {
     // show item for dragging
     invDragItem.setAttribute('name', item.getAttribute('name'));
     invDragItem.style.backgroundPosition = item.style.backgroundPosition;
-    invDragItem.classList.add('visible');
+    invDragItem.classList.add('visible')@@;
     
     // if item from hotbar
     if (item.parentElement.classList.contains('hotbar')) {
@@ -858,12 +860,12 @@ function dragItem(item) {
       buildHotbar(hotbar);
     }
     
-    dragMoveListener = document.addEventListener('mousemove', e => {
+    dragMoveListener = (e) => {
       invDragItem.style.left = e.clientX + 'px';
       invDragItem.style.top = e.clientY + 'px';
-    })
+    }
     
-    dragClickListener = document.addEventListener('click', e => {
+    dragClickListener = (e) => {
       // if clicked on item from hotbar
       if (e.target.classList.contains('slot') && e.target.parentElement.classList.contains('hotbar')) {
         // get item index
@@ -882,8 +884,11 @@ function dragItem(item) {
 
       document.removeEventListener('mousemove', dragMoveListener);
       document.removeEventListener('click', dragClickListener);
-    })
+    }
   }
+  
+  document.addEventListener('mousemove', dragMoveListener);
+  document.addEventListener('click', dragClickListener);
 }
 
 function showMinetip(data) {
