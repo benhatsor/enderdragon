@@ -828,8 +828,6 @@ function toggleInventory() {
 }
 
 var draggingItem = false;
-var dragClickListener;
-
 // item for dragging
 var invDragItem = document.querySelector('.inventory .item.drag');
 
