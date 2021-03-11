@@ -855,6 +855,10 @@ function dragItem(item) {
 
 document.addEventListener('click', e => {
   if (draggingItem && !startedDragging) {
+    // reset
+    draggingItem = false;
+    invDragItem.classList.remove('visible');
+    
     // if clicked on item from hotbar
     if (e.target.classList.contains('slot')) {
       if (e.target.parentElement.classList.contains('hotbar')) {
@@ -866,14 +870,14 @@ document.addEventListener('click', e => {
 
         // rebuild hotbar
         buildHotbar(hotbar);
+        
+        // show minetip
+        showMinetip(hotbar[index]);
       }
     }
-    // reset
-    draggingItem = false;
-    invDragItem.classList.remove('visible');
   }
   
-  if (!e.target.classList.contains('slot')) {
+  if (draggingItem && !e.target.classList.contains('slot')) {
     // reset
     draggingItem = false;
     startedDragging = false;
