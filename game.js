@@ -679,11 +679,6 @@ function buildHotbar(hotbar) {
     //* render main hotbar *//
     document.querySelectorAll('.slot')[i].style.backgroundPosition = block.invPic;
     
-    // fix air showing up as undefined
-    if (block.name == 'Air') {
-      document.querySelectorAll('.slot')[i].style.background = 'none';
-    }
-    
     //* render inventory hotbar *//
     
     // generate HTML
