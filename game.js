@@ -884,15 +884,15 @@ function dragItem(item) {
       document.removeEventListener('mousemove', dragMoveListener);
       document.removeEventListener('click', dragClickListener);
     }
+    
+    document.addEventListener('mousemove', dragMoveListener);
+    document.addEventListener('click', dragClickListener);
   }
-  
-  document.addEventListener('mousemove', dragMoveListener);
-  document.addEventListener('click', dragClickListener);
 }
 
 function showMinetip(data) {
   // shows tooltip with block name
-  if (!draggingItem) {
+  if (!draggingItem && data != 'Air') {
     document.querySelector('.inventory .minetip').innerHTML = data;
     document.querySelector('.inventory .minetip').classList.add('visible');
   }
