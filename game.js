@@ -880,8 +880,8 @@ function dragItem(item) {
       draggingItem = false;
       invDragItem.classList.remove('visible');
 
-      removeEventListener(dragMoveListener);
-      removeEventListener(dragClickListener);
+      document.removeEventListener('mousemove', dragMoveListener);
+      document.removeEventListener('click', dragClickListener);
     })
   }
 }
