@@ -2,6 +2,7 @@ const blockList = [
     {
         name: 'Air',
         xshape: false,
+        invPic: '32px 0',
         id: 0
     },
     {
@@ -19,7 +20,7 @@ const blockList = [
         name: 'Grass',
         multiside: true,
         xshape: false,
-    transparent: false,
+        transparent: false,
         sides: {
             0: 'grass_block_side.png',
             1: 'grass_block_side.png',
