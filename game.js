@@ -827,6 +827,7 @@ function dragItem(item) {
   // if not already dragging and item not air
   if (!draggingItem && hotbar[itemIndex] != 'Air') {
     draggingItem = true;
+    console.log('called');
     
     // hide inventory item tooltip
     document.querySelector('.inventory .minetip').classList.remove('visible');
