@@ -280,7 +280,7 @@ function blockUpdate(x, z, y) {
           placeBlock(x, z, y, 0);
         }
         
-        if ((isXShaped(x, z, y - 1) && isXShaped(x, z, y)) || (isXShaped(x, z, y - 1) && isRedstone(x, z, y) || (isRedstone(x, z, y - 1) && isXShaped(x, z, y)) {
+        if ((isXShaped(x, z, y - 1) && isXShaped(x, z, y)) || (isXShaped(x, z, y - 1) && isRedstone(x, z, y) || (isRedstone(x, z, y - 1) && isXShaped(x, z, y))) {
           placeBlock(x, z, y, 0);
         }
         
