@@ -688,6 +688,10 @@ function buildHotbar(hotbar) {
   
   // insert HTML into DOM
   invHotbar.innerHTML = domHotbar;
+  
+  // change active block
+  var index = Array.from(document.querySelectorAll('.slot')).indexOf(document.querySelector('.slot.selected'));
+  activeBlock = blockId(hotbar[index]).id;
 }
 
 function blockId(name) {
