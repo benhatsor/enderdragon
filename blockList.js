@@ -1,7 +1,17 @@
+/* sides: {
+        0: // side
+        1: // side
+        2: // side
+        3: // side
+        
+        4: // top
+        5: // bottom
+    }
+*/
+
 const blockList = [
     {
         name: 'Air',
-        xshape: false,
         invPic: '32px 0',
         id: 0
     },
@@ -9,9 +19,6 @@ const blockList = [
         id: 1,
         pic: 'dirt.png',
         name: 'Dirt',
-        multiside: false,
-        xshape: false,
-        transparent: false,
         invPic: '-576px -960px'
     },
     {
@@ -19,8 +26,6 @@ const blockList = [
         pic: 'grass_block_top.png',
         name: 'Grass',
         multiside: true,
-        xshape: false,
-        transparent: false,
         sides: {
             0: 'grass_block_side.png',
             1: 'grass_block_side.png',
@@ -35,27 +40,18 @@ const blockList = [
         id: 3,
         pic: 'stone.png',
         name: 'Stone',
-        multiside: false,
-        xshape: false,
-        transparent: false,
         invPic: '-224px -992px'
     },
     {
         id: 4,
         pic: 'cobblestone.png',
         name: 'Cobblestone',
-        multiside: false,
-        xshape: false,
-        transparent: false,
         invPic: '-960px -3328px'
     },
     {
         id: 5,
         pic: 'sand.png',
         name: 'Sand',
-        multiside: false,
-        xshape: false,
-        transparent: false,
         invPic: '-480px -3360px',
         fallingSand: true
     },
@@ -63,18 +59,12 @@ const blockList = [
         id: 6,
         pic: 'bedrock.png',
         name: 'Bedrock',
-        multiside: false,
-        xshape: false,
-        transparent: false,
         invPic: '-320px -960px'
     },
     {
         id: 7,
         pic: 'oak_planks.png',
         name: 'Oak Planks',
-        multiside: false,
-        xshape: false,
-        transparent: false,
         invPic: '-192px -896px'
     },
     {
@@ -82,8 +72,6 @@ const blockList = [
         pic: 'oak_log.png',
         name: 'Oak Log',
         multiside: true,
-        xshape: false,
-        transparent: false,
         sides: {
             0: 'oak_log.png',
             1: 'oak_log.png',
@@ -98,8 +86,6 @@ const blockList = [
         id: 9,
         pic: 'oak_leaves.png',
         name: 'Oak Leaves',
-        multiside: false,
-        xshape: false,
         transparent: true,
         invPic: '-128px -3424px'
     },
@@ -107,17 +93,13 @@ const blockList = [
         id: 10,
         pic: 'oak_sapling.png',
         name: 'Oak Sapling',
-        multiside: false,
         xshape: true,
-        transparent: false,
         invPic: '-192px -3424px'
     },
     {
         id: 11,
         pic: 'glass.png',
         name: 'Glass',
-        multiside: false,
-        xshape: false,
         transparent: true,
         invPic: '-960px -3232px'
     },
@@ -125,27 +107,20 @@ const blockList = [
         id: 12,
         pic: 'poppy.png',
         name: 'Poppy',
-        multiside: false,
         xshape: true,
-        transparent: false,
         invPic: '-352px -3424px'
     },
     {
         id: 13,
         pic: 'redstone_torch.png',
         name: 'Redstone Torch',
-        multiside: false,
         xshape: true,
-        transparent: false,
         invPic: '-608px -3328px'
     },
     {
         id: 14,
         pic: 'redstone_block.png',
         name: 'Redstone Block',
-        multiside: false,
-        xshape: false,
-        transparent: false,
         invPic: '-64px -3328px'
     },
     {
@@ -153,8 +128,6 @@ const blockList = [
         pic: 'command_block_side.png',
         name: 'Command Block',
         multiside: true,
-        xshape: false,
-        transparent: false,
         sides: {
             0: 'command_block_back.png',
             1: 'command_block_side.png',
@@ -172,26 +145,20 @@ const blockList = [
         id: 16,
         pic: 'torch.png',
         name: 'Torch',
-        multiside: false,
         xshape: true,
-        transparent: false,
         invPic: '-928px -3360px'
     },
     {
         id: 17,
         pic: 'soul_torch.png',
         name: 'Soul Torch',
-        multiside: false,
         xshape: true,
-        transparent: false,
         invPic: '-864px -128px'
     },
     {
         id: 18,
         pic: 'redstone_dust_dot.png',
         name: 'Redstone Dust',
-        multiside: false,
-        xshape: false,
         transparent: true,
         invPic: '-224px -3520px',
         redstone: true
@@ -200,9 +167,6 @@ const blockList = [
         id: 19,
         pic: 'gravel.png',
         name: 'Gravel',
-        multiside: false,
-        xshape: false,
-        transparent: false,
         invPic: '-128px -3360px',
         fallingSand: true
     },
@@ -210,27 +174,75 @@ const blockList = [
         id: 20,
         pic: 'coal_ore.png',
         name: 'Coal Ore',
-        multiside: false,
-        xshape: false,
-        transparent: false,
         invPic: '-960px -3360px'
     },
     {
         id: 21,
         pic: 'iron_ore.png',
         name: 'Iron Ore',
-        multiside: false,
-        xshape: false,
-        transparent: false,
         invPic: '-64px -3392px'
     },
     {
         id: 22,
         pic: 'gold_ore.png',
         name: 'Gold Ore',
-        multiside: false,
-        xshape: false,
-        transparent: false,
         invPic: '-32px -3392px'
+    },
+    {
+        id: 23,
+        pic: 'netherite_block.png',
+        name: 'Block of Netherite',
+        invPic: '-96px -128px'
+    },
+    {
+        id: 24,
+        pic: 'quartz_block_side.png',
+        name: 'Block of Quartz',
+        multiside: true,
+        sides: {
+            0: 'quartz_block_side.png',
+            1: 'quartz_block_side.png',
+            2: 'quartz_block_side.png',
+            3: 'quartz_block_side.png',
+            4: 'quartz_block_top.png',
+            5: 'quartz_block_bottom.png',
+        },
+        invPic: '-192px -3232px'
+    },
+    {
+        id: 25,
+        pic: 'quartz_bricks.png',
+        name: 'Quartz Bricks',
+        invPic: '-992px -256px'
+    },
+    {
+        id: 26,
+        pic: 'chiseled_quartz_block.png',
+        name: 'Chiseled Quartz Block',
+        multiside: true,
+        sides: {
+            0: 'chiseled_quartz_block.png',
+            1: 'chiseled_quartz_block.png',
+            2: 'chiseled_quartz_block.png',
+            3: 'chiseled_quartz_block.png',
+            4: 'chiseled_quartz_block_top.png',
+            5: 'chiseled_quartz_block.png',
+        },
+        invPic: '-224px -864px'
+    },
+    {
+        id: 27,
+        pic: 'quartz_pillar.png',
+        name: 'Quartz Pillar',
+        multiside: true,
+        sides: {
+            0: 'quartz_pillar.png',
+            1: 'quartz_pillar.png',
+            2: 'quartz_pillar.png',
+            3: 'quartz_pillar.png',
+            4: 'quartz_pillar_top.png',
+            5: 'quartz_pillar.png',
+        },
+        invPic: '-288px -896px'
     },
 ];
