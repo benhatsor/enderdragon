@@ -1187,8 +1187,8 @@ function copyBlock(block) {
   buildHotbar(hotbar);
 }
 
-var version = '0.0.3';
-var exVersion = 'Indev';
+var version = '0.0.5';
+var exVersion = 'Alpha';
 
 function debug() {
   var faceBlock = 0;
