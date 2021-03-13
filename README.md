@@ -13,7 +13,7 @@ A CSS3D version of Minecraft
 </p>
 
 ## Todo
-- Command Blocks
+- Multiplayer (webRTC)
 
 ## Contributing :blush:
 
@@ -46,7 +46,7 @@ If you have an idea, add it below.
 Ideas turn into todos when someone sends a pull request.
 
 - Breaking particles
-- Multiplayer (webRTC)
+- Command Blocks
 - Lighting, [tint](https://minecraft.gamepedia.com/Tint)
 
 ## Credit
