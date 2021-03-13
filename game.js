@@ -1122,10 +1122,10 @@ function pause() {
           <h1>Game Menu</h1>
           <div class="button" role="button" onclick="document.querySelector('#camera').requestPointerLock()">Back to Game</div>
           <div class="buttons">
-            <div class="button" role="button" onclick="redirect('https://github.com/barhatsor/enderdragon#README')">Give Feedback</div>
             <div class="button" role="button" onclick="redirect('https://github.com/barhatsor/enderdragon/issues')">Report Bugs</div>
+            <div class="button" role="button" onclick="inspector = true;document.querySelector('#gui').style.display = 'none'">Inspector Mode</div>
           </div>
-          <div class="button" role="button" onclick="inspector = true;document.querySelector('#gui').style.display = 'none'">Inspector Mode</div>`;
+          <div class="button" role="button" onclick="returnToTitle()">Save and Quit to Title</div>`;
   }
   else {
     // hide pause screen
@@ -1326,6 +1326,8 @@ function initSingleplayer() {
 
 function returnToTitle() {
   
+  document.querySelector('#scene').innerHTML = '';
+  
   clearInterval(gameInterval);
   clearInterval(tickInterval);
 
@@ -1353,7 +1355,7 @@ function returnToTitle() {
   }
 }
 
-var splashes = "Missing ) after argument list! Call Now! Toll-Free! Ask your doctor! Now in CSS3D! Impressive! Star-struck! Child's play! Classy! Open source! Inspector Gadget! Complex cellular automata! Come to the duck side! Don't bother with the clones! Don’t worry, be happy! Fat free! Feature packed! Free range developers! Funk soul brother! Eggs and Spam! Gargamel plays it! Google anlyticsed! Han shot first! OMGLOL! #ashtag! Internet enabled! It's a game! Coming soon! When it's finished! Groundbreaking! Javascript edition! CSS! Limited edition! Look mum, I’m in a splash! Notch was here! Menger sponge! Minecraft! Enderdragon! More polygons! Not linear! Cooler than Spock! Now in CSS3! Pixels! pls rt! Does mrdoob approve? Now with zazz! Also try Netlify! Now in 3 languages! Also try Github! Now with more faces! Responsive! Pure CSS! Contenteditable! Also try Among Us! Also try Figma! Big Sur! Sugar-free! 1% Chance! 404'd! Runs on Netlify! Idnex! Complex Quaternions! Everything is awesome!";
+var splashes = "Missing ) after argument list! Call Now! Toll-Free! Ask your doctor! Now in CSS3D! Impressive! Star-struck! Child's play! Classy! Open source! Complex cellular automata! Come to the duck side! Don't bother with the clones! Don’t worry, be happy! Fat free! Feature packed! Funk soul brother! Eggs and Spam! Gargamel plays it! Google anlyticsed! Han shot first! OMGLOL! Internet enabled! It's a game! When it's finished! Groundbreaking! Javascript edition! Limited edition! Look mum, I’m in a splash! Notch was here! Menger sponge! Minceraft! Enderdragon! More polygons! Not linear! Pixels! pls rt! Does mrdoob approve? Also try Github! Now with more faces! Responsive! Pure CSS! Contenteditable! Also try Among Us! Also try Netlify! Big Sur! Sugar-free! 1% Chance! 404'd! Runs on Netlify! Quaternions! Everything is awesome!";
 splashes = splashes.replaceAll('! ','!`').replaceAll('? ','?`').split('`');
 
 returnToTitle();
