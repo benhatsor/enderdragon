@@ -1362,7 +1362,7 @@ function returnToTitle() {
         <div class="button" role="button" onclick="document.querySelector('.options').innerHTML='<h2>Loading</h2>';initSingleplayer()">Singleplayer</div>
         <div class="button disabled" role="button">Multiplayer</div>
         <div class="button disabled" role="button">Realms</div>
-        <div class="version">Enderdragon `+ exVersion +` v`+ version +`</div>`;
+        <div class="version">Minecraft Enderdragon `+ version +` (`+ exVersion +`)</div>`;
   
   randomSplash();
   
