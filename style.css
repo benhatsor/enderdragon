@@ -322,7 +322,7 @@ body {
   background-size: 100px;
   font-size: 16px;
   word-spacing: 4px;
-  line-height: 1.25em;
+  line-height: normal;
   display: grid;
   place-content: center;
   text-align: center;
@@ -389,6 +389,7 @@ body {
   position: relative;
   white-space: nowrap;
   margin-bottom: 5px;
+  word-spacing: normal;
 }
 
 .button::before {
@@ -506,6 +507,7 @@ body {
   transform: rotate(-20deg);
   font-size: 25px;
   color: #FFFF55;
+  line-height: 1.25em;
   text-shadow: 0.1em 0.1em #3F3F15;
   word-spacing: normal;
   animation: splash-pulse .25s infinite alternate ease-in;
