@@ -491,7 +491,7 @@ function gameloop() {
       
       var clipSneak = false;
       if (sneaking) {
-        clipSneak = (player.pos.x > (sneakBlock.x + 1) || player.pos.x < (sneakBlock.x - 1));
+        clipSneak = (player.pos.x < (sneakBlock.x + 1) || player.pos.x > (sneakBlock.x - 1));
       }
       
       if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 || clipSneak) {
@@ -508,7 +508,7 @@ function gameloop() {
       
       var clipSneak = false;
       if (sneaking) {
-        clipSneak = (player.pos.z > (sneakBlock.z + 1) || player.pos.z < (sneakBlock.z - 1));
+        clipSneak = (player.pos.z < (sneakBlock.z + 1) || player.pos.z > (sneakBlock.z - 1));
       }
       
       if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 || clipSneak) {
