@@ -13,8 +13,6 @@ A CSS3D version of Minecraft
 </p>
 
 ## Todo
-- Larger world
-- Inventory
 - Command Blocks
 
 ## Contributing :blush:
@@ -47,12 +45,11 @@ If you have an idea, add it below.
 
 Ideas turn into todos when someone sends a pull request.
 
+- Breaking particles
 - Multiplayer (webRTC)
-- Particles (walking, breaking)
 - Lighting, [tint](https://minecraft.gamepedia.com/Tint)
 
 ## Credit
 
-The inventory spritesheet is Minecraft Gamepedia.
-Textures are modified from Minecraft.  
+Minecraft, Minecraft Gamepedia.
 Inspired by Calada2.
