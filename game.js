@@ -1325,15 +1325,19 @@ function initSingleplayer() {
 }
 
 function returnToTitle() {
-  
-  document.querySelector('#scene').innerHTML = '';
-  
+    
   clearInterval(gameInterval);
   clearInterval(tickInterval);
 
   if (paused) {
     pause();
   }
+  
+  blockData = [];
+  blocksInWorld = 0;
+  hotbar = ['Grass', 'Stone', 'Sand', 'Gravel', 'Poppy', 'Gold Ore', 'Iron Ore', 'Torch', 'Oak Log'];
+  
+  document.querySelector('#scene').innerHTML = '';
   
   document.querySelector('.options').classList.add('titlescreen');
   document.querySelector('.options').classList.remove('hidden');
