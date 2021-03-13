@@ -27,6 +27,7 @@ body {
   line-height: 1.25em;
   margin: 0;
   height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 #gui {
