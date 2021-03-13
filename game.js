@@ -1339,6 +1339,9 @@ function returnToTitle() {
   
   document.querySelector('#scene').innerHTML = '';
   
+  document.querySelector('.imgloader').innerHTML = '';
+  loadedTextures = false;
+  
   document.querySelector('.options').classList.add('titlescreen');
   document.querySelector('.options').classList.remove('hidden');
   document.querySelector('.options').innerHTML = `
