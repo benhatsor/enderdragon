@@ -490,7 +490,7 @@ function gameloop() {
           clipBlock2 = (occupiedBlockData[1].id != 0 && !occupiedBlockData[1].xshape && !occupiedBlockData[1].redstone); // +1 block
       
       var clipSneak = false;
-      if (sneaking) {@@
+      if (sneaking) {
         let radius = 0.7,
             playerX = -player.pos.x,
             playerY = player.pos.y,
