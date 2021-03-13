@@ -491,17 +491,7 @@ function gameloop() {
       
       var clipSneak = false;
       if (sneaking) {
-        let radius = 0.7,
-            playerX = -player.pos.x,
-            playerY = player.pos.y,
-            playerZ = -player.pos.z,
-            blockX = Math.floor(playerX),
-            blockY = Math.floor(playerY) - 1,
-            blockZ = Math.floor(playerZ),
-            blockDistance = Math.sqrt(Math.pow(playerX - blockX, 2) + Math.pow(playerY - blockY, 2) + Math.pow(playerZ - blockZ, 2)),
-            blockBelow = blockList[blockData[Math.round(playerX)][Math.round(playerZ)][Math.round(playerY)-1]];
-
-        clipSneak = (blockBelow.id == 0 && blockDistance <= radius);
+        clipSneak = (player.pos.x > (sneakBlock.x + 1) || player.pos.x < (sneakBlock.x - 1));
       }
       
       if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 || clipSneak) {
@@ -518,17 +508,7 @@ function gameloop() {
       
       var clipSneak = false;
       if (sneaking) {
-        let radius = 0.7,
-            playerX = -player.pos.x,
-            playerY = player.pos.y,
-            playerZ = -player.pos.z,
-            blockX = Math.floor(playerX),
-            blockY = Math.floor(playerY) - 1,
-            blockZ = Math.floor(playerZ),
-            blockDistance = Math.sqrt(Math.pow(playerX - blockX, 2) + Math.pow(playerY - blockY, 2) + Math.pow(playerZ - blockZ, 2)),
-            blockBelow = blockList[blockData[Math.round(playerX)][Math.round(playerZ)][Math.round(playerY)-1]];
-
-        clipSneak = (blockBelow.id == 0 && blockDistance <= radius);
+        clipSneak = (player.pos.z > (sneakBlock.z + 1) || player.pos.z < (sneakBlock.z - 1));
       }
       
       if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 || clipSneak) {
@@ -1028,11 +1008,15 @@ function checkDblClick(e) {
  }
 }
 
+var sneakBlock;
+
 function sneak() {
   
   // only animate sneak, change height and velocity
   // if not flying, jumping, or already sneaking
   if (!flying && !sneaking && verticalSpeed >= 0) {
+    sneakBlock = { x: Math.round(player.pos.x), z: Math.round(player.pos.z) };
+    
     velocity = 700;
     verticalVelocity = 2.5;
 
