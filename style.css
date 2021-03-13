@@ -643,11 +643,16 @@ body {
 }
 
 .block.redstone .face {
-  transform: rotateX(810deg) translateZ(-50px);
+  transform: rotateX(810deg) translateZ(-50px) !important;
   width: 55px;
   height: 55px;
   background-position: center;
   left: calc(50% - 27.5px);
+  display: none;
+}
+
+.block.redstone .face {
+  display: block;
 }
 
 .block.animate .face {
