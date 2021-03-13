@@ -1342,6 +1342,16 @@ function returnToTitle() {
   document.querySelector('.imgloader').innerHTML = '';
   loadedTextures = false;
   
+  player.pos = {
+    x: 0,
+    y: 2.5,
+    z: 0
+  };
+  player.rot = {
+    x: 0,
+    y: 0
+  };
+  
   document.querySelector('.options').classList.add('titlescreen');
   document.querySelector('.options').classList.remove('hidden');
   document.querySelector('.options').innerHTML = `
