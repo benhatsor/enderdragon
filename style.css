@@ -643,7 +643,7 @@ body {
 }
 
 .block.redstone .face {
-  transform: rotateX(810deg) translateZ(-50px) !important;
+  transform: rotateX(810deg) translateZ(-70px) !important;
   width: 55px;
   height: 55px;
   background-position: center;
