@@ -54,4 +54,4 @@ Ideas turn into todos when someone sends a pull request.
 Minecraft, Minecraft Gamepedia.
 Inspired by Calada2.
 
-This project is not affiliated with Minecraft, Mojang AB or Microsoft Corp.
+This project is not affiliated with Mojang AB or Microsoft Corp.
