@@ -1198,7 +1198,7 @@ function debug() {
   
   // show debug screen
   document.querySelector('.debugscreen').innerHTML = `
-  <p>Enderdragon `+version+` (`+version+`/`+exVersion+`)</p>
+  <p>Minecraft Enderdragon `+version+` (`+version+`/`+exVersion+`)</p>
   <p>Client @ `+1+` ms ticks (Netlify)</p>
   <br>
   <p>XYZ: `+player.pos.x.toFixed(3)+` / `+player.pos.y.toFixed(5)+` / `+player.pos.z.toFixed(3)+`</p>
