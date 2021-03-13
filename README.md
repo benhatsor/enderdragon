@@ -12,7 +12,7 @@ A CSS3D version of Minecraft
   </h3>
 </p>
 <p align="center">
-  <a target='_blank' href='https://github.com/barhatsor/enderdragon/releases'><img src='https://img.shields.io/github/v/release/barhatsor/enderdragon?color=green&include_prereleases=true'/></a>
+  <a target='_blank' href='https://github.com/barhatsor/enderdragon/releases'><img src='https://img.shields.io/github/v/release/barhatsor/enderdragon?color=green&include_prereleases'/></a>
 </p>
 
 ## Todo
