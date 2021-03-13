@@ -1336,6 +1336,7 @@ function returnToTitle() {
   }
   
   document.querySelector('.options').classList.add('titlescreen');
+  document.querySelector('.options').classList.remove('hidden');
   document.querySelector('.options').innerHTML = `
         <div class="title">
           <div class="edition"></div>
