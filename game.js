@@ -490,7 +490,7 @@ function gameloop() {
           clipBlock2 = (occupiedBlockData[1].id != 0 && !occupiedBlockData[1].xshape && !occupiedBlockData[1].redstone); // +1 block
       
       var clipSneak = false;
-      if (sneaking) {
+      if (sneaking) {@@
         let radius = 0.7,
             playerX = -player.pos.x,
             playerY = player.pos.y,
@@ -776,51 +776,53 @@ document.onkeyup = function(e) {
 
 var inventoryOpen = false;
 function toggleInventory() {
-  if (!inventoryOpen) {    
-    var inventory = document.querySelector('.inventory .items .tab'),
-        domInventory = '';
+  if (!paused) {
+    if (!inventoryOpen) {    
+      var inventory = document.querySelector('.inventory .items .tab'),
+          domInventory = '';
 
-    // run on all blocks that exist
-    for (var i = 0;i < blockList.length;i++) {
-      
-      // if block is not air
-      if (blockList[i].id != 0) {
-        // add slot
-        domInventory += `<div class="slot" onmouseenter="showMinetip('`+ blockList[i].name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ blockList[i].name +`" style="background-position:`+ blockList[i].invPic +`">
-                         <div class="item"></div></div>`;
+      // run on all blocks that exist
+      for (var i = 0;i < blockList.length;i++) {
+
+        // if block is not air
+        if (blockList[i].id != 0) {
+          // add slot
+          domInventory += `<div class="slot" onmouseenter="showMinetip('`+ blockList[i].name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ blockList[i].name +`" style="background-position:`+ blockList[i].invPic +`">
+                           <div class="item"></div></div>`;
+        }
+
       }
-      
-    }
 
-    // place HTML into DOM
-    inventory.innerHTML = domInventory;
-    
-    inventoryOpen = true;
-    
-    // exit pointerlock to browse inventory
-    document.exitPointerLock();
-    
-    // this is important, resumes the game to make up for pausing it
-    // the game toggles pause state whenever the pointerlock state changes
-    pause();
-    
-    // equally important as it makes CSS show the inventory
-    document.querySelector('#gui').classList.add('takingInv');
-  }
-  else {
-    inventoryOpen = false;
-    
-    // hides inventory
-    document.querySelector('#gui').classList.remove('takingInv');    
-    
-    // clears search input
-    document.querySelector('.inventory .search .input').innerHTML = '';
-    
-    document.querySelector('#camera').requestPointerLock();
-    
-    // this is important, pauses the game to make up for resuming it earlier
-    // the game toggles pause state whenever the pointerlock state changes
-    pause();
+      // place HTML into DOM
+      inventory.innerHTML = domInventory;
+
+      inventoryOpen = true;
+
+      // exit pointerlock to browse inventory
+      document.exitPointerLock();
+
+      // this is important, resumes the game to make up for pausing it
+      // the game toggles pause state whenever the pointerlock state changes
+      pause();
+
+      // equally important as it makes CSS show the inventory
+      document.querySelector('#gui').classList.add('takingInv');
+    }
+    else {
+      inventoryOpen = false;
+
+      // hides inventory
+      document.querySelector('#gui').classList.remove('takingInv');    
+
+      // clears search input
+      document.querySelector('.inventory .search .input').innerHTML = '';
+
+      document.querySelector('#camera').requestPointerLock();
+
+      // this is important, pauses the game to make up for resuming it earlier
+      // the game toggles pause state whenever the pointerlock state changes
+      pause();
+    }
   }
 }
 
@@ -1351,6 +1353,8 @@ function returnToTitle() {
     x: 0,
     y: 0
   };
+  
+  refresh_pos();
   
   document.querySelector('.options').classList.add('titlescreen');
   document.querySelector('.options').classList.remove('hidden');
