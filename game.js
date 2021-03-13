@@ -480,7 +480,8 @@ function gameloop() {
     moveVector = rotate2dVector(moveVector, player.rot.x);
 
 
-
+    var clipSneakX = false,
+        clipSneakZ = false;
 
     player.pos.x += moveVector.x * delta / velocity;
     updateOccupiedBlocks();
@@ -489,9 +490,8 @@ function gameloop() {
       var clipBlock1 = (occupiedBlockData[0].id != 0 && !occupiedBlockData[0].xshape && !occupiedBlockData[0].redstone),
           clipBlock2 = (occupiedBlockData[1].id != 0 && !occupiedBlockData[1].xshape && !occupiedBlockData[1].redstone); // +1 block
       
-      var clipSneak = false;
       if (sneaking) {
-        clipSneak = (player.pos.x < (sneakBlock.x + 1) || player.pos.x > (sneakBlock.x - 1));
+        clipSneakX = (player.pos.x > (sneakBlock.x + 1) || player.pos.x < (sneakBlock.x - 1));
       }
       
       if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 || clipSneak) {
@@ -506,9 +506,8 @@ function gameloop() {
       var clipBlock1 = (occupiedBlockData[0].id != 0 && !occupiedBlockData[0].xshape && !occupiedBlockData[0].redstone),
           clipBlock2 = (occupiedBlockData[1].id != 0 && !occupiedBlockData[1].xshape && !occupiedBlockData[1].redstone);
       
-      var clipSneak = false;
       if (sneaking) {
-        clipSneak = (player.pos.z < (sneakBlock.z + 1) || player.pos.z > (sneakBlock.z - 1));
+        clipSneakZ = (player.pos.z > (sneakBlock.z + 1) || player.pos.z < (sneakBlock.z - 1));
       }
       
       if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 || clipSneak) {
@@ -527,7 +526,7 @@ function gameloop() {
       var clipSneak = false;
       if (sneaking && !flying && verticalSpeed >= 0) {
         let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
-        clipSneak = (blockBelow.id == 0);
+        clipSneak = (clipSneakX || clipSneakZ);
       }
       else if (sneaking && flying) {
         verticalSpeed = verticalVelocity * -1;
