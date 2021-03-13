@@ -22,14 +22,14 @@ A CSS3D version of Minecraft
 Upload block textures to `/textures`.
 
 Add an object to `blockList.js`:
-- `id`: id of block
-- `pic`: main texture of block, if `multiside` is false it defaults to block texture
-- `name`: of block
-- `multiside`: if the block has a different texture on each side
-- `sides`: block textures for each block side. required if `multiside` is true
+- `id`: id of block (required)
+- `pic`: block texture (required if `multiside` is false)
+- `name`: name of block (required)
+- `invPic`: background position of the inventory spritesheet (required)
+- `multiside`: if the block has a different texture on each side (optional)
+- `sides`: block textures for each block side (required if `multiside` is true)
 - `xshape`: if flower, torch, etc.
-- `transparent`: if glass, etc.
-- `invPic`: background position of the inventory spritesheet.
+- `transparent`: if block is transparent
 
 ### Adding structures
 
