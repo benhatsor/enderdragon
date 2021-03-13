@@ -11,9 +11,11 @@ A CSS3D version of Minecraft
 <p align="center">
   <a target='_blank' href='https://github.com/barhatsor/enderdragon/releases'><img src='https://img.shields.io/github/v/release/barhatsor/enderdragon?color=green&include_prereleases'/></a>
 </p>
+<p align="center">
   <h3 align="center">
     <a href="https://enderdragon.berryscript.com">Play it now</a>
   </h3>
+</p>
 
 ## Todo
 - Multiplayer (webRTC)
