@@ -1013,15 +1013,14 @@ function sneak() {
   
   // only animate sneak, change height and velocity
   // if not flying, jumping, or already sneaking
-  if (!flying && !sneaking && verticalSpeed >= 0) {
-    sneakBlock = { x: Math.round(player.pos.x), z: Math.round(player.pos.z) };
-    
+  if (!flying && !sneaking && verticalSpeed >= 0) {    
     velocity = 700;
     verticalVelocity = 2.5;
 
     animateSneak('forward');
   }
 
+  sneakBlock = { x: Math.round(player.pos.x), z: Math.round(player.pos.z) };
   sneaking = true;
 }
 
