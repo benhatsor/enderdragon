@@ -390,10 +390,13 @@ body {
   white-space: nowrap;
   margin-bottom: 5px;
   word-spacing: normal;
+  box-sizing: border-box;
+  padding-bottom: 1px;
 }
 
 .button::before {
   position: absolute;
+  top: 0;
   right: 0;
   height: 100%;
   width: 3px;
