@@ -384,12 +384,15 @@ body {
   z-index: 1;
   width: 340px;
   height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   white-space: nowrap;
   margin-bottom: 5px;
   word-spacing: normal;
-  text-align: center;
-  line-height: 2.1;
+  box-sizing: border-box;
+  padding-bottom: 3px;
 }
 
 .button::before {
