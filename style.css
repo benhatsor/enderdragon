@@ -391,7 +391,7 @@ body {
   margin-bottom: 5px;
   word-spacing: normal;
   box-sizing: border-box;
-  padding-bottom: 1px;
+  padding-bottom: 4px;
 }
 
 .button::before {
