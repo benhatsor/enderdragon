@@ -30,6 +30,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+::selection {
+  color: #1b1b1b;
+  background: #b2b2b2;
+  text-shadow: none;
+}
+
 #gui {
   position: absolute;
   width: 100%;
@@ -162,12 +168,6 @@ body {
   text-shadow: 1.5px 1.5px #3f3f3f;
   caret-color: transparent;
   cursor: default;
-}
-
-.inventory .search .input::selection {
-  color: black;
-  background: white;
-  text-shadow: none;
 }
 
 .search .input:focus::after {
