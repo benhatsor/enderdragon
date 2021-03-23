@@ -148,6 +148,7 @@ body {
   padding-top: 10px;
   display: flex;
   word-spacing: initial;
+  line-height: 0.9;
 }
 
 .inventory .search .input {
