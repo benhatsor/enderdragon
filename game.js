@@ -1020,7 +1020,7 @@ function sneak() {
     animateSneak('forward');
   }
 
-  sneakBlock = { x: Math.round(player.pos.x), z: Math.round(player.pos.z) };
+  sneakBlock = { x: -Math.round(player.pos.x), z: -Math.round(player.pos.z) };
   sneaking = true;
 }
 
