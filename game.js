@@ -471,6 +471,9 @@ function updateOccupiedBlocks() {
 
 }
 
+var clipSneakX = false,
+    clipSneakZ = false;
+
 function gameloop() {
   if (!paused) {
     delta = +new Date() - prevTime;
@@ -478,10 +481,6 @@ function gameloop() {
 
     let moveVector = new Vector(keymovement.x, keymovement.z).unit();
     moveVector = rotate2dVector(moveVector, player.rot.x);
-
-
-    var clipSneakX = false,
-        clipSneakZ = false;
 
     player.pos.x += moveVector.x * delta / velocity;
     updateOccupiedBlocks();
@@ -494,7 +493,7 @@ function gameloop() {
         clipSneakX = (player.pos.x < (sneakBlock.x + .7) || player.pos.x > (sneakBlock.x - .7));
       }
       
-      if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 && !clipSneakX) {
+      if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 || clipSneakX) {
         player.pos.x -= moveVector.x * delta / velocity;
       }
     }
@@ -510,7 +509,7 @@ function gameloop() {
         clipSneakZ = (player.pos.z < (sneakBlock.z + .7) || player.pos.z > (sneakBlock.z - .7));
       }
       
-      if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 && !clipSneakZ) {
+      if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 || clipSneakZ) {
         player.pos.z -= moveVector.y * delta / velocity;
       }
     }
