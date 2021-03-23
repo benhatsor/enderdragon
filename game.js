@@ -526,7 +526,7 @@ function gameloop() {
       var clipSneak = false;
       if (sneaking && !flying && verticalSpeed >= 0) {
         let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
-        clipSneak = (clipSneakX || clipSneakZ);
+        clipSneak = (clipSneakX || clipSneakZ && blockBelow.id == 0);
       }
       else if (sneaking && flying) {
         verticalSpeed = verticalVelocity * -1;
@@ -542,7 +542,7 @@ function gameloop() {
         disableSneaking();
       }
       
-      if (verticalSpeed <= 0 && clipSneak) {
+      if (clipSneak) {
         verticalSpeed = 0;
       } else if (verticalSpeed <= 0 && blockBelow.id != 0 && !blockBelow.xshape &&  !blockBelow.redstone) {
         verticalSpeed = 0;
