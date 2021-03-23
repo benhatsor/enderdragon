@@ -493,7 +493,7 @@ function gameloop() {
         clipSneakX = (player.pos.x < (sneakBlock.x + .7) || player.pos.x > (sneakBlock.x - .7));
       }
       
-      if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 || clipSneakX) {
+      if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 /*|| clipSneakX*/) {
         player.pos.x -= moveVector.x * delta / velocity;
       }
     }
@@ -509,7 +509,7 @@ function gameloop() {
         clipSneakZ = (player.pos.z < (sneakBlock.z + .7) || player.pos.z > (sneakBlock.z - .7));
       }
       
-      if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 || clipSneakZ) {
+      if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 /*|| clipSneakZ*/) {
         player.pos.z -= moveVector.y * delta / velocity;
       }
     }
@@ -525,7 +525,7 @@ function gameloop() {
       var clipSneak = false;
       if (sneaking && !flying && verticalSpeed >= 0) {
         let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
-        clipSneak = (clipSneakX || clipSneakZ && blockBelow.id == 0);
+        clipSneak = (!clipSneakX && !clipSneakZ && blockBelow.id == 0);
       }
       else if (sneaking && flying) {
         verticalSpeed = verticalVelocity * -1;
@@ -541,7 +541,7 @@ function gameloop() {
         disableSneaking();
       }
       
-      if (clipSneak) {
+      if (verticalSpeed <= 0 && clipSneak) {
         verticalSpeed = 0;
       } else if (verticalSpeed <= 0 && blockBelow.id != 0 && !blockBelow.xshape &&  !blockBelow.redstone) {
         verticalSpeed = 0;
