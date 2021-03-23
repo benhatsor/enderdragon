@@ -522,33 +522,46 @@ function gameloop() {
     let blockAbove = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y + verticalSpeed * delta / 500 - -1.8)]];
     
     if (blockBelow && blockAbove) {
+      
       var clipSneak = false;
+      // check for sneak block
       if (sneaking && !flying && verticalSpeed >= 0) {
         let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
-        clipSneak = (clipSneakX || clipSneakZ && blockBelow.id == 0);
-        clipSneak = true;
+        clipSneak = (clipSneakX || clipSneakZ);
       }
+      
       else if (sneaking && flying) {
         verticalSpeed = verticalVelocity * -1;
       }
+      
+      // when flying, reset vertical speed
       if (!sneaking && flying && !spacebarPressed) {
         verticalSpeed = 0;
       }
       
-      let blockUnder = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
-      if (flying && sneaking && blockUnder.id != 0) {
+      // if speed is lower than max velocity, reset
+      if (verticalSpeed < verticalVelocity) {
+        verticalSpeed = 0;
+        
+        // if clipping edge of block while sneaking, reset
+      } else if (verticalSpeed <= 0 && clipSneak) {
+        verticalSpeed = 0;
+        
+        // if block below is solid, reset
+      } else if (verticalSpeed <= 0 && blockBelow.id != 0 && !blockBelow.xshape && !blockBelow.redstone) {
+        verticalSpeed = 0;
+        player.pos.y = Math.round(player.pos.y) - .5;
+        
+        // if block above is solid, reset
+      } else if (verticalSpeed >= 0 && blockAbove.id != 0 && !blockAbove.xshape) {
+        verticalSpeed = 0;
+      }
+      
+      // if decending on solid block while flying, disable flying
+      if (flying && sneaking && blockBelow.id != 0 && !blockBelow.xshape && !blockBelow.redstone) {
         verticalSpeed = verticalSpeed + delta / 100;
         disableFlying();
         disableSneaking();
-      }
-      
-      if (verticalSpeed <= 0 && clipSneak) {
-        verticalSpeed = 0;
-      } else if (verticalSpeed <= 0 && blockBelow.id != 0 && !blockBelow.xshape &&  !blockBelow.redstone) {
-        verticalSpeed = 0;
-        player.pos.y = Math.round(player.pos.y) - .5;
-      } else if (verticalSpeed >= 0 && blockAbove.id != 0 && !blockAbove.xshape) {
-        verticalSpeed = 0;
       }
       
       player.pos.y += verticalSpeed * delta / 500;
