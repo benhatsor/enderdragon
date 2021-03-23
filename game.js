@@ -526,7 +526,6 @@ function gameloop() {
       var clipSneak = false;
       // check for sneak block
       if (sneaking && !flying && verticalSpeed >= 0) {
-        let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
         clipSneak = (clipSneakX || clipSneakZ);
       }
       
@@ -539,8 +538,14 @@ function gameloop() {
         verticalSpeed = 0;
       }
       
-      // if speed is lower than max velocity, reset
-      if (verticalSpeed < verticalVelocity) {
+      // if decending on solid block while flying, disable flying
+      if (flying && sneaking && blockBelow.id != 0 && !blockBelow.xshape && !blockBelow.redstone) {
+        disableFlying();
+        disableSneaking();
+      }
+      
+      // if speed is lower than min velocity, reset
+      if (verticalSpeed < -verticalVelocity) {
         verticalSpeed = 0;
         
         // if clipping edge of block while sneaking, reset
@@ -555,13 +560,6 @@ function gameloop() {
         // if block above is solid, reset
       } else if (verticalSpeed >= 0 && blockAbove.id != 0 && !blockAbove.xshape) {
         verticalSpeed = 0;
-      }
-      
-      // if decending on solid block while flying, disable flying
-      if (flying && sneaking && blockBelow.id != 0 && !blockBelow.xshape && !blockBelow.redstone) {
-        verticalSpeed = verticalSpeed + delta / 100;
-        disableFlying();
-        disableSneaking();
       }
       
       player.pos.y += verticalSpeed * delta / 500;
