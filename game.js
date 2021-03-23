@@ -545,7 +545,7 @@ function gameloop() {
       }
       
       // if speed is lower than min velocity, reset
-      if (verticalSpeed < -verticalVelocity) {
+      if (verticalSpeed < 1000) {
         verticalSpeed = 0;
         
         // if clipping edge of block while sneaking, reset
