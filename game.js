@@ -491,10 +491,10 @@ function gameloop() {
           clipBlock2 = (occupiedBlockData[1].id != 0 && !occupiedBlockData[1].xshape && !occupiedBlockData[1].redstone); // +1 block
       
       if (sneaking) {
-        clipSneakX = (player.pos.x > (sneakBlock.x + 1) || player.pos.x < (sneakBlock.x - 1));
+        clipSneakX = (player.pos.x > (sneakBlock.x + .7) || player.pos.x < (sneakBlock.x - .7));
       }
       
-      if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 || clipSneak) {
+      if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 && !clipSneak) {
         player.pos.x -= moveVector.x * delta / velocity;
       }
     }
@@ -507,10 +507,10 @@ function gameloop() {
           clipBlock2 = (occupiedBlockData[1].id != 0 && !occupiedBlockData[1].xshape && !occupiedBlockData[1].redstone);
       
       if (sneaking) {
-        clipSneakZ = (player.pos.z > (sneakBlock.z + 1) || player.pos.z < (sneakBlock.z - 1));
+        clipSneakZ = (player.pos.z > (sneakBlock.z + .7) || player.pos.z < (sneakBlock.z - .7));
       }
       
-      if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 || clipSneak) {
+      if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 && !clipSneak) {
         player.pos.z -= moveVector.y * delta / velocity;
       }
     }
@@ -1020,7 +1020,7 @@ function sneak() {
     animateSneak('forward');
   }
 
-  sneakBlock = { x: -Math.round(player.pos.x), z: -Math.round(player.pos.z) };
+  sneakBlock = { x: Math.round(player.pos.x), z: Math.round(player.pos.z) };
   sneaking = true;
 }
 
