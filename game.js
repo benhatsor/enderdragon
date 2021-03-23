@@ -1006,7 +1006,7 @@ function checkDblClick(e) {
  }
 }
 
-var sneakBlock;
+var sneakBlock = { x: Math.round(player.pos.x), z: Math.round(player.pos.z) };
 
 function sneak() {
   
