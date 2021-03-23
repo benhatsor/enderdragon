@@ -548,7 +548,6 @@ function gameloop() {
       if (flying && sneaking && blockBelow.id != 0 && !blockBelow.xshape && !blockBelow.redstone) {
         disableFlying();
         verticalSpeed = 0;
-        sneak();
       }
       
       // if speed is lower than min velocity, reset
