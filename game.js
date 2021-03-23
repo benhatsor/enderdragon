@@ -526,6 +526,7 @@ function gameloop() {
       if (sneaking && !flying && verticalSpeed >= 0) {
         let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
         clipSneak = (clipSneakX || clipSneakZ && blockBelow.id == 0);
+        clipSneak = true;
       }
       else if (sneaking && flying) {
         verticalSpeed = verticalVelocity * -1;
