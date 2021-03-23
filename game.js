@@ -709,13 +709,13 @@ document.onkeydown = function(e) {
   var key = e.keyCode - 49;
   
   // if keys are within range 1-9
-  if (key >= 0 && key <= 8 && paused == false) {
+  if (key >= 0 && key <= 8 && !paused && !inventoryOpen) {
     // change active block
     changeBlock(key);
   }
   
   // 16 is SHIFT
-  if (e.keyCode == 16) {
+  if (e.keyCode == 16 && !inventoryOpen) {
     sneak();
   }
   
