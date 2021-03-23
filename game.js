@@ -489,9 +489,9 @@ function gameloop() {
       var clipBlock1 = (occupiedBlockData[0].id != 0 && !occupiedBlockData[0].xshape && !occupiedBlockData[0].redstone),
           clipBlock2 = (occupiedBlockData[1].id != 0 && !occupiedBlockData[1].xshape && !occupiedBlockData[1].redstone); // +1 block
       
-      if (sneaking) {
+      //if (sneaking) {
         clipSneakX = (player.pos.x < (sneakBlock.x + 1) || player.pos.x > (sneakBlock.x - 1));
-      }
+      //}
       
       if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 /*|| clipSneakX*/) {
         player.pos.x -= moveVector.x * delta / velocity;
@@ -505,9 +505,9 @@ function gameloop() {
       var clipBlock1 = (occupiedBlockData[0].id != 0 && !occupiedBlockData[0].xshape && !occupiedBlockData[0].redstone),
           clipBlock2 = (occupiedBlockData[1].id != 0 && !occupiedBlockData[1].xshape && !occupiedBlockData[1].redstone);
       
-      if (sneaking) {
+      //if (sneaking) {
         clipSneakZ = (player.pos.z < (sneakBlock.z + 1) || player.pos.z > (sneakBlock.z - 1));
-      }
+      //}
       
       if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 /*|| clipSneakZ*/) {
         player.pos.z -= moveVector.y * delta / velocity;
