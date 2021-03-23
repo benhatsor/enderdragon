@@ -1,4 +1,4 @@
-const mapRadius = 20;//8
+const mapRadius = 8;
 const heightLimit = 26;
 
 const blocks = [];
@@ -11,7 +11,7 @@ var gravity = 30;
 
 var blocksInWorld = 0;
 
-var hotbar = ['Grass', 'Stone', 'Sand', 'Gravel', 'Poppy', 'Gold Ore', 'Iron Ore', 'Torch', 'Oak Log'];
+var hotbar = ['Grass', 'Stone', 'Sand', 'Gravel', 'Poppy', 'Gold Ore', 'Iron Ore', 'Redstone Torch', 'Oak Log'];
 
 function constructWorld() {
   for (let x = -mapRadius; x <= mapRadius; ++x) {
