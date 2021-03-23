@@ -489,11 +489,11 @@ function gameloop() {
       var clipBlock1 = (occupiedBlockData[0].id != 0 && !occupiedBlockData[0].xshape && !occupiedBlockData[0].redstone),
           clipBlock2 = (occupiedBlockData[1].id != 0 && !occupiedBlockData[1].xshape && !occupiedBlockData[1].redstone); // +1 block
       
-      //if (sneaking) {
-        clipSneakX = (player.pos.x < (sneakBlock.x + 1) || player.pos.x > (sneakBlock.x - 1));
-      //}
+      if (sneaking) {
+        clipSneakX = (-player.pos.x < (sneakBlock.x + 1) || -player.pos.x > (sneakBlock.x - 1));
+      }
       
-      if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 /*|| clipSneakX*/) {
+      if (Math.abs(player.pos.x) > mapRadius || clipBlock1 || clipBlock2 || !clipSneakX) {
         player.pos.x -= moveVector.x * delta / velocity;
       }
     }
@@ -505,11 +505,11 @@ function gameloop() {
       var clipBlock1 = (occupiedBlockData[0].id != 0 && !occupiedBlockData[0].xshape && !occupiedBlockData[0].redstone),
           clipBlock2 = (occupiedBlockData[1].id != 0 && !occupiedBlockData[1].xshape && !occupiedBlockData[1].redstone);
       
-      //if (sneaking) {
-        clipSneakZ = (player.pos.z < (sneakBlock.z + 1) || player.pos.z > (sneakBlock.z - 1));
-      //}
+      if (sneaking) {
+        clipSneakZ = (-player.pos.z < (sneakBlock.z + 1) || -player.pos.z > (sneakBlock.z - 1));
+      }
       
-      if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 /*|| clipSneakZ*/) {
+      if (Math.abs(player.pos.z) > mapRadius || clipBlock1 || clipBlock2 || !clipSneakZ) {
         player.pos.z -= moveVector.y * delta / velocity;
       }
     }
@@ -525,7 +525,7 @@ function gameloop() {
       var clipSneak = false;
       if (sneaking && !flying && verticalSpeed >= 0) {
         let blockBelow = blockList[blockData[-Math.round(player.pos.x)][-Math.round(player.pos.z)][Math.round(player.pos.y)-1]];
-        clipSneak = (!clipSneakX && !clipSneakZ && blockBelow.id == 0);
+        clipSneak = (clipSneakX || clipSneakZ && blockBelow.id == 0);
       }
       else if (sneaking && flying) {
         verticalSpeed = verticalVelocity * -1;
