@@ -253,6 +253,12 @@ const blockList = [
     },
     {
         id: 29,
+        pic: 'deepslate_emerald_ore.png',
+        name: 'Deepslate Emerald Ore',
+        invPic: '-352px -512px'
+    },
+    {
+        id: 30,
         pic: 'emerald_block.png',
         name: 'Emerald Block',
         invPic: '-96px -3232px'
