@@ -270,3 +270,12 @@ const blockList = [
         invPic: '-704px -480px'
     },
 ];
+
+const itemList = [
+    {
+        id: 0,
+        pic: 'totem_of_undying.png',
+        name: 'Totem Of Undying',
+        invPic: '-768px -3616px'
+    },
+];
