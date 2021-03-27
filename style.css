@@ -313,6 +313,8 @@ body {
   border-image: linear-gradient(rgba(80,0,255,0.31),rgba(40,0,127,0.31)) 1;
 }
 
+.format-0{color:#000;text-shadow:.125em .125em 0 #000}.format-1{color:#00a;text-shadow:.125em .125em 0 #00002a}.format-2{color:#0a0;text-shadow:.125em .125em 0 #002a00}.format-3{color:#0aa;text-shadow:.125em .125em 0 #002a2a}.format-4{color:#a00;text-shadow:.125em .125em 0 #2a0000}.format-5{color:#a0a;text-shadow:.125em .125em 0 #2a002a}.format-6{color:#fa0;text-shadow:.125em .125em 0 #2a2a00}.format-7{color:#aaa;text-shadow:.125em .125em 0 #2a2a2a}.format-8{color:#555;text-shadow:.125em .125em 0 #151515}.format-9{color:#55f;text-shadow:.125em .125em 0 #15153f}.format-a{color:#5f5;text-shadow:.125em .125em 0 #153f15}.format-b{color:#5ff;text-shadow:.125em .125em 0 #153f3f}.format-c{color:#f55;text-shadow:.125em .125em 0 #3f1515}.format-d{color:#f5f;text-shadow:.125em .125em 0 #3f153f}.format-e{color:#ff5;text-shadow:.125em .125em 0 #3f3f15}.format-f{color:#fff;text-shadow:.125em .125em 0 #3f3f3f}.format-l{font-weight:700;letter-spacing:.125em}.format-m{text-decoration:line-through}.format-n{text-decoration:underline}.format-o{font-style:italic}
+
 .options {
   position: absolute;
   left: 0;
