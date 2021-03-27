@@ -106,7 +106,7 @@ function renderGame() {
 }
 
 let loadedTextures = false;
-let imagesToLoad = ['invSprite.webp', 'tab_item_search.png'];
+let imagesToLoad = ['invSprite.png', 'tab_item_search.png'];
 
 function loadTextures() {
   document.querySelector('.options').innerHTML = `
