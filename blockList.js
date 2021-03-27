@@ -245,4 +245,16 @@ const blockList = [
         },
         invPic: '-288px -896px'
     },
+    {
+        id: 28,
+        pic: 'emerald_ore.png',
+        name: 'Emerald Ore',
+        invPic: '-0px -3392px'
+    },
+    {
+        id: 29,
+        pic: 'emerald_block.png',
+        name: 'Emerald Block',
+        invPic: '-96px -3232px'
+    }
 ];
