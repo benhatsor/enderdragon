@@ -135,6 +135,15 @@ function loadTextures() {
     }
   })
   
+  itemList.forEach(item => {
+    var img = document.createElement('img');
+    img.src = 'textures/' + block.pic;
+    img.onload = incrementLoader;
+    img.onerror = incrementLoader;
+
+    document.querySelector('.imgloader').appendChild(img);
+  })
+  
   for (var i = 0;i < imagesToLoad.length;i++) {
     var img = document.createElement('img');
         img.src = 'textures/' + imagesToLoad[i];
@@ -644,19 +653,24 @@ function placeBlock(x, z, y, type) {
 document.querySelector('#camera').onmousedown = function(e) {
   if (fpsenabled && focusBlock != null) {
     if (e.button === 2) {
-      if (focusSide == 0) placeBlock(focusBlock.x, focusBlock.z - -1, focusBlock.y, activeBlock);
-      else if (focusSide == 1) placeBlock(focusBlock.x - -1, focusBlock.z, focusBlock.y, activeBlock);
-      else if (focusSide == 2) placeBlock(focusBlock.x, focusBlock.z - 1, focusBlock.y, activeBlock);
-      else if (focusSide == 3) placeBlock(focusBlock.x - 1, focusBlock.z, focusBlock.y, activeBlock);
-      else if (focusSide == 4) placeBlock(focusBlock.x, focusBlock.z, focusBlock.y - -1, activeBlock);
-      else if (focusSide == 5) placeBlock(focusBlock.x, focusBlock.z, focusBlock.y - 1, activeBlock);
+      if (activeBlock < 1000) {
+        if (focusSide == 0) placeBlock(focusBlock.x, focusBlock.z - -1, focusBlock.y, activeBlock);
+        else if (focusSide == 1) placeBlock(focusBlock.x - -1, focusBlock.z, focusBlock.y, activeBlock);
+        else if (focusSide == 2) placeBlock(focusBlock.x, focusBlock.z - 1, focusBlock.y, activeBlock);
+        else if (focusSide == 3) placeBlock(focusBlock.x - 1, focusBlock.z, focusBlock.y, activeBlock);
+        else if (focusSide == 4) placeBlock(focusBlock.x, focusBlock.z, focusBlock.y - -1, activeBlock);
+        else if (focusSide == 5) placeBlock(focusBlock.x, focusBlock.z, focusBlock.y - 1, activeBlock);
 
-      //0: Z+
-      //1: X+
-      //2: Z-
-      //3: X-
-      //4: Y+
-      //5: Y-
+        //0: Z+
+        //1: X+
+        //2: Z-
+        //3: X-
+        //4: Y+
+        //5: Y-
+      }
+      else if (activeBlock {
+        
+      }
     } else if (e.button === 0) {
       placeBlock(focusBlock.x, focusBlock.z, focusBlock.y, 0);
     } else if (e.button === 1) {
@@ -666,7 +680,7 @@ document.querySelector('#camera').onmousedown = function(e) {
   }
 };
 
-var activeBlock = blockId(hotbar[0]).id;
+var activeBlock = getId(hotbar[0]).id;
 
 function buildHotbar(hotbar) {
   var invHotbar = document.querySelector('.inventory .hotbar'),
@@ -674,7 +688,7 @@ function buildHotbar(hotbar) {
   
   for (var i = 0;i < hotbar.length;i++) {
     // get block data by index
-    var block = blockId(hotbar[i]);
+    var block = getId(hotbar[i]);
     
     //* render main hotbar *//
     document.querySelectorAll('.slot')[i].style.backgroundPosition = block.invPic;
@@ -691,11 +705,11 @@ function buildHotbar(hotbar) {
   
   // change active block
   var index = Array.from(document.querySelectorAll('.slot')).indexOf(document.querySelector('.slot.selected'));
-  activeBlock = blockId(hotbar[index]).id;
+  activeBlock = getId(hotbar[index]).id;
 }
 
-function blockId(name) {
-  return blockList.filter(block => block.name == name)[0];
+function getId(name) {
+  return blockList.filter(block => block.name == name)[0] ? blockList.filter(block => block.name == name)[0] : return itemList.filter(item => item.name == name)[0];
 }
 
 var sneaking = false;
@@ -901,6 +915,13 @@ function showMinetip(data) {
   if (!draggingItem && data != 'Air') {
     document.querySelector('.inventory .minetip').innerHTML = data;
     document.querySelector('.inventory .minetip').classList.add('visible');
+    
+    if (data == 'Totem Of Undying') {
+      document.querySelector('.inventory .minetip').classList.add('format-e');
+    }
+    else {
+      document.querySelector('.inventory .minetip').classList.remove('format-e');
+    }
   }
 }
 
@@ -1148,7 +1169,7 @@ function changeBlock(id) {
   
   // if current != new
   if (index != id) {
-    activeBlock = blockId(hotbar[id]).id;
+    activeBlock = getId(hotbar[id]).id;
 
     document.querySelector('.slot.selected').classList.remove('selected');
     document.querySelectorAll('.slot')[id].classList.add('selected');
