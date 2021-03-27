@@ -262,5 +262,11 @@ const blockList = [
         pic: 'emerald_block.png',
         name: 'Emerald Block',
         invPic: '-96px -3232px'
-    }
+    },
+    {
+        id: 31,
+        pic: 'deepslate.png',
+        name: 'Deepslate',
+        invPic: '-704px -480px'
+    },
 ];
