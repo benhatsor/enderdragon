@@ -57,4 +57,5 @@ Ideas turn into todos when someone sends a pull request.
 ## Credit
 
 Inspired by Calada2.
+Textures from the Minecraft Wiki are under [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
 Enderdragon is neither endorsed or affiliated with Mojang.
