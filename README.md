@@ -56,7 +56,5 @@ Ideas turn into todos when someone sends a pull request.
 
 ## Credit
 
-Minecraft, Minecraft Gamepedia.
 Inspired by Calada2.
-
-This project is not affiliated with Mojang AB or Microsoft Corp.
+Enderdragon is neither endorsed or affiliated with Mojang.
