@@ -668,8 +668,8 @@ document.querySelector('#camera').onmousedown = function(e) {
         //4: Y+
         //5: Y-
       }
-      else if (activeBlock {
-        
+      else if (activeBlock === 1000) { // Totem of Undying
+        console.log('AMOGUS');
       }
     } else if (e.button === 0) {
       placeBlock(focusBlock.x, focusBlock.z, focusBlock.y, 0);
