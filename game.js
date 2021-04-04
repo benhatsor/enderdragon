@@ -651,7 +651,8 @@ function placeBlock(x, z, y, type) {
 }
 
 document.querySelector('#camera').onmousedown = function(e) {
-  if (fpsenabled && focusBlock != null) {
+  // if not looking at air or item is in hand
+  if (fpsenabled && (focusBlock != null || activeBlock >= 1000)) {
     if (e.button === 2) {
       if (activeBlock < 1000) {
         if (focusSide == 0) placeBlock(focusBlock.x, focusBlock.z - -1, focusBlock.y, activeBlock);
@@ -1203,6 +1204,13 @@ function changeBlock(id) {
         document.querySelector('.hotbar').classList.remove('tooltip');
       }, 2000);
       
+      // if holding Totem of Undying, show yellow text
+      if (activeBlock === 1000) {
+        document.querySelector('.hotbar').classList.add('format-e');
+      } else {
+        document.querySelector('.hotbar').classList.remove('format-e');
+      }
+        
     }
     else {
       document.querySelector('.hotbar').setAttribute('tooltip', '');
