@@ -709,7 +709,7 @@ function buildHotbar(hotbar) {
 }
 
 function getId(name) {
-  return blockList.filter(block => block.name == name)[0] ? blockList.filter(block => block.name == name)[0] : return itemList.filter(item => item.name == name)[0];
+  return blockList.filter(block => block.name == name)[0] ? blockList.filter(block => block.name == name)[0] : itemList.filter(item => item.name == name)[0];
 }
 
 var sneaking = false;
