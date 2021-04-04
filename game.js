@@ -929,7 +929,7 @@ function showMinetip(data) {
     document.querySelector('.inventory .minetip').innerHTML = data;
     document.querySelector('.inventory .minetip').classList.add('visible');
     
-    if (data == 'Totem Of Undying') {
+    if (data == 'Totem of Undying') {
       document.querySelector('.inventory .minetip').classList.add('format-e');
     }
     else {
