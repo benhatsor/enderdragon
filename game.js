@@ -137,7 +137,7 @@ function loadTextures() {
   
   itemList.forEach(item => {
     var img = document.createElement('img');
-    img.src = 'textures/' + block.pic;
+    img.src = 'textures/' + item.pic;
     img.onload = incrementLoader;
     img.onerror = incrementLoader;
 
