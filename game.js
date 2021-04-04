@@ -1377,7 +1377,7 @@ function returnToTitle() {
   
   blockData = [];
   blocksInWorld = 0;
-  hotbar = ['Grass', 'Stone', 'Sand', 'Gravel', 'Poppy', 'Gold Ore', 'Iron Ore', 'Torch', 'Oak Log'];
+  hotbar = ['Grass', 'Stone', 'Sand', 'Gravel', 'Poppy', 'Oak Log', 'Iron Ore', 'Redstone Torch', 'Totem of Undying'];
   
   document.querySelector('#scene').innerHTML = '';
   
