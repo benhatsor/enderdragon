@@ -792,16 +792,28 @@ function toggleInventory() {
           domInventory = '';
 
       // run on all blocks that exist
-      for (var i = 0;i < blockList.length;i++) {
-
+      blockList.forEach(block => {
+        
         // if block is not air
-        if (blockList[i].id != 0) {
+        if (block.id != 0) {
           // add slot
-          domInventory += `<div class="slot" onmouseenter="showMinetip('`+ blockList[i].name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ blockList[i].name +`" style="background-position:`+ blockList[i].invPic +`">
+          domInventory += `<div class="slot" onmouseenter="showMinetip('`+ block.name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ block.name +`" style="background-position:`+ block.invPic +`">
                            <div class="item"></div></div>`;
         }
 
-      }
+      })
+                        
+      // run on all items that exist
+      itemList.forEach(item => {
+        
+        // if item is not air
+        if (item.id != 0) {
+          // add slot
+          domInventory += `<div class="slot" onmouseenter="showMinetip('`+ item.name +`')" onmousemove="moveMinetip(event)" onmouseleave="hideMinetip()" onclick="dragItem(this)" name="`+ item.name +`" style="background-position:`+ item.invPic +`">
+                           <div class="item"></div></div>`;
+        }
+
+      })
 
       // place HTML into DOM
       inventory.innerHTML = domInventory;
