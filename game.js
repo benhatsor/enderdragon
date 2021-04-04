@@ -11,7 +11,7 @@ var gravity = 30;
 
 var blocksInWorld = 0;
 
-var hotbar = ['Grass', 'Stone', 'Sand', 'Gravel', 'Poppy', 'Gold Ore', 'Iron Ore', 'Redstone Torch', 'Oak Log'];
+var hotbar = ['Grass', 'Stone', 'Sand', 'Gravel', 'Poppy', 'Oak Log', 'Iron Ore', 'Redstone Torch', 'Totem of Undying'];
 
 function constructWorld() {
   for (let x = -mapRadius; x <= mapRadius; ++x) {
