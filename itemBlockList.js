@@ -275,7 +275,7 @@ const itemList = [
     {
         id: 1000,
         pic: 'totem_of_undying.png',
-        name: 'Totem Of Undying',
+        name: 'Totem of Undying',
         invPic: '-768px -3616px'
     },
 ];
