@@ -58,6 +58,7 @@ body {
   background-size: 100%;
   left: calc(50% - 8px);
   top: calc(50% - 8px);
+  mix-blend-mode: difference;
 }
 
 #gui.pause #crosshair {
