@@ -18,6 +18,7 @@ A CSS3D version of Minecraft
 </p>
 
 Follow development at the [blog](https://barhatsor.tumblr.com/).
+Request features and report bugs at the [issues tab of this repository](https://github.com/barhatsor/enderdragon/issues).
 
 ## Todo
 - Multiplayer (webRTC)
