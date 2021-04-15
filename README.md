@@ -17,10 +17,15 @@ A CSS3D version of Minecraft
   </h3>
 </p>
 
+Follow development at the [blog](https://barhatsor.tumblr.com/).
+
 ## Todo
 - Multiplayer (webRTC)
+- Breaking particles
+- Command Blocks
+- Lighting, [tint](https://minecraft.gamepedia.com/Tint)
 
-## Contributing :blush:
+## Contributing
 
 ### Adding blocks
 
@@ -42,17 +47,9 @@ Add a structure to `structures.js`.
 
 ### Anything else
 
-`game.js` is where the magic happens. Document code and specify what changed. (eg. added glass, fixed bug)
+`game.js`. Document code and specify what changed. (eg. added glass, fixed bug)
 
 If you have an idea, add it below.
-
-## Ideas :sparkles:
-
-Ideas turn into todos when someone sends a pull request.
-
-- Breaking particles
-- Command Blocks
-- Lighting, [tint](https://minecraft.gamepedia.com/Tint)
 
 ## Credit
 
