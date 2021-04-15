@@ -19,6 +19,7 @@
 
 body {
   background: #9bd7ff;
+  background: radial-gradient(#d1e6fa, #75b3f0);
   font-family: 'Minecraft', sans-serif;
   color: #ffffff;
   text-shadow: 1.5px 1.5px #3f3f3f;
