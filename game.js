@@ -164,8 +164,6 @@ function incrementLoader() {
     loadedTextures = true;
     
     document.querySelector('.options').classList.add('hidden');
-    
-    pause();
   }
 }
 
