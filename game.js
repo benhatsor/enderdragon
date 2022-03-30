@@ -1350,6 +1350,7 @@ let tickInterval = null;
 function initSingleplayer() {
   document.querySelector('.options').classList.remove('titlescreen');
   document.querySelector('#camera').requestPointerLock();
+  pause();
 
   loadTextures();
   
