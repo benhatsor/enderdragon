@@ -107,7 +107,7 @@ body {
   display: grid;
   place-content: center;
   position: relative;
-  background: url('textures/invSprite.png') no-repeat;
+  background: url('textures/InvSprite.png') no-repeat;
 }
 
 .slot.selected::before {
@@ -236,7 +236,7 @@ body {
   width: 32px;
   height: 32px;
   vertical-align: middle;
-  background: url(textures/invSprite.png) no-repeat;
+  background: url(textures/InvSprite.png) no-repeat;
   background-position: inherit;
   pointer-events: none;
 }
