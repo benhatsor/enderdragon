@@ -9,7 +9,7 @@ A CSS3D version of Minecraft
   </h3>
 </p>
 <p align="center">
-  <a target='_blank' href='https://github.com/barhatsor/enderdragon/releases'><img src='https://img.shields.io/github/v/release/barhatsor/enderdragon?color=green&include_prereleases'/></a>
+  <a target='_blank' href='https://github.com/benhatsor/enderdragon/releases'><img src='https://img.shields.io/github/v/release/benhatsor/enderdragon?color=green&include_prereleases'/></a>
 </p>
 <p align="center">
   <h3 align="center">
@@ -17,8 +17,8 @@ A CSS3D version of Minecraft
   </h3>
 </p>
 
-Follow development at the [blog](https://barhatsor.tumblr.com/).
-Request features and report bugs at the [issues tab of this repository](https://github.com/barhatsor/enderdragon/issues).
+Follow development at the [blog](https://benhatsor.tumblr.com/).
+Request features and report bugs at the [issues tab of this repository](https://github.com/benhatsor/enderdragon/issues).
 
 ## Todo
 - Multiplayer (webRTC)
