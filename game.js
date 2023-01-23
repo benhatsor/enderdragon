@@ -1155,7 +1155,7 @@ function pause() {
           <h1>Game Menu</h1>
           <div class="button" role="button" onclick="document.querySelector('#camera').requestPointerLock()">Back to Game</div>
           <div class="buttons">
-            <div class="button" role="button" onclick="redirect('https://github.com/barhatsor/enderdragon/issues')">Report Bugs</div>
+            <div class="button" role="button" onclick="redirect('https://github.com/benhatsor/enderdragon/issues')">Report Bugs</div>
             <div class="button" role="button" onclick="inspector = true;document.querySelector('#gui').style.display = 'none'">Inspector Mode</div>
           </div>
           <div class="button" role="button" onclick="returnToTitle()">Save and Quit to Title</div>`;
@@ -1272,7 +1272,7 @@ function shortcutDown(zEvent) {
     zEvent.preventDefault();
     
     // if F3Q, go to help page
-    redirect('https://github.com/barhatsor/enderdragon#README');
+    redirect('https://github.com/benhatsor/enderdragon#README');
   }
   
   // if alt key press, disable inspector mode
