@@ -17,9 +17,6 @@ A CSS3D version of Minecraft
   </h3>
 </p>
 
-Follow development at the [blog](https://benhatsor.tumblr.com/).
-Request features and report bugs at the [issues tab of this repository](https://github.com/benhatsor/enderdragon/issues).
-
 ## Todo
 - Multiplayer (webRTC)
 - Breaking particles
@@ -50,7 +47,7 @@ Add a structure to `structures.js`.
 
 `game.js`. Document code and specify what changed. (eg. added glass, fixed bug)
 
-If you have an idea, add it below.
+If you have an idea, add it above.
 
 ## Credit
 
