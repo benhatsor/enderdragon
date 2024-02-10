@@ -9,11 +9,8 @@ CSS3D Minecraft test
   </h3>
 </p>
 <p align="center">
-  <a target='_blank' href='https://github.com/benhatsor/enderdragon/releases'><img src='https://img.shields.io/github/v/release/benhatsor/enderdragon?color=green&include_prereleases'/></a>
-</p>
-<p align="center">
   <h3 align="center">
-    <a href="https://enderdragon.berryscript.com">Play it</a>
+    <a href="https://enderdragon.berryscript.com">Play</a>
   </h3>
 </p>
 
