@@ -5,7 +5,7 @@
 </h1>
 <p align="center">
   <h3 align="center">
-A CSS3D version of Minecraft
+CSS3D Minecraft test
   </h3>
 </p>
 <p align="center">
@@ -13,7 +13,7 @@ A CSS3D version of Minecraft
 </p>
 <p align="center">
   <h3 align="center">
-    <a href="https://enderdragon.berryscript.com">Play it now</a>
+    <a href="https://enderdragon.berryscript.com">Play it</a>
   </h3>
 </p>
 
