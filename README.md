@@ -17,7 +17,7 @@ CSS3D Minecraft test
   </h3>
 </p>
 
-## Todo
+## To do
 - Multiplayer (webRTC)
 - Breaking particles
 - Command Blocks
@@ -49,9 +49,9 @@ Add a structure to `structures.js`.
 
 If you have an idea, add it above.
 
-## Credit
+## Credits
 
-Inspired by Calada2.  
+Based on [Calada2's project](https://github.com/Calada2/Minecraft).  
 Textures from the Minecraft Wiki are under [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).  
 Game content and materials are trademarks and copyrights of their respective publisher and its licensors. All rights reserved.  
 Enderdragon is neither endorsed nor affiliated with Mojang.
