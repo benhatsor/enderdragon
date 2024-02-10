@@ -1238,7 +1238,7 @@ function debug() {
   
   // show debug screen
   document.querySelector('.debugscreen').innerHTML = `
-  <p>Minecraft Enderdragon `+version+` (`+version+`/`+exVersion+`)</p>
+  <p>Enderdragon `+version+` (`+version+`/`+exVersion+`)</p>
   <p>Client @ `+1+` ms ticks (Netlify)</p>
   <br>
   <p>XYZ: `+player.pos.x.toFixed(3)+` / `+player.pos.y.toFixed(5)+` / `+player.pos.z.toFixed(3)+`</p>
@@ -1406,7 +1406,7 @@ function returnToTitle() {
         <div class="button" role="button" onclick="document.querySelector('.options').innerHTML='<h2>Loading</h2>';initSingleplayer()">Singleplayer</div>
         <div class="button disabled" role="button">Multiplayer</div>
         <div class="button disabled" role="button">Realms</div>
-        <div class="version">Minecraft Enderdragon `+ version +` (`+ exVersion +`)</div>`;
+        <div class="version">Enderdragon `+ version +` (`+ exVersion +`)</div>`;
   
   randomSplash();
   
@@ -1417,7 +1417,7 @@ function returnToTitle() {
   }
 }
 
-var splashes = "Missing ) after argument list! Call Now! Toll-Free! Ask your doctor! Now in CSS3D! Impressive! Star-struck! Child's play! Classy! Open source! Complex cellular automata! Come to the duck side! Don't bother with the clones! Don’t worry, be happy! Fat free! Feature packed! Funk soul brother! Eggs and Spam! Gargamel plays it! Google anlyticsed! Han shot first! OMGLOL! Internet enabled! It's a game! When it's finished! Groundbreaking! Javascript edition! Limited edition! Look mum, I’m in a splash! Notch was here! Menger sponge! Minceraft! Enderdragon! More polygons! Not linear! Pixels! pls rt! Does mrdoob approve? Also try Github! Now with more faces! Responsive! Pure CSS! Contenteditable! Also try Among Us! Also try Netlify! Sugar-free! 1% Chance! 404'd! Runs on Netlify! Quaternions! Everything is awesome! What does the fox say? Is this a pigeon? ______ All Along! youtu.be/dQw4w9WgXcQ";
+var splashes = "Missing ) after argument list! Call Now! Toll-Free! Ask your doctor! Now in CSS3D! Impressive! Star-struck! Child's play! Classy! Open source! Complex cellular automata! Come to the duck side! Don't bother with the clones! Don’t worry, be happy! Fat free! Feature packed! Funk soul brother! Eggs and Spam! Gargamel plays it! Google anlyticsed! Han shot first! OMGLOL! Internet enabled! It's a game! When it's finished! Groundbreaking! Limited edition! Look mum, I’m in a splash! Notch was here! Menger sponge! Minceraft! Enderdragon! More polygons! Not linear! Pixels! pls rt! Now with more faces! Responsive! Pure CSS! Sugar-free! Everything is awesome!";
 splashes = splashes.replaceAll('! ','!`').replaceAll('? ','?`').split('`');
 
 returnToTitle();
